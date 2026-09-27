@@ -1,0 +1,16 @@
+# Личные данные и состояние бота: сиды, прокси, адреса, журналы депозитов.
+# Любой .txt не попадает в git, кроме requirements.txt и *.example.txt.
+*.txt
+!requirements.txt
+!*.example.txt
+*.tmp
+*.bak
+*.backup*
+
+# окружение и IDE
+.venv/
+venv/
+__pycache__/
+*.pyc
+.idea/
+.vscode/
