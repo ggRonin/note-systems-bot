@@ -23,7 +23,8 @@ from eth_abi import decode, encode
 from web3 import Web3
 
 import config
-from deposit import CORE, DEPOSITS, ERC20_EXTRA, GET_SERIES, SERIES_VIEW, SYMBOLS, open_series, send, shield_excess
+from deposit import (CORE, DEPLOY_BLOCK, DEPOSITS, ERC20_EXTRA, GET_SERIES, SERIES_VIEW, SYMBOLS, open_series, send,
+                     shield_excess)
 from faucet import ABI as ERC20_ABI, TOKENS
 from register import FILE_LOCK, log
 from shield import HEADROOM, SHIELDS, approve_if_needed
@@ -58,7 +59,7 @@ _feeds = {}                         # feed -> (at, answer, updatedAt)
 
 
 # ---------------------------------------------------------------- chain reads (shared caches)
-def get_logs(w3, topics, start=0, end=None):
+def get_logs(w3, topics, start=DEPLOY_BLOCK, end=None):
     """NoteCore logs; a range over the RPC's 10,000-log limit is split in halves."""
     end = w3.eth.block_number if end is None else end
     try:

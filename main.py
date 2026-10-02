@@ -10,6 +10,7 @@ from concurrent.futures import ThreadPoolExecutor
 
 from eth_account import Account
 
+import apps
 import bonds
 import config
 import deposit
@@ -72,6 +73,19 @@ def run(line_no):
             acted |= bonds.bonds_all(chain()[0], line_no, acct, config.BOND_USDG, config.DELAY_BETWEEN_TX)
         except Exception as e:
             log(f"#{line_no} {acct.address}: bonds ERROR {e}")
+    tx = config.DELAY_BETWEEN_TX
+    for on, name, step in (
+            (config.DESK, "desk", lambda: apps.desk(chain()[0], line_no, acct, config.DESK_PCT, tx)),
+            (config.STAKE, "stake", lambda: apps.stake(chain()[0], line_no, acct, config.STAKE_PCT, tx)),
+            (config.LOCK, "lock", lambda: apps.lock(chain()[0], line_no, acct, config.LOCK_PCT, config.LOCK_DAYS, tx)),
+            (config.VOTE, "vote", lambda: apps.vote(chain()[0], line_no, acct)),
+            (config.BUYBACK, "buyback", lambda: apps.buyback(chain()[0], line_no, acct, tx)),
+            (config.OMNICHAIN, "omnichain", lambda: apps.omnichain(chain()[0], line_no, acct, config.OMNICHAIN_PCT, tx))):
+        if on:
+            try:
+                acted |= step()
+            except Exception as e:
+                log(f"#{line_no} {acct.address}: {name} ERROR {str(e)[:200]}")
     if config.LOGIN or config.NICK:
         try:
             acted |= register.run_account(line_no, acct, config.NICK)
@@ -90,6 +104,8 @@ def main():
 
     steps = [n for n, on in (("faucet", config.FAUCET), ("streak guard", config.STREAK_GUARD),
                              ("deposit", config.DEPOSIT), ("shield", config.SHIELD), ("bonds", config.BONDS),
+                             ("desk", config.DESK), ("stake", config.STAKE), ("lock", config.LOCK),
+                             ("vote", config.VOTE), ("buyback", config.BUYBACK), ("omnichain", config.OMNICHAIN),
                              ("login", config.LOGIN), ("nick", config.NICK)) if on]
     threads = max(1, min(config.THREADS, len(lines)))
     log(f"accounts: {len(lines)}, threads: {threads}, modules: {', '.join(steps) or 'none'}")

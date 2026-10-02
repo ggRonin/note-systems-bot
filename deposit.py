@@ -3,7 +3,7 @@
 Per account: DEPOSIT_COUNT deposits into random open series (different stocks
 first), each DEPOSIT_PCT % of the account's USDG balance. Every deposit is an
 on-chain approve + depositCoupon on NoteCore, sent directly to the Robinhood
-testnet RPC. Every run makes DEPOSIT_COUNT new deposits; deposits.txt records
+testnet RPC. Every run makes DEPOSIT_COUNT new deposits; deposits_v2.txt records
 them so the account never deposits twice into the same open series.
 """
 import random
@@ -19,9 +19,10 @@ from faucet import ABI as ERC20_ABI, CHAIN_ID, TOKENS
 from register import FILE_LOCK, log, read_lines
 
 BASE = Path(__file__).resolve().parent
-DEPOSITS = BASE / "deposits.txt"
+DEPOSITS = BASE / "deposits_v2.txt"   # deposits.txt is the Season 0 core: its series ids mean other series
 
-CORE = "0xE47BBec63D836643F8FBC50e61011c9eb278a55e"
+CORE = "0x55eA7977419A3848ac2E899f7e9504b00f5d28F7"  # final testnet build (pre-season)
+DEPLOY_BLOCK = 127302759
 SUBSCRIPTION = 1          # INoteCore.Status
 CLOSE_MARGIN = 30 * 60    # skip series whose subscription ends within 30 min
 SYMBOLS = {a.lower(): s for s, a in TOKENS.items() if s != "USDG"}
@@ -107,7 +108,7 @@ def coupon_free(s):
 
 
 def active_deposits(address, open_ids):
-    """Series ids from deposits.txt where this address deposited and that are still open."""
+    """Series ids from deposits_v2.txt where this address deposited and that are still open."""
     ids = set()
     for line in read_lines(DEPOSITS):
         addr, sid = line.split(",")[:2]
@@ -138,11 +139,43 @@ def pick(series, taken, count):
     return chosen[:count]
 
 
-def send(w3, acct, fn, nonce):
-    tx = fn.build_transaction({"chainId": CHAIN_ID, "from": acct.address, "nonce": nonce,
-                               "maxFeePerGas": w3.eth.gas_price * 2, "maxPriorityFeePerGas": 0})
-    tx["gas"] = int(tx["gas"] * 1.3)  # Arbitrum Orbit: estimate covers L1 data too, add headroom
-    h = w3.eth.send_raw_transaction(acct.sign_transaction(tx).raw_transaction)
+_next_nonce = {}  # address -> next nonce after our last sent tx (callers' own counters can go stale)
+NONCE_ERRORS = ("nonce too low", "already known", "replacement transaction underpriced")
+
+
+def is_nonce_error(e):
+    return any(m in str(e).lower() for m in NONCE_ERRORS)
+
+
+def sent_already(w3, tx_hash):
+    try:
+        w3.eth.get_transaction(tx_hash)
+        return True
+    except Exception:
+        return False
+
+
+def send(w3, acct, fn, nonce, value=0):
+    """Sign, send and wait. When the wallet's nonce was taken by another sender (e.g. privacy pool
+    relays from the same wallet), the tx is re-sent with a fresh nonce instead of failing."""
+    nonce = max(nonce, _next_nonce.get(acct.address, 0))
+    for attempt in range(5):
+        tx = fn.build_transaction({"chainId": CHAIN_ID, "from": acct.address, "nonce": nonce, "value": value,
+                                   "maxFeePerGas": w3.eth.gas_price * 2, "maxPriorityFeePerGas": 0})
+        tx["gas"] = int(tx["gas"] * 1.3)  # Arbitrum Orbit: estimate covers L1 data too, add headroom
+        signed = acct.sign_transaction(tx)
+        try:
+            h = w3.eth.send_raw_transaction(signed.raw_transaction)
+            break
+        except Exception as e:
+            if not is_nonce_error(e) or attempt == 4:
+                raise
+            if sent_already(w3, signed.hash):  # rpc.py re-sent our own tx after a timeout: it went through
+                h = signed.hash
+                break
+            time.sleep(1 + attempt)
+            nonce = max(nonce + 1, w3.eth.get_transaction_count(acct.address, "pending"))
+    _next_nonce[acct.address] = nonce + 1
     if w3.eth.wait_for_transaction_receipt(h, timeout=180).status != 1:
         raise RuntimeError(f"tx reverted {h.hex()}")
     return h.hex() if h.hex().startswith("0x") else "0x" + h.hex()

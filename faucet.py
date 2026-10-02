@@ -19,16 +19,17 @@ BASE = Path(__file__).resolve().parent
 RPC = "https://rpc.testnet.chain.robinhood.com"
 CHAIN_ID = 46630
 
+# Final testnet build (pre-season, deployed 2026-10-01). The Season 0 tokens are no longer counted.
 TOKENS = {
-    "USDG": "0x433947311e248C9fEc39c69Fac2a305661CCb907",
-    "AAPL": "0x84f5E66636a75E2d65f4651e7B54682e6A572CAb",
-    "AMZN": "0x189311a9B8E9e020b347813088822354fECcD900",
-    "COIN": "0x05cAFA1C45f6175ecA86c96A30b9DB9686d14De7",
-    "HOOD": "0x713ecbb623b879e5C6e51978c32b41dfe25de58D",
-    "META": "0xD2B2cc2d8C66CD1E969D202b0F0F68eE2708fF9f",
-    "MSFT": "0x6B6a2487f496cf7a79082Ae255D8d6EB235032CE",
-    "NVDA": "0x238d2dF6750e47eCd93147bD2c1253cbf6E7aC1E",
-    "TSLA": "0x8E2Ea3Bb2c548464f98b987E26dE5dfC65A0FEe7",
+    "USDG": "0x8F9231B0F448bA9AD045348437458721676c23BC",
+    "AAPL": "0x49a6d7470694FB1D9621cA4A5215704588A8A7BB",
+    "AMZN": "0x9989F639CEBE120e3077D9401E112E1390F87278",
+    "COIN": "0x5f107f870e634bbE77a45f9e7cE12B36Abe43d25",
+    "HOOD": "0xD2011A3b80F5297Ca2C4a1b4569D240a0140dCC4",
+    "META": "0xe3a8c9b60713a8259cAC6d0f7C68b673f456E565",
+    "MSFT": "0x38d035444832a5AaaFd4d66E79857210eF9fBB49",
+    "NVDA": "0x5358C97891fB27C0Cd0c000398D9213B9E1299b0",
+    "TSLA": "0x761AbC9e6Fd8464337BB6A21D56f83b4Ad66cEBA",
 }
 ABI = [
     {"type": "function", "name": "faucet", "stateMutability": "nonpayable", "inputs": [], "outputs": []},
@@ -55,14 +56,9 @@ def claim_all(w3, contracts, decimals, line_no, acct):
             waiting.append(f"{sym} {left // 3600 + 1}h")
             continue
         try:
-            tx = c.functions.faucet().build_transaction({
-                "chainId": CHAIN_ID, "from": acct.address, "nonce": nonce,
-                "maxFeePerGas": w3.eth.gas_price * 2, "maxPriorityFeePerGas": 0,
-            })
-            tx["gas"] = int(tx["gas"] * 1.3)
-            h = w3.eth.send_raw_transaction(acct.sign_transaction(tx).raw_transaction)
-            if w3.eth.wait_for_transaction_receipt(h, timeout=120).status != 1:
-                raise RuntimeError(f"reverted {h.hex()}")
+            # deposit.send re-sends with a fresh nonce when another sender from this wallet took it
+            from deposit import send  # local: deposit imports this module
+            send(w3, acct, c.functions.faucet(), nonce)
             nonce += 1
             claimed.append(sym)
         except Exception as e:

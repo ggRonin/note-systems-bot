@@ -80,7 +80,11 @@ python main.py 5      # только аккаунт из 5-й строки
 
 Порядок шагов для каждого аккаунта:
 
-**FAUCET → STREAK_GUARD → DEPOSIT → SHIELD → BONDS → LOGIN/NICK**
+**FAUCET → STREAK_GUARD → DEPOSIT → SHIELD → BONDS → DESK → STAKE → LOCK → VOTE → BUYBACK → OMNICHAIN → LOGIN/NICK**
+
+> С 1 октября 2026 бот работает с **финальной тестнет-сборкой** (pre-season): новый NoteCore `0x55eA…`, новые USDG и акции,
+> новый BondDepository. Season 0 закрыт и заморожен, старые контракты очков больше не дают.
+> Журналы новой сборки: `deposits_v2.txt`, `shields_v2.txt`, `micro_v2.txt`, `legs_v2.txt` (старые `deposits.txt` и т.п. относятся к Season 0).
 
 Модули включаются в `config.py` (`1` включён, `0` выключен):
 
@@ -90,7 +94,13 @@ python main.py 5      # только аккаунт из 5-й строки
 | `STREAK_GUARD` | проверяет здоровье позиций и спасает стрик после пробоя (см. ниже) |
 | `DEPOSIT` | делает `DEPOSIT_COUNT` депозитов COUPON в случайные открытые серии, каждый на `DEPOSIT_PCT` % баланса USDG |
 | `SHIELD` | ставит все акции в SHIELD, размер подгоняется так, чтобы позиция полностью сматчилась; плюс пары COUPON+SHIELD из своих средств |
-| `BONDS` | забирает созревшие NOTE из облигаций и покупает одну облигацию за USDG на `BOND_USDG` (очков не даёт) |
+| `BONDS` | забирает созревшие NOTE из облигаций и покупает одну облигацию за USDG на `BOND_USDG` (поток Bonds + квест; если рынок почти заполнен, покупает сколько влезает). NOTE созревают 24 ч и идут в модули ниже |
+| `DESK` | кладёт `DESK_PCT` % USDG в Desk. Никогда не выводит: запрос на вывод в первые 7 дней сжигает неделю |
+| `STAKE` | стейкает `STAKE_PCT` % NOTE в sNOTE. Cooldown не запускает: он сжигает неделю |
+| `LOCK` | блокирует `LOCK_PCT` % NOTE в veNOTE на `LOCK_DAYS` дней (дальше докладывает в тот же лок) |
+| `VOTE` | отдаёт всю силу veNOTE за один гейдж, повторяет раз в 10 дней |
+| `BUYBACK` | продаёт немного NOTE в аукцион выкупа; пропускается, пока в аукционе нет USDG |
+| `OMNICHAIN` | отправляет `OMNICHAIN_PCT` % одной ноги COUPON (только серии Live) в Arbitrum Sepolia, комиссия LayerZero ~0.0002 ETH. Обратно не возвращает |
 | `LOGIN` | входит на note.systems/community через прокси аккаунта и выводит очки, ранг и стрик |
 | `NICK` | ставит ник, если его ещё нет |
 
@@ -145,6 +155,22 @@ python Boost.py
 
 ---
 
+## 4a. micro.py: микро-депозиты USDG
+
+```bash
+python micro.py              # все аккаунты из accounts.txt
+python micro.py -t 20        # 20 аккаунтов параллельно
+python micro.py -t 20 -n 100 # 20 потоков, по 100 депозитов на аккаунт
+python micro.py 5            # только аккаунт из 5-й строки
+```
+
+Без `-t` и `-n` берутся `THREADS` и `COUNT` вверху файла.
+
+Отдельно от `main.py`. На каждый аккаунт делает `COUNT` депозитов COUPON по `AMOUNT` USDG (минимум контракта 10 USDG) в случайные открытые серии.
+Один approve на весь запуск, транзакции уходят пачками по `BATCH` штук без ожидания каждой. Журнал: `micro.txt`.
+Один депозит стоит примерно 0.0000013 ETH газа, 300 депозитов около 0.0004 ETH. Когда ETH не хватает, аккаунт останавливается с `no ETH for gas`.
+Настройки вверху файла `micro.py`.
+
 ## 5. fund.py: газ для основных аккаунтов
 
 ```bash
@@ -160,7 +186,8 @@ python fund.py 0.02     # своя сумма
 
 | Файл | Что хранит |
 |---|---|
-| `deposits.txt`, `shields.txt` | журнал депозитов COUPON / SHIELD (чтобы не заходить дважды в одну серию) |
+| `deposits_v2.txt`, `shields_v2.txt` | журнал депозитов COUPON / SHIELD (чтобы не заходить дважды в одну серию) |
+| `legs_v2.txt` | ноги, уже отправленные в Arbitrum Sepolia (каждая один раз) |
 | `registered.txt` | аккаунты, которые уже входили на сайт |
 | `boost_done.txt`, `boost_funded.txt`, `boost_hubs.txt` | прогресс Boost.py |
 

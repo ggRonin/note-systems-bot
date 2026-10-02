@@ -4,7 +4,9 @@ Per account on every run:
 1. claim: redeem every bond position that has vested NOTE (pendingPayout > 0)
 2. buy: one small bond for BOND_USDG (random in range) on an open USDG market, with the
    same guards as the app (maxPrice = quoted price + 1%, minPayout = quote - 1%, 10 min deadline).
-Bonds earn no points; this only gives the wallet history in the Bonds module.
+Pre-season: the Bonds stream (8% of the weekly pool) pays NOTE payout x vesting days, credited at
+purchase, and the first bond completes the "bond" quest. The vested NOTE (24h) feeds apps.py:
+staking, locks, gauge votes and the buyback.
 """
 import random
 import threading
@@ -16,7 +18,7 @@ from faucet import ABI as ERC20_ABI, TOKENS
 from register import log
 
 BASE = Path(__file__).resolve().parent
-BOND_DEPOSITORY = "0x9af40Dbcc0f958d4a7B5B75901895d1cFE40Fbee"
+BOND_DEPOSITORY = "0x65d962DEef22f3ea2f51379C70709202fAcD63E1"  # final testnet build
 ERC20 = 0  # BondDepository.QuoteKind
 
 BOND_ABI = [
@@ -101,7 +103,11 @@ def bonds_all(w3, line_no, acct, usdg_range, tx_delay):
             price = bd.functions.marketPrice(mid).call()
             payout = bd.functions.payoutFor(mid, amount).call()
             m = bd.functions.market(mid).call()
-            if m[5] + payout > m[8]:  # totalDebt + payout over maxDebt: the contract reverts ExceedsMaxDebt
+            room = m[8] - m[5]  # maxDebt - totalDebt: over it the contract reverts ExceedsMaxDebt
+            if payout > room > 0:  # nearly full market: buy what still fits (90% of the room, price moves)
+                amount = amount * room * 9 // 10 // payout // 10_000 * 10_000
+                payout = bd.functions.payoutFor(mid, amount).call() if amount >= 10**6 else 0
+            if not payout or m[5] + payout > m[8]:
                 parts.append(f"buy skip: market {mid} full (debt {m[5] / 1e18:,.0f} / {m[8] / 1e18:,.0f} NOTE)")
             else:
                 if usdg.functions.allowance(acct.address, BOND_DEPOSITORY).call() < amount:

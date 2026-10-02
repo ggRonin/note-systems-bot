@@ -15,7 +15,7 @@ from faucet import ABI as ERC20_ABI, TOKENS
 from register import FILE_LOCK, log, read_lines
 
 BASE = Path(__file__).resolve().parent
-SHIELDS = BASE / "shields.txt"
+SHIELDS = BASE / "shields_v2.txt"  # shields.txt is the Season 0 core
 HEADROOM = 1.001  # the app adds 0.1% so the deposit passes if the price ticks up before inclusion
 
 CORE_ABI = [

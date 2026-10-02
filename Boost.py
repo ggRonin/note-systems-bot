@@ -33,10 +33,10 @@ from register import (API, API_HEADERS, ATTEMPTS, BROWSER_HEADERS, FILE_LOCK, Bl
                       json_of, log, next_spare_proxy, proxy_dict, read_lines)
 
 # ---------------------------------------------------------------- settings (1 = on, 0 = off)
-SEND_ETH = 0              # split the ETH of the first Boost account across the other Boost accounts
-LOGIN = 0                 # sign in on note.systems/community
-FAUCET = 0                # claim test tokens
-SEND_TOKENS = 1           # send all USDG + stock tokens to the accounts.txt wallets (Boost split evenly)
+SEND_ETH = 1              # split the ETH of the first Boost account across the other Boost accounts
+LOGIN = 1                 # sign in on note.systems/community
+FAUCET = 1                # claim test tokens
+SEND_TOKENS = 0           # send all USDG + stock tokens to the accounts.txt wallets (Boost split evenly)
 THREADS = 50              # parallel accounts
 HUBS = 30                 # ETH split: parallel senders (the funder pays hubs, hubs pay the rest)
 ETH_RESERVE = 0.001       # ETH kept on the funding (first Boost) account
