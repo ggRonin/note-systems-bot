@@ -69,6 +69,11 @@ def desk(w3, line_no, acct, pct, tx_delay):
     usdg = contract(w3, TOKENS["USDG"], "erc20")
     vault = contract(w3, DESK, "desk")
     amount = pct_of(usdg.functions.balanceOf(acct.address).call(), pct, 10**6)
+    room = vault.functions.maxDeposit(acct.address).call()  # the Desk caps deposits (0 = full for now)
+    if room < 10**6:
+        log(f"#{line_no} {acct.address}: desk skip, the Desk takes no deposits now (full)")
+        return False
+    amount = min(amount, room // 10**6 * 10**6)
     if amount < max(vault.functions.minRequestQuote().call(), 10**6):
         log(f"#{line_no} {acct.address}: desk skip, not enough USDG")
         return False

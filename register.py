@@ -227,6 +227,12 @@ def sign_in(acct, proxy, line_no, do_nick):
         me = json_of(s.get(API + "me.php", headers=API_HEADERS, timeout=30))
         if not me.get("signedIn"):
             raise RuntimeError(f"session not established: {me}")
+        # me.php carries the frozen Season 0 card; the live pre-season standing comes from season.php
+        try:
+            me["pre"] = json_of(s.get(API + "season.php", params={"season": "pre", "view": "me"},
+                                      headers=API_HEADERS, timeout=30)).get("standing") or {}
+        except (Blocked, requests.RequestException):
+            me["pre"] = None
 
         profile = me.get("profile") or {}
         current = profile.get("name")
@@ -276,9 +282,13 @@ def mark(path, address):
 
 
 def stats(me):
-    m = me.get("metrics") or {}
-    return (f"points {m.get('points', 0)}, rank {me.get('rank') or '-'}, notes {m.get('notesCount', 0)}, "
-            f"deposited {m.get('deposited', 0)} USDG, streak {m.get('streak', 0)}")
+    """Pre-season standing (the live season); Season 0 is closed and frozen."""
+    p = me.get("pre")
+    if p is None:
+        return "pre-season: not available"
+    streams = ", ".join(f"{k} {v:,.0f}" for k, v in sorted((p.get("streams") or {}).items(), key=lambda kv: -kv[1]) if v)
+    return (f"pre-season points {p.get('points', 0):,.2f}, rank {p.get('rank') or '-'}, apps {p.get('maxApps', 0)}, "
+            f"quests {len(p.get('quests') or [])}" + (f" ({streams})" if streams else ""))
 
 
 def run_account(line_no, acct, do_nick):

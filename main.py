@@ -15,6 +15,7 @@ import bonds
 import config
 import deposit
 import faucet
+import optimizer
 import shield
 import streak_guard
 import register
@@ -56,13 +57,18 @@ def run(line_no):
             acted |= streak_guard.guard(chain()[0], line_no, acct)
         except Exception as e:
             log(f"#{line_no} {acct.address}: streak guard ERROR {e}")
-    if config.DEPOSIT:
+    if config.OPTIMIZER:
+        try:
+            acted |= optimizer.optimize(chain()[0], line_no, acct, config.DELAY_BETWEEN_TX)
+        except Exception as e:
+            log(f"#{line_no} {acct.address}: optimizer ERROR {str(e)[:200]}")
+    if config.DEPOSIT and not config.OPTIMIZER:
         try:
             acted |= deposit.deposit_all(chain()[0], line_no, acct, config.DEPOSIT_COUNT,
                                          config.DEPOSIT_PCT, config.DELAY_BETWEEN_TX)
         except Exception as e:
             log(f"#{line_no} {acct.address}: deposit ERROR {e}")
-    if config.SHIELD:
+    if config.SHIELD and not config.OPTIMIZER:
         try:
             acted |= shield.shield_all(chain()[0], line_no, acct, config.DELAY_BETWEEN_TX)
             acted |= shield.pair_all(chain()[0], line_no, acct, config.DELAY_BETWEEN_TX)
@@ -103,7 +109,9 @@ def main():
         lines = [int(sys.argv[1])]
 
     steps = [n for n, on in (("faucet", config.FAUCET), ("streak guard", config.STREAK_GUARD),
-                             ("deposit", config.DEPOSIT), ("shield", config.SHIELD), ("bonds", config.BONDS),
+                             ("optimizer", config.OPTIMIZER),
+                             ("deposit", config.DEPOSIT and not config.OPTIMIZER),
+                             ("shield", config.SHIELD and not config.OPTIMIZER), ("bonds", config.BONDS),
                              ("desk", config.DESK), ("stake", config.STAKE), ("lock", config.LOCK),
                              ("vote", config.VOTE), ("buyback", config.BUYBACK), ("omnichain", config.OMNICHAIN),
                              ("login", config.LOGIN), ("nick", config.NICK)) if on]

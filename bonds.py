@@ -103,12 +103,13 @@ def bonds_all(w3, line_no, acct, usdg_range, tx_delay):
             price = bd.functions.marketPrice(mid).call()
             payout = bd.functions.payoutFor(mid, amount).call()
             m = bd.functions.market(mid).call()
-            room = m[8] - m[5]  # maxDebt - totalDebt: over it the contract reverts ExceedsMaxDebt
+            # NOTE left to sell: maxDebt - totalDebt (ExceedsMaxDebt) and the market's capacity (ExceedsCapacity)
+            room = min(m[8] - m[5], m[4])
             if payout > room > 0:  # nearly full market: buy what still fits (90% of the room, price moves)
                 amount = amount * room * 9 // 10 // payout // 10_000 * 10_000
                 payout = bd.functions.payoutFor(mid, amount).call() if amount >= 10**6 else 0
-            if not payout or m[5] + payout > m[8]:
-                parts.append(f"buy skip: market {mid} full (debt {m[5] / 1e18:,.0f} / {m[8] / 1e18:,.0f} NOTE)")
+            if not payout or payout > room:
+                parts.append(f"buy skip: market {mid} sold out ({room / 1e18:,.2f} NOTE left)")
             else:
                 if usdg.functions.allowance(acct.address, BOND_DEPOSITORY).call() < amount:
                     send(w3, acct, usdg.functions.approve(BOND_DEPOSITORY, amount), nonce)

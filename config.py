@@ -4,8 +4,9 @@
 LOGIN = 1    # sign in on note.systems/community and show points (via the account's proxy)
 NICK = 0     # set a random nick if the account has none (the site allows it only after the first deposit)
 FAUCET = 1   # claim 1,000 USDG + 10 of each stock token (every 24h, direct RPC)
-DEPOSIT = 1  # COUPON deposits into random open series (direct RPC)
-SHIELD = 1   # SHIELD every stock held, auto-sized to be fully matched (direct RPC)
+OPTIMIZER = 1  # optimizer.py decides COUPON / SHIELD, series and sizes for the most points (replaces DEPOSIT + SHIELD)
+DEPOSIT = 0  # (only with OPTIMIZER = 0) plain USDG COUPON into random open series
+SHIELD = 1   # (only with OPTIMIZER = 0) SHIELD into free COUPON demand + COUPON+SHIELD pairs over every stock held
 STREAK_GUARD = 1  # right after the faucet: position health (Sound/Watch/At risk/Breached) + re-entry within 48h of a breach
 BONDS = 1    # claim vested NOTE from bonds + buy one USDG bond (Bonds stream + "bond" quest; NOTE for the apps below)
 # pre-season apps (apps.py): each app used in a week adds +0.25x breadth (cap 2x) and a quest
@@ -19,6 +20,17 @@ OMNICHAIN = 1  # move a part of one live COUPON leg to Arbitrum Sepolia (~0.0002
 # ---------------------------------------------------------------- deposits
 DEPOSIT_COUNT = 3         # new deposits per account on every run (different stocks first: "Spread" quest needs 3)
 DEPOSIT_PCT = (4, 8)      # each deposit = random % of the USDG balance (leaves USDG for pairs, bonds and the Desk)
+
+# ---------------------------------------------------------------- optimizer (see optimizer.py for the points model)
+OPT_MIN_KEEP = 0.95            # Tight/Aggressive only if the barrier holds with >= 95% (a breach there zeroes the points)
+OPT_HORIZON_DAYS = 60         # days of points counted per series at most (the season end is not announced)
+OPT_MAX_SERIES_SHARE = 0.35    # one series takes at most this share of a run's budget (spread, anti-sybil)
+OPT_CHUNKS = 40                # the budget is handed out in this many steps
+OPT_MIN_CHUNK = 20             # USDG, smallest step
+OPT_VOLATILITY = {             # yearly volatility per stock: the chance a Tight/Aggressive barrier breaks
+    "AAPL": 0.25, "MSFT": 0.22, "AMZN": 0.30, "META": 0.35,
+    "NVDA": 0.50, "TSLA": 0.55, "COIN": 0.65, "HOOD": 0.60,
+}
 
 # ---------------------------------------------------------------- bonds
 BOND_USDG = (10, 50)      # USDG per bond purchase (random in range)

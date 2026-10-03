@@ -114,9 +114,6 @@ def shield_all(w3, line_no, acct, tx_delay):
 
 
 # ---------------------------------------------------------------- self-matched pairs
-PAIRS = 3  # series per run for COUPON+SHIELD pairs (different stocks)
-
-
 def imbalance(s):
     """How lopsided a series is, 0 = balanced. A pair in a balanced series is matched ~100%."""
     shield_value = s["S_stock"] * s["price"] // 10**18
@@ -124,10 +121,14 @@ def imbalance(s):
 
 
 def pair_all(w3, line_no, acct, tx_delay):
-    """Put the idle USDG to work: in up to PAIRS balanced series, a COUPON deposit of X USDG plus
-    a SHIELD of the same value X from this account's own stock. Both positions earn points and
-    they match each other. 90% of the USDG balance is used, 10% kept.
-    Returns True when at least one pair was made."""
+    """Put the stock to work with the idle USDG: for every stock the account holds, a COUPON deposit
+    of X USDG plus a SHIELD of the same value X from that stock, in one of the most balanced open
+    series of that stock. Both positions earn points and they match each other.
+
+    The stock usually far outweighs the USDG, so the USDG decides how much can be paired: 90% of
+    it is split across all held stocks in proportion to their value (a pair of X costs X plus the
+    SHIELD prefund). A stock whose share is too small for one share passes its share on, cheapest
+    stocks are served last so nothing is left idle. Returns True when at least one pair was made."""
     core = w3.eth.contract(address=CORE, abi=CORE_ABI + [
         {"type": "function", "name": "depositCoupon", "stateMutability": "nonpayable",
          "inputs": [{"type": "uint256"}, {"type": "uint256"}], "outputs": []}])
@@ -138,30 +139,40 @@ def pair_all(w3, line_no, acct, tx_delay):
     held = {sym: c.functions.balanceOf(acct.address).call() for sym, c in stock.items()}
     cash = usdg.functions.balanceOf(acct.address).call() * 9 // 10
 
-    # the 10 most balanced series in random order: good matching, but wallets spread out (anti-sybil)
-    ranked = sorted(series, key=imbalance)
-    top = ranked[:10]
-    random.shuffle(top)
-    chosen, seen = [], set()
-    for s in top + ranked[10:]:
-        if s["symbol"] not in seen and held.get(s["symbol"], 0) >= 10**18:
-            chosen.append(s)
-            seen.add(s["symbol"])
-        if len(chosen) == PAIRS:
-            break
+    # per stock: one of its 3 most balanced series, picked at random (wallets spread out, anti-sybil)
+    chosen = []
+    for sym in held:
+        if held[sym] < 10**18:
+            continue
+        options = sorted((s for s in series if s["symbol"] == sym), key=imbalance)[:3]
+        if options:
+            chosen.append(random.choice(options))
     if not chosen or cash < 10**6:
         log(f"#{line_no} {acct.address}: pair skip, no idle USDG or stock")
         return False
 
-    nonce = w3.eth.get_transaction_count(acct.address, "pending")
-    made, budget = [], cash // len(chosen)
+    # USDG budget per stock in proportion to the stock's value; the priciest stocks first, so what a
+    # stock cannot use (less than one share) flows on to the cheaper ones
+    value = {s["symbol"]: held[s["symbol"]] // 10**18 * s["price"] for s in chosen}
+    chosen.sort(key=lambda s: s["price"], reverse=True)
+    plan, left_cash, left_value = [], cash, sum(value.values())
     for s in chosen:
         sym, price, per_share = s["symbol"], s["price"], s["per_share"]
-        # budget = X (COUPON) + prefund for X of SHIELD; one share costs price + per_share
-        shares = min(held[sym] // 10**18, int(budget / (price + per_share * HEADROOM)))
+        budget = left_cash * value[sym] // max(left_value, 1)
+        left_value -= value[sym]
+        # a pair of one share costs its price (COUPON) plus its prefund (SHIELD)
+        shares = min(held[sym] // 10**18, int(budget / (price + per_share * HEADROOM)), s["room"] // price)
         coupon = shares * price // 10_000 * 10_000
         if shares < 1 or coupon < s["min"]:
             continue
+        left_cash -=int(shares * (price + per_share * HEADROOM))
+        plan.append((s, shares, coupon))
+
+    nonce = w3.eth.get_transaction_count(acct.address, "pending")
+    made = []
+    random.shuffle(plan)
+    for s, shares, coupon in plan:
+        sym = s["symbol"]
         amount = shares * 10**18
         prefund = int(core.functions.requiredPrefund(s["id"], amount).call() * HEADROOM) + 1
         try:
