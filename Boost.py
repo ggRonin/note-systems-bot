@@ -9,7 +9,8 @@ Usage: python Boost.py
   the other Boost accounts not funded yet (boost_funded.txt). Runs first, to the end, before
   login/faucet start. Two-level fan-out: the funder pays HUBS hubs, each hub pays its chunk.
 - LOGIN: SIWE sign-in through the account's proxy, exactly 2 requests (nonce + login),
-  nothing else, to save proxy traffic. A failing proxy is replaced by the next line of
+  nothing else, to save proxy traffic (plus one captcha post when the site shows its bot
+  verification, solved via config.CAPTCHA_KEY). A failing proxy is replaced by the next line of
   Proxy.txt (removed from there) and written back into Boost.txt. Done: boost_done.txt.
 - FAUCET: 1,000 USDG + 10 of each stock token per account, direct RPC (no proxy).
   Tokens still on cooldown revert at gas estimation and are skipped, so no extra calls.
@@ -29,8 +30,8 @@ from web3 import Web3
 
 from faucet import ABI as ERC20_ABI, CHAIN_ID, TOKENS
 from rpc import make_w3
-from register import (API, API_HEADERS, ATTEMPTS, BROWSER_HEADERS, FILE_LOCK, Blocked, ProxyError,
-                      json_of, log, next_spare_proxy, proxy_dict, read_lines)
+from register import (API, API_HEADERS, ATTEMPTS, BREAKER, BROWSER_HEADERS, FILE_LOCK, STOP_ERRORS, Blocked,
+                      ProxyError, fetch, json_of, log, next_spare_proxy, proxy_dict, read_lines, retire_proxy)
 
 # ---------------------------------------------------------------- settings (1 = on, 0 = off)
 SEND_ETH = 0              # split the ETH of the first Boost account across the other Boost accounts
@@ -109,10 +110,11 @@ def save_proxy(i, proxy):
 
 
 def replace_proxy(i, reason):
-    proxy = next_spare_proxy()
+    proxy = next_spare_proxy()  # raises once the proxy breaker has tripped (provider or network down)
     if proxy is None:
         raise RuntimeError("Proxy.txt is empty")
     with FILE_LOCK:
+        retire_proxy(_records[i]["proxy"])
         _records[i]["proxy"] = proxy
         save_proxy(i, proxy)
     log(f"[{i + 1}] {reason}, new proxy {proxy.split('@')[-1]}")
@@ -126,15 +128,15 @@ def sign_in(acct, proxy):
     s.headers.update({**BROWSER_HEADERS, **API_HEADERS})
     address = acct.address.lower()
     try:
-        n = json_of(s.get(API + "nonce.php", params={"address": address}, timeout=30))
+        n = json_of(fetch(s, "GET", API + "nonce.php", params={"address": address}, timeout=30))
         message = n.get("message", "")
         if not message.startswith("note.systems wants you to sign in with your Ethereum account:"):
             raise RuntimeError(f"unexpected sign-in message: {n}")
         sig = acct.sign_message(encode_defunct(text=message)).signature.hex()
         sig = sig if sig.startswith("0x") else "0x" + sig
         time.sleep(random.uniform(1, 3))
-        data = json_of(s.post(API + "login.php", timeout=30,
-                              json={"address": address, "message": message, "signature": sig}))
+        data = json_of(fetch(s, "POST", API + "login.php", timeout=30,
+                             json={"address": address, "message": message, "signature": sig}))
         if not data.get("ok"):
             raise RuntimeError(f"login failed: {data}")
     except (requests.exceptions.ProxyError, requests.exceptions.ConnectTimeout,
@@ -146,13 +148,16 @@ def sign_in(acct, proxy):
 
 def login(i, acct):
     # a seed-only line has no proxy yet: take one from Proxy.txt (removed there, written into Boost.txt)
+    BREAKER.check()  # tripped: fail at once instead of timing out on a dead provider
     proxy = _records[i]["proxy"] or replace_proxy(i, "no proxy")
     for attempt in range(1, ATTEMPTS + 1):
         try:
             sign_in(acct, proxy)
+            BREAKER.ok()
             mark(DONE, acct.address)
             return True
         except ProxyError as e:
+            BREAKER.failed(str(e))
             proxy = replace_proxy(i, f"proxy failed ({e})")
         except Blocked as e:
             time.sleep(20 * attempt + random.uniform(0, 10))
@@ -301,7 +306,7 @@ def worker(q, done, stats):
         except Exception as e:
             stats["err"] += 1
             log(f"[{i + 1}] ERROR {str(e)[:200]}")
-            if "Proxy.txt is empty" in str(e):
+            if any(m in str(e) for m in STOP_ERRORS):
                 stats["stop"] = True
 
 
@@ -443,7 +448,7 @@ def main():
         q.put(None)
     for t in workers:
         t.join()
-    log(f"Boost done: ok {stats['ok']}, errors {stats['err']}" + (" (stopped: Proxy.txt empty)" if stats["stop"] else ""))
+    log(f"Boost done: ok {stats['ok']}, errors {stats['err']}" + (f" (sign-in stopped: {BREAKER.down or 'Proxy.txt empty'})" if stats["stop"] else ""))
 
 
 if __name__ == "__main__":

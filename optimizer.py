@@ -10,10 +10,13 @@ Points model (Issuance stream, 30% of the weekly pool): matched notional x days 
 - Days: from strike to the last observation, capped at config.OPT_HORIZON_DAYS.
 
 Every option is scored as points per USDG spent: a COUPON costs its amount, a SHIELD costs only its
-prefund (the stock is the wallet's own). The budget (90% of the USDG) goes out in chunks: first one
-chunk per stock the wallet holds (so every stock is used), then each chunk to the best option,
-re-scoring after each chunk (returns fall as a side fills up). No series takes more than
-config.OPT_MAX_SERIES_SHARE of the budget. Chunks are merged into one deposit per series and side.
+prefund (the stock is the wallet's own). The budget goes out in chunks: first one chunk per stock
+the wallet holds (so the stocks are used), then each chunk to the best option, re-scoring after each
+chunk (returns fall as a side fills up). Chunks are merged into one deposit per series and side.
+
+Anti-sybil: every wallet and run draws its own budget share, series cap, chunk count, a random taste
+(+-OPT_JITTER on each series' weight), which stocks the first pass skips, and the amount rounding,
+so 40 wallets do not repeat one pattern. The cost is a little expected score.
 """
 import math
 import random
@@ -74,10 +77,10 @@ def matched(my_c, my_s, d, s):
     return (my_c / d * m if d > 0 else 0.0) + (my_s / s * m if s > 0 else 0.0)
 
 
-def plan(state, cash, stock_value, chunk):
+def plan(state, cash, stock_value, chunk, series_share):
     """Greedy split of `cash` USDG. state: list of dicts with floats in USDG. Returns {(sid, side): usdg}."""
     alloc, spent_in = {}, {st["id"]: 0.0 for st in state}
-    cap = cash * config.OPT_MAX_SERIES_SHARE
+    cap = cash * series_share
 
     def options(only=None):
         for st in state:
@@ -104,6 +107,8 @@ def plan(state, cash, stock_value, chunk):
         cash -= cost
 
     for symbol in random.sample(sorted({st["symbol"] for st in state}), len({st["symbol"] for st in state})):
+        if random.random() < config.OPT_SKIP_STOCK:  # not every wallet touches every stock every run
+            continue
         best = max(options(symbol), key=lambda o: o[0], default=None)  # one chunk per stock first
         if best and best[0] > 0 and cash >= best[3]:
             take(best)
@@ -121,7 +126,7 @@ def optimize(w3, line_no, acct, tx_delay, dry=False):
     core = w3.eth.contract(address=CORE, abi=CORE_ABI)
     usdg = w3.eth.contract(address=TOKENS["USDG"], abi=ERC20_ABI + ERC20_EXTRA)
     series = open_series(w3)
-    cash = usdg.functions.balanceOf(acct.address).call() * 9 // 10
+    cash = int(usdg.functions.balanceOf(acct.address).call() * random.uniform(*config.OPT_BUDGET_PCT) / 100)
     stocks = {sym: w3.eth.contract(address=TOKENS[sym], abi=ERC20_ABI + ERC20_EXTRA)
               for sym in {s["symbol"] for s in series} if sym in TOKENS}
     held = {sym: c.functions.balanceOf(acct.address).call() for sym, c in stocks.items()}
@@ -136,6 +141,7 @@ def optimize(w3, line_no, acct, tx_delay, dry=False):
             _terms[s["id"]] = (v[3], list(v[12]))
         barrier, observations = _terms[s["id"]]
         w, tier_name, keep = weight(s, barrier, observations)
+        w *= random.uniform(1 - config.OPT_JITTER, 1 + config.OPT_JITTER)  # this wallet's own taste (anti-sybil)
         pos = core.functions.getPosition(s["id"], acct.address).call()
         price = s["price"] / 1e6
         state.append({"id": s["id"], "symbol": s["symbol"], "w": w, "tier": tier_name, "keep": keep,
@@ -145,8 +151,8 @@ def optimize(w3, line_no, acct, tx_delay, dry=False):
     stock_value = {sym: held[sym] / 1e18 * next(st["price"] for st in state if st["symbol"] == sym)
                    for sym in held if any(st["symbol"] == sym for st in state)}
     budget = cash / 1e6
-    chunk = max(config.OPT_MIN_CHUNK, budget / config.OPT_CHUNKS)
-    alloc = plan(state, budget, stock_value, chunk)
+    chunk = max(config.OPT_MIN_CHUNK, budget / random.randint(*config.OPT_CHUNKS))
+    alloc = plan(state, budget, stock_value, chunk, random.uniform(*config.OPT_MAX_SERIES_SHARE))
     if not alloc:
         log(f"#{line_no} {acct.address}: optimizer, nothing worth depositing")
         return False
@@ -168,7 +174,8 @@ def optimize(w3, line_no, acct, tx_delay, dry=False):
         tag = f"#{sid} {s['symbol']} {st['tier'][0]}"
         try:
             if side == "coupon":
-                amount = int(size * 100) * 10_000  # USDG, 2 decimals
+                # rounded like typed by hand: whole USDG or 2 decimals
+                amount = int(size) * 10**6 if random.random() < 0.6 else int(size * 100) * 10_000
                 if amount < s["min"] or amount > usdg.functions.balanceOf(acct.address).call():
                     continue
                 fn = core.functions.depositCoupon(sid, amount)
@@ -180,7 +187,7 @@ def optimize(w3, line_no, acct, tx_delay, dry=False):
                     f.write(f"{acct.address},{sid},{amount / 1e6},{h}\n")
                 made.append(f"{tag} COUPON {amount / 1e6:,.0f}")
             else:
-                shares = min(int(size / st["price"]), held[s["symbol"]] // 10**18)
+                shares = min(int(size / st["price"] * random.uniform(0.9, 1.0)), held[s["symbol"]] // 10**18)
                 if shares < 1:
                     continue
                 amount = shares * 10**18

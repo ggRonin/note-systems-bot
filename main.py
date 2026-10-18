@@ -24,7 +24,9 @@ from register import ACCOUNTS, log, parse, read_lines
 Account.enable_unaudited_hdwallet_features()
 
 _local = threading.local()
-_stop = threading.Event()  # set when Proxy.txt runs out: the other threads finish their account and stop
+# set when Proxy.txt runs out or the proxy breaker trips: sign-in is skipped for the rest of the run,
+# the on-chain steps (direct RPC, no proxy) go on
+_no_login = threading.Event()
 
 
 def chain():
@@ -42,8 +44,6 @@ def process(line_no):
 
 
 def run(line_no):
-    if _stop.is_set():
-        return
     acct = Account.from_mnemonic(parse(read_lines(ACCOUNTS)[line_no - 1])[0])
     acted = False
     if config.FAUCET:
@@ -86,19 +86,24 @@ def run(line_no):
             (config.LOCK, "lock", lambda: apps.lock(chain()[0], line_no, acct, config.LOCK_PCT, config.LOCK_DAYS, tx)),
             (config.VOTE, "vote", lambda: apps.vote(chain()[0], line_no, acct)),
             (config.BUYBACK, "buyback", lambda: apps.buyback(chain()[0], line_no, acct, tx)),
-            (config.OMNICHAIN, "omnichain", lambda: apps.omnichain(chain()[0], line_no, acct, config.OMNICHAIN_PCT, tx))):
+            (config.SETTLE, "settle", lambda: apps.settle(chain()[0], line_no, acct, tx)),
+            (config.OMNICHAIN, "omnichain", lambda: apps.omnichain(chain()[0], line_no, acct, config.OMNICHAIN_PCT, tx)),
+            (config.VAULT, "vault", lambda: apps.vault(chain()[0], line_no, acct, config.VAULT_PCT, tx)),
+            (config.CREDIT, "credit", lambda: apps.credit(chain()[0], line_no, acct, config.CREDIT_SUPPLY_PCT,
+                                                          config.CREDIT_WRAP_PCT, config.CREDIT_BORROW_PCT, tx)),
+            (config.PROPOSALS, "proposals", lambda: apps.proposals(chain()[0], line_no, acct, config.PROPOSAL_VOTE))):
         if on:
             try:
                 acted |= step()
             except Exception as e:
                 log(f"#{line_no} {acct.address}: {name} ERROR {str(e)[:200]}")
-    if config.LOGIN or config.NICK:
+    if (config.LOGIN or config.NICK) and not _no_login.is_set():
         try:
             acted |= register.run_account(line_no, acct, config.NICK)
         except Exception as e:
             log(f"#{line_no} {acct.address}: login/nick ERROR {e}")
-            if "Proxy.txt is empty" in str(e):
-                _stop.set()
+            if any(m in str(e) for m in register.STOP_ERRORS):
+                _no_login.set()
     if acted:
         time.sleep(random.uniform(*config.DELAY_BETWEEN_ACCOUNTS))
 
@@ -113,7 +118,9 @@ def main():
                              ("deposit", config.DEPOSIT and not config.OPTIMIZER),
                              ("shield", config.SHIELD and not config.OPTIMIZER), ("bonds", config.BONDS),
                              ("desk", config.DESK), ("stake", config.STAKE), ("lock", config.LOCK),
-                             ("vote", config.VOTE), ("buyback", config.BUYBACK), ("omnichain", config.OMNICHAIN),
+                             ("vote", config.VOTE), ("buyback", config.BUYBACK), ("settle", config.SETTLE),
+                             ("omnichain", config.OMNICHAIN),
+                             ("vault", config.VAULT), ("credit", config.CREDIT), ("proposals", config.PROPOSALS),
                              ("login", config.LOGIN), ("nick", config.NICK)) if on]
     threads = max(1, min(config.THREADS, len(lines)))
     log(f"accounts: {len(lines)}, threads: {threads}, modules: {', '.join(steps) or 'none'}")
@@ -125,8 +132,9 @@ def main():
             pool.submit(process, line_no)
             if i < threads - 1:
                 time.sleep(random.uniform(1, 3))  # stagger the first wave so threads don't start in the same second
-    if _stop.is_set():
-        log("stopped: Proxy.txt is empty")
+    if _no_login.is_set():
+        log("sign-in was skipped for part of the run: "
+            + (register.BREAKER.down or "Proxy.txt is empty") + " (see Proxy_dead.txt to restore proxies)")
     log("done")
 
 
