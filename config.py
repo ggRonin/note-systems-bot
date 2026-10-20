@@ -1,6 +1,7 @@
 # ---------------------------------------------------------------- modules (1 = on, 0 = off)
 # Run order per account: FAUCET -> STREAK_GUARD -> DEPOSIT -> SHIELD -> BONDS -> DESK -> STAKE -> LOCK -> VOTE
-#   -> BUYBACK -> SETTLE -> OMNICHAIN -> VAULT -> CREDIT -> PROPOSALS -> LOGIN/NICK (nick is allowed only after a deposit)
+#   -> BUYBACK -> SETTLE -> OMNICHAIN -> VAULT -> CREDIT -> BUILDER -> SWAP -> PROPOSALS -> LOGIN/NICK
+#   (nick is allowed only after a deposit)
 LOGIN = 1    # sign in on note.systems/community and show points (via the account's proxy)
 NICK = 0     # set a random nick if the account has none (the site allows it only after the first deposit)
 FAUCET = 1   # claim 1,000 USDG + 10 of each stock token (every 24h, direct RPC)
@@ -20,7 +21,9 @@ SETTLE = 1     # settle struck positions: mints the legs (needed by OMNICHAIN) a
 OMNICHAIN = 1  # move a part of one live COUPON leg to Arbitrum Sepolia (~0.0002 ETH LayerZero fee)
 VAULT = 1      # deposit part of the USDG into a Build vault (one random vault per wallet, topped up; never withdraws)
 CREDIT = 1     # Credit (Morpho): lend USDG every run + one small loan against a wrapped COUPON leg (never repays/withdraws)
-PROPOSALS = 1  # vote on open governance proposals with the veNOTE power (each proposal once)
+BUILDER = 1    # deploy one vault per wallet through the vault factory ("Builder" quest, x3)
+SWAP = 1       # Swap app (swap.py): swaps + stock inventory + Senior USDG + Backstop (swap stream 8% and 7 quests)
+PROPOSALS = 0  # vote on open governance proposals with veNOTE (no stream or quest pays for it: only gauge votes count)
 
 # ---------------------------------------------------------------- deposits
 DEPOSIT_COUNT = 3         # new deposits per account on every run (different stocks first: "Spread" quest needs 3)
@@ -56,6 +59,15 @@ CREDIT_WRAP_PCT = (5, 15)     # % of one COUPON leg wrapped and posted as collat
 CREDIT_BORROW_PCT = (15, 35)  # % of the allowed loan borrowed: LTV ~6-13% against the 38.5% liquidation line
 PROPOSAL_VOTE = (75, 10, 15)  # chance weights of for / against / abstain on a proposal
 
+# ---------------------------------------------------------------- swap (swap.py)
+SWAP_COUNT = (1, 3)          # swaps per run (the first ones go to stocks the wallet has not traded: "Three Stocks")
+SWAP_USDG = (5, 30)          # USDG spent per buy
+SWAP_SELL_CHANCE = 0.3       # chance a swap sells a faucet stock instead of buying
+SWAP_SELL_PCT = (10, 30)     # % of that stock's balance sold
+SWAP_SLIPPAGE_BPS = 100      # tolerance against the quote (1%)
+SWAP_INVENTORY_PCT = (5, 12)  # % of one faucet stock supplied to its Regular / Continuous vault per run (the rest backs SHIELD)
+SWAP_SENIOR_PCT = (2, 5)     # % of the USDG balance into the Senior USDG vault per run
+SWAP_BACKSTOP_USDG = (20, 60)  # one Backstop deposit per wallet, USDG
 # ---------------------------------------------------------------- captcha (LiteSpeed reCAPTCHA in front of note.systems)
 CAPTCHA_SERVICE = "capsolver"   # "capsolver", "2captcha" or "anticaptcha"
 # the service's API key sits in captcha_key.txt next to this file (one line; *.txt never goes into git)

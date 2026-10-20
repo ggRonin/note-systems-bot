@@ -4424,5 +4424,345 @@
     }
    ]
   }
+ ],
+ "vaultfactory": [
+  {
+   "anonymous": false,
+   "inputs": [
+    {
+     "indexed": true,
+     "internalType": "address",
+     "name": "vault",
+     "type": "address"
+    },
+    {
+     "indexed": true,
+     "internalType": "address",
+     "name": "mandate",
+     "type": "address"
+    },
+    {
+     "indexed": true,
+     "internalType": "address",
+     "name": "adapter",
+     "type": "address"
+    },
+    {
+     "indexed": false,
+     "internalType": "address",
+     "name": "owner",
+     "type": "address"
+    },
+    {
+     "indexed": false,
+     "internalType": "string",
+     "name": "name",
+     "type": "string"
+    },
+    {
+     "indexed": false,
+     "internalType": "string",
+     "name": "symbol",
+     "type": "string"
+    }
+   ],
+   "name": "VaultCreated",
+   "type": "event"
+  },
+  {
+   "inputs": [
+    {
+     "components": [
+      {
+       "internalType": "string",
+       "name": "name",
+       "type": "string"
+      },
+      {
+       "internalType": "string",
+       "name": "symbol",
+       "type": "string"
+      },
+      {
+       "internalType": "address",
+       "name": "owner",
+       "type": "address"
+      },
+      {
+       "internalType": "address",
+       "name": "guardian",
+       "type": "address"
+      },
+      {
+       "internalType": "address",
+       "name": "feeRecipient",
+       "type": "address"
+      },
+      {
+       "components": [
+        {
+         "internalType": "uint16",
+         "name": "managementBps",
+         "type": "uint16"
+        },
+        {
+         "internalType": "uint16",
+         "name": "performanceBps",
+         "type": "uint16"
+        }
+       ],
+       "internalType": "struct INoteVault.Fees",
+       "name": "fees",
+       "type": "tuple"
+      },
+      {
+       "components": [
+        {
+         "internalType": "uint16",
+         "name": "maxSeriesBps",
+         "type": "uint16"
+        },
+        {
+         "internalType": "uint16",
+         "name": "minIdleBps",
+         "type": "uint16"
+        },
+        {
+         "internalType": "uint16",
+         "name": "stockHaircutBps",
+         "type": "uint16"
+        },
+        {
+         "internalType": "uint32",
+         "name": "allocateLead",
+         "type": "uint32"
+        },
+        {
+         "internalType": "uint128",
+         "name": "minAllocation",
+         "type": "uint128"
+        },
+        {
+         "internalType": "uint128",
+         "name": "depositCap",
+         "type": "uint128"
+        },
+        {
+         "internalType": "uint32",
+         "name": "exitLock",
+         "type": "uint32"
+        }
+       ],
+       "internalType": "struct INoteVault.Limits",
+       "name": "limits",
+       "type": "tuple"
+      },
+      {
+       "internalType": "uint32",
+       "name": "mandateDelay",
+       "type": "uint32"
+      },
+      {
+       "internalType": "uint128",
+       "name": "bounty",
+       "type": "uint128"
+      },
+      {
+       "internalType": "uint128",
+       "name": "bountyReserve",
+       "type": "uint128"
+      },
+      {
+       "components": [
+        {
+         "internalType": "address",
+         "name": "underlying",
+         "type": "address"
+        },
+        {
+         "components": [
+          {
+           "internalType": "bool",
+           "name": "enabled",
+           "type": "bool"
+          },
+          {
+           "internalType": "address",
+           "name": "feed",
+           "type": "address"
+          },
+          {
+           "internalType": "uint16",
+           "name": "minBarrierBps",
+           "type": "uint16"
+          },
+          {
+           "internalType": "uint16",
+           "name": "maxBarrierBps",
+           "type": "uint16"
+          },
+          {
+           "internalType": "uint16",
+           "name": "minCouponFloorBps",
+           "type": "uint16"
+          },
+          {
+           "internalType": "uint8",
+           "name": "maxObservations",
+           "type": "uint8"
+          },
+          {
+           "internalType": "uint32",
+           "name": "maxTenor",
+           "type": "uint32"
+          },
+          {
+           "internalType": "uint8",
+           "name": "maxOpenSeries",
+           "type": "uint8"
+          },
+          {
+           "internalType": "uint16",
+           "name": "relativeCapBps",
+           "type": "uint16"
+          },
+          {
+           "internalType": "uint128",
+           "name": "absoluteCap",
+           "type": "uint128"
+          }
+         ],
+         "internalType": "struct INoteVault.Band",
+         "name": "band",
+         "type": "tuple"
+        }
+       ],
+       "internalType": "struct INoteVault.BandInit[]",
+       "name": "bands",
+       "type": "tuple[]"
+      },
+      {
+       "components": [
+        {
+         "internalType": "bytes32",
+         "name": "id",
+         "type": "bytes32"
+        },
+        {
+         "internalType": "address",
+         "name": "payee",
+         "type": "address"
+        },
+        {
+         "internalType": "uint16",
+         "name": "shareBps",
+         "type": "uint16"
+        }
+       ],
+       "internalType": "struct INoteVault.PartnerInit[]",
+       "name": "partners",
+       "type": "tuple[]"
+      }
+     ],
+     "internalType": "struct INoteVault.InitParams",
+     "name": "p",
+     "type": "tuple"
+    },
+    {
+     "internalType": "bytes",
+     "name": "vaultCode",
+     "type": "bytes"
+    }
+   ],
+   "name": "create",
+   "outputs": [
+    {
+     "internalType": "address",
+     "name": "vault",
+     "type": "address"
+    },
+    {
+     "internalType": "address",
+     "name": "mandate",
+     "type": "address"
+    },
+    {
+     "internalType": "address",
+     "name": "adapter",
+     "type": "address"
+    }
+   ],
+   "stateMutability": "nonpayable",
+   "type": "function"
+  },
+  {
+   "inputs": [
+    {
+     "internalType": "address",
+     "name": "vault",
+     "type": "address"
+    }
+   ],
+   "name": "isVault",
+   "outputs": [
+    {
+     "internalType": "bool",
+     "name": "",
+     "type": "bool"
+    }
+   ],
+   "stateMutability": "view",
+   "type": "function"
+  },
+  {
+   "inputs": [],
+   "name": "vaultCodeHash",
+   "outputs": [
+    {
+     "internalType": "bytes32",
+     "name": "",
+     "type": "bytes32"
+    }
+   ],
+   "stateMutability": "view",
+   "type": "function"
+  },
+  {
+   "inputs": [],
+   "name": "vaultCount",
+   "outputs": [
+    {
+     "internalType": "uint256",
+     "name": "",
+     "type": "uint256"
+    }
+   ],
+   "stateMutability": "view",
+   "type": "function"
+  },
+  {
+   "inputs": [
+    {
+     "internalType": "uint256",
+     "name": "start",
+     "type": "uint256"
+    },
+    {
+     "internalType": "uint256",
+     "name": "count",
+     "type": "uint256"
+    }
+   ],
+   "name": "vaults",
+   "outputs": [
+    {
+     "internalType": "address[]",
+     "name": "out",
+     "type": "address[]"
+    }
+   ],
+   "stateMutability": "view",
+   "type": "function"
+  }
  ]
 }

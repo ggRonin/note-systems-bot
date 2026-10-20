@@ -1,0 +1,2352 @@
+{
+ "_source": "note.systems/app Swap config (Sym chunk), testnet 46630; refresh when the site adds markets",
+ "core": "0x2d2f18821f5D5302B246757Bc0Dfd049F0236046",
+ "engine": "0x83E055Cf7f972Fa9997d1298BA60b5463147A109",
+ "lens": "0x74e31998Eb17F9b4C0db66224666e0Bd710555a6",
+ "quoteVault": "0x000C86f632f2ea2a9F83403a04C68cd6b71f7A32",
+ "backstop": "0x1F8a10B5a5f593158Ac227dcaE1ab4a1ce36eADe",
+ "usdg": "0x8F9231B0F448bA9AD045348437458721676c23BC",
+ "reports": "https://5-182-18-153.sslip.io",
+ "markets": {
+  "AAOI": {
+   "token": "0x36cee2017DAdcE7D4d5252bB8F6Bdbd72c3Db56f",
+   "regularVault": "0xbD56B5DCF6D5A92BD3B4f896304993BB7Ed8b0D0",
+   "continuousVault": "0x68B6D397EA6C0156673974E77c68bA66E64460Ca",
+   "feeds": [
+    "0x000b892bf884c7f45565c5f7b0c3b6052e828018bd67e3885df2eb4111082100",
+    "0x000bc0bc3a4cbd0ab8cae9a1e4d17af36678b0235889502d64fe0de867626cf1",
+    "0x000bc66c3a0106a7ab3ad293ab4591fc1f29406dc6773073d01e3a94dd73b4b5"
+   ],
+   "name": "Applied Optoelectronics",
+   "kind": "stock"
+  },
+  "AAPL": {
+   "token": "0x49a6d7470694FB1D9621cA4A5215704588A8A7BB",
+   "regularVault": "0x37C82E5E75C00815E895328F56782Be17B8C9Ec2",
+   "continuousVault": "0x26a716b7E9aE8c73ba981A56296995c9445d3aCF",
+   "feeds": [
+    "0x000bbd87a23775b4c11092ae9a1fc7b3393636ae1dbb9f1ef460f845c0f4cff1",
+    "0x000b8b9394931d376dbfd988ab3e459b1954ca10880d6a2ec706cd2573910b5b",
+    "0x000b313c8a4997a3bc871130415ffeb42cd37b79cf68c11478780650cc553c0b"
+   ],
+   "name": "Apple",
+   "kind": "stock"
+  },
+  "ABCL": {
+   "token": "0x444dEaa16F31C0C6505f33B83D010f43df0c3B06",
+   "regularVault": "0x21cB02990e4eDfADdd8177617FCD38b25A2cbbdE",
+   "continuousVault": "0x2AbbAa1444aDF563A6F2C31011387eF4B1104193",
+   "feeds": [
+    "0x000baa39f0541aa204107413dda6bb7dff35f4fa962565733be125004bd225c4",
+    "0x000b4b01ee0580e8399ef55c6e2f1f075849b1f31ba410e827ba8ecbb73f2715",
+    "0x000bcbe0133410a979fbe67e29fe2d24b207fa393d135fe8bf3d2ce6c81464b1"
+   ],
+   "name": "Abcellera Biologics",
+   "kind": "stock"
+  },
+  "ADBE": {
+   "token": "0x97b380dFC3bFB2057bab486Beb584c3D17DA830C",
+   "regularVault": "0xD99BDb53973B74475143051de72aB9D388415C18",
+   "continuousVault": "0xEdB320D7c467E44b7752D6de932aEC7aF4e04657",
+   "feeds": [
+    "0x000b0e586815a3314fa1f26241ec448e0328c5e0e75fea597ba42f757e94fcf9",
+    "0x000b8e41fc8f74f87a22d4ab2ec42f6687920acbc6609eb01c94d476b20667a2",
+    "0x000b2ae8b9e617e2ef716ce2ac958bd999cb2d7d7c3dab724af623244581ec94"
+   ],
+   "name": "Adobe",
+   "kind": "stock"
+  },
+  "AEHR": {
+   "token": "0x5b4beC0fA169A3623a8c9Cb7500f45a9320188a6",
+   "regularVault": "0x0Ef36ed67AEDcAF42298150DF9821B5bafc49C81",
+   "continuousVault": "0x3FB2a01b725a60287BA9A38969f555D6207cf602",
+   "feeds": [
+    "0x000bf69821516fac9925b94cf5329a0a1cb9b1b05c81d80d1a2eabe1e2954e15",
+    "0x000b6c4a7c0a120dafdce6a83a0fcfe75c3800048b0d683119d7a212dab856f0",
+    "0x000b41c8c3e83583c1fae34a355a5ec601e4b8492f7237e53cfbf94b5faf22fc"
+   ],
+   "name": "Aehr",
+   "kind": "stock"
+  },
+  "AEIS": {
+   "token": "0x0572f25d4797daD0D7D94Dcbf396E1F2F9fF4170",
+   "regularVault": "0xb855aABE9734D0FD26fD4494AE14B0122D84A9e5",
+   "continuousVault": "0xbf2eAF973A21cc841e451767E72aca410F3C7Cb9",
+   "feeds": [
+    "0x000bd1e4a1c0bbee10e059d5c3210165f388586618cc87df0bf70f4ef3d32717",
+    "0x000b80aeb7cd5eaa9fb019f65e78c1f95cbfcfb66f07b87b46dfac22fe36ee8a",
+    "0x000b6914f934da4ea6dfc15bc102d71e26b8ffdc9c7dcef68d0e501012bd5032"
+   ],
+   "name": "Advanced Energy",
+   "kind": "stock"
+  },
+  "ALAB": {
+   "token": "0xC22CE45b8F914e4E868B7A610e0d0B0896A9C61D",
+   "regularVault": "0x024593BB0E288DD98A4E7f3baC71BcE02C622C23",
+   "continuousVault": "0x0DC212c3894E6b0541D5aEbaB68bd5D019259f3a",
+   "feeds": [
+    "0x000b6132bf94f303cbe4e1973e9485bc663fb050f9490e59f6b7a195a3228f67",
+    "0x000b55f23a9aff2f0d5d233b39188fd50e7251421009cd2af4814586cadbd9ae",
+    "0x000b7bee002ac89685d46e4c3fd36a2896ca74727e05aa40c720b660ca670a56"
+   ],
+   "name": "Astera Labs, Inc.",
+   "kind": "stock"
+  },
+  "AMAT": {
+   "token": "0xA28320b6689CFFF2879D8599eDe7ad55b9Ad9075",
+   "regularVault": "0x874fF21E588b6bd9976013a67d50b9F0981baA43",
+   "continuousVault": "0xe2701E22903b3a311c15CdA761B95F9D28389B74",
+   "feeds": [
+    "0x000b78c5cc922a630e0a181e989d87ca5dc4c3d05b8e0379230dd47c2a0da63c",
+    "0x000b5a49d1998c0a20aa1baa221ad087ae1067849d2ee75119fad404191a2b88",
+    "0x000bc7098592e360d1815398353768e824c188d34f49c786dbc855c915681309"
+   ],
+   "name": "Applied Materials",
+   "kind": "stock"
+  },
+  "AMBA": {
+   "token": "0x8718EDe6fb51603b4bF8de250cb8BA4fC7BE3d6A",
+   "regularVault": "0xAc6630D5871FcA67f0740543980898e806Bf9c36",
+   "continuousVault": "0xded35FceaD0c6dda8262e432FF2f1c93648d2541",
+   "feeds": [
+    "0x000bb5d9329235ca95c6fa686f4d844e988ef88aea7b058a2a871f808ac7dc5f",
+    "0x000b1356c2074edfb7ae37d86d3319ec6fd07ee3267b62940ffa184f00310e2e",
+    "0x000b268fd9e385c34751efde8ff6e1377f11c26a87294c5949376e909f70a910"
+   ],
+   "name": "Ambarella",
+   "kind": "stock"
+  },
+  "AMC": {
+   "token": "0xF0Ed0507bABE36C18dfba7C42D1deCf8463Df966",
+   "regularVault": "0xa3BE234FCAE6e55b6db2C4c540880A7516bd10B1",
+   "continuousVault": "0x99F7b7CBCcd78Df48656c13C49EE0499973c20EA",
+   "feeds": [
+    "0x000bc94371679d05b127ba0d124a40d1756cee95f8e7e5baa15cfec3a7d1947a",
+    "0x000b28f7b937ebec6ce615daf2b149d70f6bd8d2739f0dcdb3dde7ecea55c34a",
+    "0x000b7ede31b21189462be909e14ef6ba1fa392fcbab6e50227efcfdb666dbd6c"
+   ],
+   "name": "AMC Entertainment",
+   "kind": "stock"
+  },
+  "AMD": {
+   "token": "0x726cEfC3E0aD34Ca22D3d9b6Fc08B9A141E51Cca",
+   "regularVault": "0xc5899B47fCf916cfBB3136b61591924A3E33fe34",
+   "continuousVault": "0xb5bEe7f4E15B57052b052CA4b07cE806362fd883",
+   "feeds": [
+    "0x000b7114d7ab38ddc1f00066ba8bb7a78ed10584ee8fd737eca296c3b4881d83",
+    "0x000b9673b9ea0f0341c5e2d4e1925aa6f93f9f4a40f4eefc9b74d0269026327a",
+    "0x000b4d482f028bd59f5a9631ff1421311fd43f008b965a8d2051557177136911"
+   ],
+   "name": "AMD",
+   "kind": "stock"
+  },
+  "AMKR": {
+   "token": "0x33cf433320f9F1BAdb267b3C30EcDF4A85dcE9b0",
+   "regularVault": "0x61087FE657705B8A34d48F248961b70FC98691EB",
+   "continuousVault": "0xA7d6426E1BA4E735B0F28d198Cd4f64769503c9E",
+   "feeds": [
+    "0x000bdd97d030a5ee6abf11f022f6dac5297be519379525c8b0afea71bd3a9821",
+    "0x000bd61c0edf5a5d4194e750e5d9a47b74159b4567a621b3591b07238a190d8c",
+    "0x000b5b85eb3824db3c8bf429280e80b31919fd0774ff2398eee45e35aa6e014a"
+   ],
+   "name": "Amkor Technology",
+   "kind": "stock"
+  },
+  "AMZN": {
+   "token": "0x9989F639CEBE120e3077D9401E112E1390F87278",
+   "regularVault": "0xda2DDB113aaB1382840Ae5A6c8f5b262b46d24D5",
+   "continuousVault": "0xB5AC4600EE246aE265E668A4E4a20e7C2A30eF2A",
+   "feeds": [
+    "0x000bfb41659084e9ea0ea672b12b7878d88511dcac813d82435da65df946f65c",
+    "0x000b2544d6c3acec0820a38daff371b844cc2415f57f9648a2238a0b3076e868",
+    "0x000b9bbaa779d3bf05d3f2a91942a3bc0a5ad36f80b1499f77dc63a1a4056693"
+   ],
+   "name": "Amazon",
+   "kind": "stock"
+  },
+  "ANET": {
+   "token": "0x230E5Ce1A7d53C5CD9dD75B690eAE0d19f629d92",
+   "regularVault": "0xD547C2a6E18F4E64253782700ce346bA7452Af35",
+   "continuousVault": "0x9602E2E73c16A8c2e55C2C9e921195e0239a7818",
+   "feeds": [
+    "0x000bb3dfc89615b97a343a683b35b08a0afaa8471570c24d1b4ed760399d508b",
+    "0x000b142e8fa4c3dc93977b2a0b7610350040e23e87c8ccb87a284098516ed00d",
+    "0x000b83d8a032ffaefaba7e149750d63325bdafa0a992e3b01b5c849195a3dbd2"
+   ],
+   "name": "Arista",
+   "kind": "stock"
+  },
+  "APLD": {
+   "token": "0x16613BB05D81B9d396094e0bb90445390CD381ec",
+   "regularVault": "0x72c8A82BdEaC61140613d8c62Ec7f1f3aC05BE1e",
+   "continuousVault": "0x52a4D36fFF61Bc1B2343c74c860f2a2F89cE44b9",
+   "feeds": [
+    "0x000bb18066739b93d76f7d2e0d2438a2852860ff7c07addbe91cef43f35a4ee2",
+    "0x000ba5d1a9527551d28a9c2d8acab2a12cef872577abd51776555c34ebbf2da9",
+    "0x000bd8f1d2cebf200d358998392fbd398341469daf21800183416fd47d4a3208"
+   ],
+   "name": "Applied Digital",
+   "kind": "stock"
+  },
+  "APP": {
+   "token": "0xa8798290816b71aE28e9b0717eCB0510a53cdA4b",
+   "regularVault": "0x4Cb15A339327a0d2AAeF7a0005173Ae1aeFe5A3b",
+   "continuousVault": "0xAe03418ea7253724b30fc76E59c9E39eeDeD7330",
+   "feeds": [
+    "0x000b4da00d1c3505d85fa5330015313a5780b4dc57d927b69660439a471d38ad",
+    "0x000bde3b764f20ec82c8d8ca357aa44af65581e69fab5ff523e629901ad1c993",
+    "0x000b8fb0d39fc39b695fb9b38da57448f8ec9c6bb8d2a823cd75d6583f3b6f36"
+   ],
+   "name": "AppLovin",
+   "kind": "stock"
+  },
+  "ASML": {
+   "token": "0x0e21310c541Ea2D57d0288396E6f135C77b1eC8E",
+   "regularVault": "0xD5183b1E57D1d8E0267F0B8146750a6536f762eF",
+   "continuousVault": "0x3881dbBAaC90670FEF3774FAF277305DDcFE5033",
+   "feeds": [
+    "0x000bfe8886bd158c88059208f340b812a7841cf60fda16fcd3f391fd39511011",
+    "0x000b27a1d4257ed4e12ba054af091a3be313d7bd75511fc227f05b2f4b6fc5a7",
+    "0x000b526591a2e16d5206bb0c54380965d1de774bb5c15218b9b121f520bd59b1"
+   ],
+   "name": "ASML Holding NV",
+   "kind": "stock"
+  },
+  "ASTS": {
+   "token": "0x805FaCF612b35e582d962897EFae407C0aF71b5a",
+   "regularVault": "0x3923b650fe355a9d7c1480A757677EB89E188ead",
+   "continuousVault": "0x06De32DCB41432050e59bFd38BfEFfC820e5D049",
+   "feeds": [
+    "0x000b16f42d0efc359c7fc328d55ff777b871a74bf8d683fbe12d9e7f127775d3",
+    "0x000b887d431db52269ebe1dde7abeb80f587d6e6dc40045cbbd312ed6e445b9a",
+    "0x000b3f66b36729b591e0e5215231946642fe1c09f1c270b9e392ac6ddbbf5a3e"
+   ],
+   "name": "AST SpaceMobile",
+   "kind": "stock"
+  },
+  "AUR": {
+   "token": "0x66E92162FdAa9eB6eEe2fDaA536BCafec83C7dC5",
+   "regularVault": "0x9C217a531BC4D434C3D6c67d4872Ef9e80b4FCDf",
+   "continuousVault": "0xf628009F562C78f1e95703645A108816E5454727",
+   "feeds": [
+    "0x000bb2dab3b0986e4eff6f383ae604daca5f7ddd79b787daa76cf92c8ca46ce1",
+    "0x000ba3737ddf0131fec6260c82109c05b8c6f9490fdb4c2ee5128c22eab72675",
+    "0x000b6f6f4c230b4333bada78a10c64f60aa8b12504bf6fae81cfa746e4bcf1c5"
+   ],
+   "name": "Aurora Innovation",
+   "kind": "stock"
+  },
+  "AVAV": {
+   "token": "0xfafB575Caef2bEf098a49E603A4B8ED8A768e778",
+   "regularVault": "0x575d95d93DF2dcB65d343B33D36B163B88700718",
+   "continuousVault": "0x7c146075141021f17B41203391F8266836E5ab3F",
+   "feeds": [
+    "0x000b673d4c9a915aca8085a66dee9b6b23c58f14f6695f2ca6e6cc4b5c35e8b8",
+    "0x000b0dcdf5b76606b3f324e54be1d266e320e7f845b7e46fa6e06c99bd06453b",
+    "0x000b64a1207e2ae3104381e2d219f5513cbeaed9ef545832586481138346c36b"
+   ],
+   "name": "AeroVironment",
+   "kind": "stock"
+  },
+  "AVGO": {
+   "token": "0x680dD5b80105F196C52f6F5f25D52F338277c3e6",
+   "regularVault": "0x2f06E0D740837Fd4EB7f0de312dC5A29658783f1",
+   "continuousVault": "0x4214dbe621054A537932C07749DE2dDD1d752249",
+   "feeds": [
+    "0x000b0b64ec156347b409f7ad82ca6fef5bb761092b1ac7658ae3cca5e33c8610",
+    "0x000b0ff9fa28067dceab9f8fe1f264d34d6523e1bfcfc7ae16cda3d228f275f0",
+    "0x000b69bdd37f3ea86784e844c5eb8f410c0358adde4a0403e63e8a86b1d9906f"
+   ],
+   "name": "Broadcom",
+   "kind": "stock"
+  },
+  "AXON": {
+   "token": "0xa3A24a62B8b33eA192fde3539C5C3BcCE08e1294",
+   "regularVault": "0x363348b47201f05cBEDac021C8Bba4F3344D6eD6",
+   "continuousVault": "0x3C3BbdF4f0B205698c0f48c0135d9410D378E816",
+   "feeds": [
+    "0x000bb32099b0a4448a3d6c11e6716444d9940b0589e320e14b93d1dfc7fe1749",
+    "0x000b27d23061c0fbaf96bde25b9ddb53586c8a1e14bbd3524ffb6a4f1bbb6910",
+    "0x000ba7c92981d8e7b58d4e9ef909607ecb0e28eb6c9f9e6214c6e9d302c3ffca"
+   ],
+   "name": "Axon",
+   "kind": "stock"
+  },
+  "AXTI": {
+   "token": "0xA938FC4ACfe897F3C88301f3f6b26A6DDa63dCab",
+   "regularVault": "0xCfaC0d50E5c564dBF4eD914f3191C97e60D5b633",
+   "continuousVault": "0xc8E6C80f20E1794d348f1a79C81A63054Ee37e20",
+   "feeds": [
+    "0x000b893c8d3dc75cbfb806babe8c9bb2581a2586b5d45067f48b9f690e03dad4",
+    "0x000b6cf7df325f7c845270bf01c4a20db2e10838c5f217f2c48ff398a71bd621",
+    "0x000b144c0a8966a2954bd4313098cee4934e2ee2163429fa1078b7de8721da18"
+   ],
+   "name": "AXT",
+   "kind": "stock"
+  },
+  "BA": {
+   "token": "0xe16f784039c93e157Ec5f81bc8327a0A09af5D25",
+   "regularVault": "0x00a24f2aaFb3CdDAAcf7f98a3E86B651DE805832",
+   "continuousVault": "0xAF3C8ADfd1b43De8C92f20c651B7d53751367654",
+   "feeds": [
+    "0x000b0a9f640f0112b7cc2a640090209f66390e484f45b5b30d4689a761096448",
+    "0x000b84cbde2749353afad8992d3c6f532b44b9c12229b6ffa4229e9ff7b60e32",
+    "0x000bc029b146244cffae3e390666551fc0f50fec1fff9e38123d0f4d7574eb31"
+   ],
+   "name": "Boeing",
+   "kind": "stock"
+  },
+  "BABA": {
+   "token": "0xB7150EA149A0Ac8268d7de104f936812F9Ed4bC0",
+   "regularVault": "0xE6Df0E6c96EEE2B9f68087A6e578CE69B74a5A82",
+   "continuousVault": "0x222EBEf5bdf7Ad32A14C3177B606842905066B22",
+   "feeds": [
+    "0x000ba303a950403cad58e39139f72c543af8b8209dbcd0a8b21c6f2d2d7cd30d",
+    "0x000bf65bfac1a9eb0cf3cc767d96c7b951596b9d347028a363e4d9437714531a",
+    "0x000b384ce63447fd4d6ca18d86c9b862db64bb95e10103872e5b78aa4733ca54"
+   ],
+   "name": "Alibaba",
+   "kind": "stock"
+  },
+  "BB": {
+   "token": "0x7E2D35994De1011aaD1Ef082FA6e5F4c9A9c4952",
+   "regularVault": "0x0235bA7522Cc565c5a242B25eed74BBd86091FE8",
+   "continuousVault": "0x4a8C0e6C5B86bBC14f8b4D5a25E19C987e6BCD74",
+   "feeds": [
+    "0x000b0a15a125d416032d926847bc3e19ea3b859cc7847df6623fd92affb0b127",
+    "0x000b5999e16581e2046c16850175e43431cd0fc0b501078fcac09a2be35f50d5",
+    "0x000bdf4c5175a12e102cdbda5c1f1c3cba57dd81389d57f158c279279d3b93c2"
+   ],
+   "name": "Blackberry",
+   "kind": "stock"
+  },
+  "BE": {
+   "token": "0x31aD024989815a1A3bC8DAb533b40d15C7A3BE0C",
+   "regularVault": "0x5CD007A841C955eB86612Efa77d36c1b12e120D3",
+   "continuousVault": "0x7289A1B1A6084B0DdB9BCC4A295E262555Ed25e8",
+   "feeds": [
+    "0x000bd06314681b784c9c05b4d68748ce08af39afec48b5fed8571fe7a0b90b5a",
+    "0x000bc69936a2a6ac74caaac497c5359401b10c0d900b605a50c7b31b996ce12c",
+    "0x000ba85a8e67ecb98976f908b7e910611f3262431730efdbca818aeb2a99c3be"
+   ],
+   "name": "Bloom Energy",
+   "kind": "stock"
+  },
+  "BND": {
+   "token": "0x0D8db9A53993B4BBb89a4680216DF609346fB764",
+   "regularVault": "0x535a72224B5Ebf88beCe2180a9FeafD754722F45",
+   "continuousVault": "0xC6bDed2Af48a0Bd6Fc89F3f18Ad161445566b77c",
+   "feeds": [
+    "0x000b80d186094211b231584fcc7b8036a9e4bc3eaaf815d1053b3b092bbaec34",
+    "0x000bad1404b789340e40478ebc752dea8ef2cf18cf1e741bccd8a11b26f83670",
+    "0x000bb892d638802fe2ae1b20bef976df42cc5247f80fbb4fe75a16384fb98b05"
+   ],
+   "name": "Vanguard Total Bond Market ETF",
+   "kind": "etf"
+  },
+  "BULL": {
+   "token": "0x4cFeeA84701Ef541e2B2bF04AE19028A451ec1E5",
+   "regularVault": "0x09487f5Dd7882cF0aa20AFA00Eea2432ad482893",
+   "continuousVault": "0x5c0f5E857177006b4aAc71149a6EE9BC5A62814c",
+   "feeds": [
+    "0x000bdd240b602a264c601c5a20f127114168c2790f1d89d7ec0768ffd7f65e00",
+    "0x000b8188acc638c44a1c1e9198860421d2a67d39fb9a9e58584b5422303fe5e0",
+    "0x000bd2533b1567a60efddc1e2cb5b8180e9068a12ec35cd9774ac30805245c89"
+   ],
+   "name": "Webull",
+   "kind": "stock"
+  },
+  "CBRS": {
+   "token": "0xB08e9403743e10fa763aF2066666DeD121337113",
+   "regularVault": "0x0590305d094808F2FC8350b0Db358821BAe21C62",
+   "continuousVault": "0x71FD0103fCb9729B53c0083BE873a20FbfB2A9D4",
+   "feeds": [
+    "0x000bc28eaeecb85945b7640caead8233fa1019b6c6da94785459e300557c22db",
+    "0x000bcc93b7f8839873c67cc6ca9644a252242e114be24769fdeeebdd6acfa61a",
+    "0x000b59e86baa89dd37fcb99fd6ba4f313da482cd3c18acd6eb0171a697b91b05"
+   ],
+   "name": "Cerebras Systems",
+   "kind": "stock"
+  },
+  "CCL": {
+   "token": "0x89bD2dE8DDd175EA6bFf49C6fc4D54B44AF42177",
+   "regularVault": "0x3B739b3817bB2E8c321273e07bEa7C65F9965f4D",
+   "continuousVault": "0xCB348dD10234c164B42aA09999b55D2a7CE164a4",
+   "feeds": [
+    "0x000b9788da3fef9e7cbc43a64ed3dd02869254efbf412eb56a61d00407b7ff5d",
+    "0x000ba1da3919f98b02448f28052c025c55afa318ef5421d975737c080ac34372",
+    "0x000be32ede6af6d11e9164b0f19c1af778e80bf83e2b6a2ea4eb55050fceaf9f"
+   ],
+   "name": "Carnival Corporation",
+   "kind": "stock"
+  },
+  "CEG": {
+   "token": "0x39cEA4eB41c42f5902586AA342DE8093bBE3C6d4",
+   "regularVault": "0x1CB70bA80187862da6ff39f4d6d6Dfc5965cAC85",
+   "continuousVault": "0xB37a8063b6C621E558618E5e622209817056ED53",
+   "feeds": [
+    "0x000bbfa2cae2707aa9957745251180faf82475b826910d3c3f940a132efe08f9",
+    "0x000b888b493776f1a11b48a6393032d673484ee1121669cffd2a56e3a86d3d35",
+    "0x000b57b1f82d48d97b25131673313ad48bddcc098defb628c8e412bbd8fbe0c0"
+   ],
+   "name": "Constellation Energy",
+   "kind": "stock"
+  },
+  "CELH": {
+   "token": "0x32919EF70380354277D4eb9CA4E8610344B1A8a5",
+   "regularVault": "0xdD1d9C155a1b24d2d1ad1a14820f9fC7edf41c90",
+   "continuousVault": "0x234AF26071aDb603B4e903606931983A65D9B813",
+   "feeds": [
+    "0x000b6173c271903fd3d586dca134ae7c4bcde87a5a04c3274a2e2bd8266acc1d",
+    "0x000b440a1a577b5c9cd460f40dbd7df0e5faff6d3d8cad35de0b6b7be88ae960",
+    "0x000b911e2a4fef0e986af6e6346703cddb95ded1ef7e55c2947e1f98edb25cbb"
+   ],
+   "name": "Celsius",
+   "kind": "stock"
+  },
+  "CIEN": {
+   "token": "0xD0a7d9b6761f1f00F20a4BE42c530292e1c8e4f8",
+   "regularVault": "0xA125C007Bd39E269695D5bE8af6c48157c24C419",
+   "continuousVault": "0x92bd774B508eCD2b4105b334924607243A8DdD91",
+   "feeds": [
+    "0x000b4a5a09ceba246325d9f56625637e474f556c8caf746e07bd93e4f0d95b32",
+    "0x000beac291075def53652f15904ed77c926c73e97b0e14a7b9319869cc8fc64c",
+    "0x000bf2601795311368f7a067d0be61df1a8b164d84e7256a954b03611c2ad7a9"
+   ],
+   "name": "Ciena",
+   "kind": "stock"
+  },
+  "CLOV": {
+   "token": "0x115e06e4563aFfc00D5122EB096625163f33BbFD",
+   "regularVault": "0xD5dff93078Be80F48C731AC471BB2b744f46f6B8",
+   "continuousVault": "0x18B16ae1bdFCF7d68DC6cD10C4709017bDE1E8De",
+   "feeds": [
+    "0x000b7568ffd0af464b6fdb0ec7eb94f911f99c121f05bcad7cf38f3044d7e590",
+    "0x000b1175e8990150bc1845e8c0ff08442d36f5c829b655785c740236ad3a45d7",
+    "0x000be8e5a7fe3cfbab56e096d68e1e7dcf5a266d40c1483cbdaa0730c6eced32"
+   ],
+   "name": "Clover Health Investments",
+   "kind": "stock"
+  },
+  "CLS": {
+   "token": "0x9FA3A2FeD5bC50e970B78193822cf5A8D6016b3A",
+   "regularVault": "0xC45b910Df49D60565A14Ea31b3a3eecCf25F1958",
+   "continuousVault": "0xffA56612971998db8dC1470483992ba4415C8CC3",
+   "feeds": [
+    "0x000baacd079d7c39cb690645a9ada84b8f52d751de6b6daabd301c5a1a061daf",
+    "0x000b4aeb830e94c22a482d960523d5326953c667d13b67d9ef0876168d92288e",
+    "0x000b37c425144891e4d2980bc6264b2189061e7d915f22c3d0658fa62f9873d2"
+   ],
+   "name": "Celestica",
+   "kind": "stock"
+  },
+  "CLSK": {
+   "token": "0x4DA4D0eb2843F71D9c38a8B02376ACa3f1A21657",
+   "regularVault": "0xf2471B62fbEAc7d19600cc92e003074d60C1Ad2E",
+   "continuousVault": "0xeFCc243a658102058A2afa08D8CE2b9c910d022d",
+   "feeds": [
+    "0x000bbea1e7bcbd06581fe23a71b27f495d989c02c4063535d466139b55622f60",
+    "0x000b0b4956988c98add8f082ef4e516762f7ae02caa5f1f51d8349ecd56f1908",
+    "0x000bf329b2831a4871632536b670955adac41d97acb4f4d16f163c3ab8bc63cb"
+   ],
+   "name": "CleanSpark",
+   "kind": "stock"
+  },
+  "COHR": {
+   "token": "0x872f7222F39eBaD0563670943fc0c760c3AD2357",
+   "regularVault": "0x8c55a278647720a6f34C37382B75f55ad017fc36",
+   "continuousVault": "0x776f6B5806eE6f6494c072ae4edEDdB5aecc065b",
+   "feeds": [
+    "0x000b0d8269151b76349c1457b588c702f56beb155098e30715c45b9d717d5ae0",
+    "0x000ba34c1886f64e2d459ac45a509f13ac572cc889ab123b7f34125f13a0eb97",
+    "0x000bd7e69e86f539ee7574e22bc4815f0d5e8b98de7901c6ffdb2dcd6c94e59a"
+   ],
+   "name": "Coherent",
+   "kind": "stock"
+  },
+  "COIN": {
+   "token": "0x5f107f870e634bbE77a45f9e7cE12B36Abe43d25",
+   "regularVault": "0x21d9d9F8FD08294DDe4875A4E5DfA9b175C63808",
+   "continuousVault": "0x85c3325733adFB4cff01244E352aE408C337B0fc",
+   "feeds": [
+    "0x000b62fc4d58f3dabed28da0d3cd97c6acd1914595130b31e6e6ee6606aa08c9",
+    "0x000bf92a5a7fcfb038408e46e94face3cba9df002895d86c8a17966b5244655b",
+    "0x000bf8d8b0a597c6bbbdf4144ed52debda30a0410730b2d0ae7444ec2fed6393"
+   ],
+   "name": "Coinbase",
+   "kind": "stock"
+  },
+  "COST": {
+   "token": "0x841ad20526976cFC7D8bc19F68Cd49Be1bbC8Cc1",
+   "regularVault": "0xD59F955Ec5179D4dcf03A4059c83337280450f2E",
+   "continuousVault": "0x24BD5f64A2814737C5E94E687DBe9948bc189a20",
+   "feeds": [
+    "0x000b3ddae3d2f5ccc7a06b0e2dd7d10b342b60c6378c6521183ce2b9dff0d72e",
+    "0x000b63fc65e1c3d90698a5d1fb7d660ad5c001ffdee2e4e18f82c5757f97f331",
+    "0x000bb818cc9451405e6f701fe4fdb95de10a5ac46a4b4968f73d14ba36b3f96b"
+   ],
+   "name": "Costco",
+   "kind": "stock"
+  },
+  "CRCL": {
+   "token": "0xd9B32813F5caB09fE8769A30f8c25278056479B2",
+   "regularVault": "0x389EE63404df8B6511Da894e3B50b284f9CC8401",
+   "continuousVault": "0xb0Acab1C0EC39022e9d46120d2029b39B615d846",
+   "feeds": [
+    "0x000b0f23ed61bc8d9ed03d808b673d43fd347070283897878c2e0e680712c490",
+    "0x000bb32d2241caa7f571bf6aa112f31ff9ba62892819d120c551a376cef47e2b",
+    "0x000b409e5d173b2245fdf0062721ff45d88421a99e2b7838084aa7c6870f10cc"
+   ],
+   "name": "Circle Internet Group",
+   "kind": "stock"
+  },
+  "CRDO": {
+   "token": "0xf2c4D745fAE21407B8D535e6eC0E50644540dA9A",
+   "regularVault": "0xACD922Fb8E6DC00146Ba14a558b74DC0e9F3425f",
+   "continuousVault": "0x67E50A9517D42514698a9E397707dF637ef042c9",
+   "feeds": [
+    "0x000b53c416fe1fe567646bdfa046fab56d6996e693176273b9a50af6da517e47",
+    "0x000b3734c5cb149616aa81d84406a32693a0216d0e70333f2da036836049ee38",
+    "0x000b35f9c4961bca8ff370cd35daaa084f157895d2619eb78d5d4402ff9f3d50"
+   ],
+   "name": "Credo Technology Group",
+   "kind": "stock"
+  },
+  "CRM": {
+   "token": "0x55be0723D9d335cfa2095be2cd2d65c80a9e2E9a",
+   "regularVault": "0xF3FF1A77533D649AC5cD5b37ad7BEB019ec96a0A",
+   "continuousVault": "0xa8Fe215Df7b7f346B1A5c1B51619C8DFf63F744d",
+   "feeds": [
+    "0x000b1ead912f156e8468b1dc36125e90a800490b2581629849c0e007e0bd948a",
+    "0x000b6de5838cab516ca76bc1c73dbfc7f531f816ad8b5c86bc749c11b5a62e0c",
+    "0x000bb9fcddcf7c98334cf895a2395791db470ee6f3beaf55730c648b7d7dbeb9"
+   ],
+   "name": "Salesforce",
+   "kind": "stock"
+  },
+  "CRWD": {
+   "token": "0x15C8461E8935AA5462Eb973EFA9B5be70857076B",
+   "regularVault": "0x626a0962D1885234319653d500f1CF0b6EE83242",
+   "continuousVault": "0xDfa4c97b16aA9f3B91D3b2e5b77C44B013526093",
+   "feeds": [
+    "0x000bbb8101cbbc3274157697bb8a6a8da0627b8f88be3cddfb0e4356cafbff94",
+    "0x000bf7096391916592c3d8e0c911acd8395439a6ae543e90bcf36c6c0774b187",
+    "0x000bf1c5a71feb53368f1d2e46cfaee791a6530fe86d9d0d12b4127a5374beec"
+   ],
+   "name": "CrowdStrike Holdings",
+   "kind": "stock"
+  },
+  "CRWV": {
+   "token": "0xe3f11cd0060eFa99B37BCd5D501d4542F3a3933a",
+   "regularVault": "0x255242863a982bF8539799eD3c974a4f011223CF",
+   "continuousVault": "0xBd7523A43A3Ac9537eEd9a41bA521d3e1e8fec0F",
+   "feeds": [
+    "0x000b5006f25862bd34f1785e162d5c38706eedadd064e8b3bbf9e3a962052f49",
+    "0x000be6935aae23207a3f8862c543e3b24ed29be2ab9c62f175894e89b5994c7b",
+    "0x000b021d862e20956faf36246be6103c6675a9ed2c43a9be33841eb767881dcc"
+   ],
+   "name": "CoreWeave",
+   "kind": "stock"
+  },
+  "CSCO": {
+   "token": "0x2910d53B67A659D3cF695638e2812f333a9A9864",
+   "regularVault": "0xd5A5b0D0f20899057e185bE6a7257F0cE61e542D",
+   "continuousVault": "0xf025851C087525411A4A6657DbEC0D5328F6A7EE",
+   "feeds": [
+    "0x000b80948e7742db8ed47545e077658f8b50b10b1a175da801487609a352f1b7",
+    "0x000b5856a2a54be760db9f71186078f445c855f539e7817ac59740b84ed9eefe",
+    "0x000b5c8c31dea2ba0c2631a61bc411814c2ffa30cd18a4784f0c968873f4749c"
+   ],
+   "name": "Cisco Systems",
+   "kind": "stock"
+  },
+  "CTSH": {
+   "token": "0x66396809a1d7c2aFcEa89293EDE47DD5AeeE6f0d",
+   "regularVault": "0x249650F009A77A0EBc56948bb743f5fB6d686deB",
+   "continuousVault": "0x7d64A6a70C36eC524c5b6ce261A5406BdA3F0646",
+   "feeds": [
+    "0x000bb2697be12fa06a637b30863c247afde3c90d45e4479460e911bdfa60dfe6",
+    "0x000bb4c302b4a8e5f855b90ff9a799070962691c8cc42a6b2a98367ca306f6b6",
+    "0x000beb5875ec6eb481c7fedc2fb135a9308242bd2f2d1c2739bb0dc88e979be5"
+   ],
+   "name": "Cognizant",
+   "kind": "stock"
+  },
+  "CVNA": {
+   "token": "0xb9b798a5C8314c595Dc23984B335dF99566D76C1",
+   "regularVault": "0xab6C1939D6Af02943eF75B9b37adBd89E5bA8046",
+   "continuousVault": "0xAe219195a6c4737291CEC083397B3507e027aF06",
+   "feeds": [
+    "0x000b841ae323e8b3881ac26934a54507bb96a462b694d31333f78fb3f6b38924",
+    "0x000b3031f53f8275170670443450ccf393e0c3e0e53da397ecdced83732e6b7d",
+    "0x000b04b6f47f7be86d5c6600d2a33eb3e716383df1e9fc5c8939ed088485e0c6"
+   ],
+   "name": "Carvana",
+   "kind": "stock"
+  },
+  "DDOG": {
+   "token": "0xA27ea03a3890d93FbdE858BbE9B3B4B4c3C95721",
+   "regularVault": "0x6D602516baed404A765dEe4612736a5c35f6964f",
+   "continuousVault": "0xdc288f19248B90eE337b02f3149B2FEdaCaa5010",
+   "feeds": [
+    "0x000b4114d463d6915deb43eb1c969b4efa30934037ef3be8c761dee9ededdade",
+    "0x000b15b089077f3a32b6447a9a93e9813197e0ed7c8ac8d2761986c531053847",
+    "0x000bcc47ff89d6ef65d486078e6b37b004ec84f546f68579d7c7d7f5c61b08f0"
+   ],
+   "name": "Datadog",
+   "kind": "stock"
+  },
+  "DELL": {
+   "token": "0x86593FA7B239c6152018F70FcDA7a6d6E2EEE0bD",
+   "regularVault": "0xFFC157468F44b24ab3002CEd516B15FEfAa964a9",
+   "continuousVault": "0x52917d622173cce3C72129a0d0336baf883fB315",
+   "feeds": [
+    "0x000b8895943afa154cb718e4a8e2cec84108f969142b2bee3ba060dbb8b214f3",
+    "0x000b10f0c072ae182e6ad2e77bb01b6fa3f492d59fd79723e556462ef9c55658",
+    "0x000b757e3a94838f73484e48650477052be140ed57355459775b19ddafc768d8"
+   ],
+   "name": "Dell",
+   "kind": "stock"
+  },
+  "DJT": {
+   "token": "0x87bE3e1a5EA76f907303055a5306a26D55BC40F0",
+   "regularVault": "0x9A7A3536f17f8C66a43B7c1C992A9Eea415099F4",
+   "continuousVault": "0x532bc52f90C7451575622098311BD858b0E1E1BD",
+   "feeds": [
+    "0x000b5d877078863bbb05c687ebfd4f623f8bfdaaaf817a2c06a2ef2d43f9dcdd",
+    "0x000b7fa0afa9f0744ec7f334b9ef9fc208d2ca7abca0deee02f11e8b16edfbaf",
+    "0x000ba913dde26201d6608fe9ff6a7e286ada08db093cce8ed2c42c2867458e51"
+   ],
+   "name": "Trump Media & Technology Group",
+   "kind": "stock"
+  },
+  "DOCN": {
+   "token": "0xedb930C49f084DfEEFA2731e420D006321c83d94",
+   "regularVault": "0xb58756940A8cc53A67a384b1D968A6df02Dfa00E",
+   "continuousVault": "0x64551eCF51323fB82f3BE5476cF6718930D7957F",
+   "feeds": [
+    "0x000b545a35098b781cfe7662f7daa908a38d860e971a33fa0f8c5fe1373f0b16",
+    "0x000bfc860ea0ba630751f694938629eff5d2a595ec5014df1415c121a2c8b15a",
+    "0x000b41d135f2ef15fa9acaba3794b4a8ade4cb8fad81f22ed3622935ab5a9803"
+   ],
+   "name": "DigitalOcean",
+   "kind": "stock"
+  },
+  "ELF": {
+   "token": "0xD15396ED683c73d9cf6b1ec6C438d402951E891a",
+   "regularVault": "0x67BE846931970E6d1E98A7B8aF6FdcA9a76fDFc2",
+   "continuousVault": "0x2934ccCaBFaf2BDF54c2AE54B03C69f3EF596d36",
+   "feeds": [
+    "0x000b8d9b073a64efb540a613170807d997282e835da8220cd590e334a58a56d2",
+    "0x000b4ad8888827564a1d96f628ac41f9e3d9de304809fc83487f258908c66bfe",
+    "0x000bc3d5cc17ae9b4f1ed6f9eaced98111a761b004a2f14add21df69db6390d1"
+   ],
+   "name": "e.l.f. Beauty",
+   "kind": "stock"
+  },
+  "EWT": {
+   "token": "0x5626ECBC266A7521D02D02Eff3FBACf1993745De",
+   "regularVault": "0xD4098c14fC845a54d80f54e2b40CE278E162B2E0",
+   "continuousVault": "0xc7A8fe28E47A4b8dd9c1AE23bA6Ac8d7892449A9",
+   "feeds": [
+    "0x000b6d705cabf5d7c74fc08c8c91d18a42a92f4679fe83d062b1cf4554e59790",
+    "0x000b851bbd267a9e3f2a96e726530ade1726455921a947789870bbf24b389607",
+    "0x000bec8cd0ef359582547b52754ab9404715c53cdca14966caf14b446df35f56"
+   ],
+   "name": "iShares MSCI Taiwan Capped ETF",
+   "kind": "etf"
+  },
+  "EWY": {
+   "token": "0x0177D0c8bcF49262FAdD8690f5E49Bb888E69f29",
+   "regularVault": "0xa4480d43eCFccE9FE4fF19C2Cd3726b882001258",
+   "continuousVault": "0x7406BcDb08B71b414434BC8d007050F448b69105",
+   "feeds": [
+    "0x000b5eb8a014a8afb8e48ba32c094fba8fa2bf606e244fa9606b07c503b8a818",
+    "0x000b0d19dab0ba6ba2c41929355861f28bf9b75534d2755bab8e2cf3124651bb",
+    "0x000b82721341f7805e8e3760e2053e3a026b6269cd8b9e3ed5b986d79af1b244"
+   ],
+   "name": "iShares MSCI South Korea fund",
+   "kind": "etf"
+  },
+  "F": {
+   "token": "0xbE688d7cF66F7032295BcAA4214a6cE2077956Da",
+   "regularVault": "0x8fc57445859bd043Bde4Ba778363c4848b5e1bb8",
+   "continuousVault": "0x77730DcB93C1E6b8b420a4e6753AAb5873B25Fa4",
+   "feeds": [
+    "0x000b29f6cc539e58dd32a47371c64c7a4003c83ed8fef0c4a2728b3f6d67c63b",
+    "0x000b7ec0a5b97f2c2ae5a6e23925585d585dcc6e5f77fdcf348474a5cc6d65b0",
+    "0x000b5cf962e47941eb09397f44c53ea4c87cc57d4668af432b2015cb1f4eea9e"
+   ],
+   "name": "Ford Motor",
+   "kind": "stock"
+  },
+  "FICO": {
+   "token": "0xa24905a6dA0B305D6d6481EeA309b30E9c3feFbA",
+   "regularVault": "0xB7322faBA0b512cFC6d4531267f62BCCF13f259b",
+   "continuousVault": "0x5A1FD4D64381b7Ec6955f43b2564Bb504BD2664E",
+   "feeds": [
+    "0x000bf3e8e0505c8edd7c7a0bfa3ecc66ede738359e438e6504fec79e442336b3",
+    "0x000b40686a081472b85c6f5266c1b985da2995137515ad0625288c6046025ae5",
+    "0x000b7acda0a7bfe151ac8e66b3f988455782d5282ed5da47bd7b59ac00a954e2"
+   ],
+   "name": "Fair Isaac",
+   "kind": "stock"
+  },
+  "FIG": {
+   "token": "0xEA6FB5d3b39E984b01A318B90b150FFd2ca21c2A",
+   "regularVault": "0xD971c6758C9e363b099c71850fb54B3D492A3166",
+   "continuousVault": "0xaDAd436a373F476A5dA7D61b59F876232610C6FB",
+   "feeds": [
+    "0x000b25c6a81659980b71b7374348bf04a71e6708b148f5cba8336056d2e45673",
+    "0x000b34780094e71b3ee638bb22de9611abc3af41588dbbeff1f6320dcf0518f3",
+    "0x000bd2c4b105b656e94e78d6199b7d1ab30c4ca4c9e68f5df3d5745d2496fb88"
+   ],
+   "name": "Figma",
+   "kind": "stock"
+  },
+  "FISV": {
+   "token": "0xB1307aFd14C038ae6f62a07c02b5Aa829FDDc118",
+   "regularVault": "0x6F652F7F996B69570494668f762dfdD5c0713779",
+   "continuousVault": "0x7a5E2D5B6b3ebe0deD0b2224C0DB4B889F0849CF",
+   "feeds": [
+    "0x000b150dc59f2441009c8939ed0447a08bf31bcaaf2f1ae402937268456f69d1",
+    "0x000b072e119541c9efa7012b055fcee471a35467ca10183fb881466c3a0a4bee",
+    "0x000b17f4f806ba65880de7e8f71493bd41b84482e8a70e632d66c104564ce43a"
+   ],
+   "name": "Fiserv",
+   "kind": "stock"
+  },
+  "FIX": {
+   "token": "0x6B9a70Bd9225Bc0AF0D318eAE08dd32248e6cBa4",
+   "regularVault": "0xc5A1C8999Cc320AC0f5a6c763b7A25A843c19ab7",
+   "continuousVault": "0x395Aa437352fd4F2B3CAe694F9c752411E877FfD",
+   "feeds": [
+    "0x000b8baaa7ab18b04fa9ab979dc41d71a8ad417cff7e429894d6d582ae51d857",
+    "0x000b3d544db30db917cd89341dc42e34cc03f71c7041fa0831d2d8176ebcf3ae",
+    "0x000b8e422c0f8256b37e30d8ab2c2cce7844b78f1325d42f564040da564c37d4"
+   ],
+   "name": "Comfort Systems",
+   "kind": "stock"
+  },
+  "FLNC": {
+   "token": "0x114C034650050e5488c71cB8DAFF571aA0b3439b",
+   "regularVault": "0x45825Cb85fD3361B8b5532f68524c5E87Faa4913",
+   "continuousVault": "0x5B827617f75a6cb6B5bAD79B5E36D4b2069720d0",
+   "feeds": [
+    "0x000bd07d8276ed5eddbb8bd190781c4dad4c13b3b90bff0415fc38e2a40d32bf",
+    "0x000bc5dbadfd65aa50383944c8ecf02e47184d0204c08ca878caf2af4fd14750",
+    "0x000b8eefe9298d7f4f206b2ecd3418547bb9ff8fd2426934c80855734bea8258"
+   ],
+   "name": "Fluence Energy",
+   "kind": "stock"
+  },
+  "FLY": {
+   "token": "0x6726DFA8Fb2268D7f156916BE9B1e8A272e0A6E6",
+   "regularVault": "0xd47f09389B914E4496f9841b2a798130406E0ECC",
+   "continuousVault": "0x8a2E3DE926c41a56598dd9F378BA4dff7A03cF3C",
+   "feeds": [
+    "0x000b980774f7b855ccd2b0624a6bf28232dd32cb6c2c27026193802aad48af47",
+    "0x000b25df4e57d7b97b23675a06b5493321d71e607ac702969dd78e4bbacc9db6",
+    "0x000b3958fc65f5087030cb971c3ec1ac6005b1bcbb4d333d535001adcf075088"
+   ],
+   "name": "Firefly Aerospace Inc.",
+   "kind": "stock"
+  },
+  "FTNT": {
+   "token": "0xAa62eA7d93aCB4aa1b5E259565De1448E87a018A",
+   "regularVault": "0x5B204D367B567359d576ba54fDAa5a847Ae8D073",
+   "continuousVault": "0xE3eaBeb1Ae832e4E049A3C159D2BD0322dA4a841",
+   "feeds": [
+    "0x000b1cd5113ca00033f6defbb6ac86fa5114a481f54969c79b44a74ff47cb686",
+    "0x000b81e4706b255fea4c8db5c6797acd0cb25a6d6092fe1a6f3312ba947c9b34",
+    "0x000bf33c2993ae1d81d33970afc4013d2db7d0f463104342268e64148ef6e6c0"
+   ],
+   "name": "Fortinet",
+   "kind": "stock"
+  },
+  "FUTU": {
+   "token": "0x01e022B620478D41D0837c18dC7AD3d752bE9572",
+   "regularVault": "0xCb38C813ea241D0B29f05Cf5F8d417FdeC6B9Cc2",
+   "continuousVault": "0x06BcaC79da9DaD51482cC80507c0995c673C29B7",
+   "feeds": [
+    "0x000bb0a4ba94cfc00baf272779cae30bb8b39d4cfd60d0c738d398e17da5aeb4",
+    "0x000bfae50cf8bcf6b123c7958e190ae5427629898a93bb5a1238ba0ec0d0b0b6",
+    "0x000b0607bcc33a29d12f8b3b1367f43246dec0a2168f9973c6efe077d19ab33e"
+   ],
+   "name": "Futu Holdings",
+   "kind": "stock"
+  },
+  "GE": {
+   "token": "0x7FcA3fcB70Acffd82174Beb34f4Ad4B93D182FE5",
+   "regularVault": "0x7887de95286bC30882c9F93A1b30365Df2e2C2Fc",
+   "continuousVault": "0xEf02c25a4efbab1D99B1abDbEe7a8C4Af121Af94",
+   "feeds": [
+    "0x000bf4527556a5285d3f1b7073be067b870cf3657333c489b9f4937974126a4d",
+    "0x000bc49c66c10dd1684c2ba80e2b906a06ac84a74daac461426f2eb68ae3787f",
+    "0x000b66b35893ecfd32f88556fde91e301371fb8096b4d4dfef810cca6b038010"
+   ],
+   "name": "General Electric",
+   "kind": "stock"
+  },
+  "GEV": {
+   "token": "0x517f29a01025e41e903D368c124eBE4D430A1513",
+   "regularVault": "0x3063e963DB652771Bec732A0db758Fd50f8Fb018",
+   "continuousVault": "0xFC0A50749B3138126c79453FEf7211352ea6b113",
+   "feeds": [
+    "0x000b7d1dec17b83424449e0e290fae36d21ff848bc1b318f489443cd5f3b6214",
+    "0x000b773cecec5a53833d0a111ca5c1c23bedd3a61dbab674e4e4a39c93cc763e",
+    "0x000ba43feb5adc295b1e6d91a6d5291c0c2c3e16e609fa056a6e0dfd982802d0"
+   ],
+   "name": "GE Vernova",
+   "kind": "stock"
+  },
+  "GLD": {
+   "token": "0xA8746c94957845F0c27469A201Da4c75E05B4B3f",
+   "regularVault": "0x927d8d0deB6f0D133Fc5F251D4F1E161a2Ed048d",
+   "continuousVault": "0xCbae441A32a8F9998be4f3Ef396cF1D9F6697Fd5",
+   "feeds": [
+    "0x000b1ac1251b96624c32bf5d543d9ddd513975f4843076403c872f578492c879",
+    "0x000bf7954026b48a9c526fc408b7de97915786845163aed9b2815ece5c6cf484",
+    "0x000b37230cde38e2bbf552973e5ac85e2edc37def3aac44649ec49b2f0f0e3e6"
+   ],
+   "name": "SPDR Gold Trust",
+   "kind": "etf"
+  },
+  "GLW": {
+   "token": "0x1dc6e21edf7147107B69001A78151D7a1485b662",
+   "regularVault": "0x83e4aaf4e3Ea8cc985Ff890C08EC38e9819B4ad5",
+   "continuousVault": "0x06021B6bC089B7B4eE72BB00F787Cfcb971e29ba",
+   "feeds": [
+    "0x000bd46150fd846be3aeb0aea114e6afe23f6e366f8133018d211b97013a4846",
+    "0x000bd67678db820205396a8456ebc4892b93113adb38e9061ee695a4a63ab06a",
+    "0x000b515dc7c44e3585e5d06769402c3bb3c4f8b99809159596a39ff62a7c7e8a"
+   ],
+   "name": "Corning",
+   "kind": "stock"
+  },
+  "GLXY": {
+   "token": "0xEd81d5A0397Cc1Fe2D27042e316111a86d0538FE",
+   "regularVault": "0x27B297cC0B19b3f91630DC75eEC1b26C47e926CE",
+   "continuousVault": "0x39476cB34723E6D84e7e7FB3265A12150E1b7fbB",
+   "feeds": [
+    "0x000b99159568b92e770a381e4e15210b27bbe92aed7344b1ba75e556fd49ce02",
+    "0x000b3ebfa1a9f17fdef00e7f895869565d001c62e97441001d2e13efa5541be0",
+    "0x000b7b9b13d16c5f9f4e5b83173f142dfd4371dac642bdb90cb2042bc04a46aa"
+   ],
+   "name": "Galaxy Digital Inc.",
+   "kind": "stock"
+  },
+  "GME": {
+   "token": "0x03D5ad5C13487CE0bba366D718329cE8B81434D2",
+   "regularVault": "0x85DC250910212b26CE9c77528Bf4c006DFf8Ac96",
+   "continuousVault": "0x78142e651f06500576b8A8DD56E72C914b9AB8c0",
+   "feeds": [
+    "0x000b5c61a52e9e72d66f1b78cd602f82749631198d8dea50a3d3869bebe8d765",
+    "0x000b9f28268d50efe16fbe4cf933b6a786ccb52899b2ebcdf28b0216a9902f3b",
+    "0x000bf2326439b35c94495ee57753b6035653d3a6b77dc57d672c7b614dee2276"
+   ],
+   "name": "GameStop",
+   "kind": "stock"
+  },
+  "GOOGL": {
+   "token": "0x13534750DB5233349186ae06062F4cF648e34B04",
+   "regularVault": "0x78A1D271d97A6C8b83e6e2e374F076CfB6619A31",
+   "continuousVault": "0x8c81cd1fc640e377DF8d2F86841BA29Fed0e37CA",
+   "feeds": [
+    "0x000b1a2aa24db17599e5003a09bcd5e2a15ef66f79c2dca4dde108ab923b1e97",
+    "0x000ba0be5e4c3746e3ebccec37362d9640ae6e9fee07bbb95ebdfd37d0220355",
+    "0x000b2630095c8e9f31bde1f89f6b99106f7740649b7a9bde504ad6f8cf52cfbc"
+   ],
+   "name": "Alphabet Class A",
+   "kind": "stock"
+  },
+  "HII": {
+   "token": "0xBccC8a27f597D26a961E795F58702aC9A65EBC86",
+   "regularVault": "0x67058c15aCFdD313c313C857A2B386A97a563014",
+   "continuousVault": "0xbb998e346a22B06aE9910b4b2D7eeFA77ADEF2c1",
+   "feeds": [
+    "0x000b24354b2f7d9415c6206d6e5e073a840f759b10a91474bf08b2f2535a5c21",
+    "0x000b99aedcf4fb1d1946a47bc0d52a78713de00cb90c44f3d5e0a940bf832063",
+    "0x000bc6f504edd5ee615d48dc842a618aee1c8a25e494469ce1a71d25abb2e898"
+   ],
+   "name": "Huntington Ingalls",
+   "kind": "stock"
+  },
+  "HIMS": {
+   "token": "0xc704432a6Afff7659660c9a5AC6dA49588E53181",
+   "regularVault": "0xCd60D9322714D0903060E60d9CD5b1F31b58Af81",
+   "continuousVault": "0x293E2559E04e2BcE4156a3A051a97D7b0C0b2c96",
+   "feeds": [
+    "0x000b658c97399cc8384f378b3f4cc341dac4b2e524a151fd5a10d44c3efb53a9",
+    "0x000b378870eed96772a519f1c2c27807c63e7b2db659f61b34e78a1aa72cd1c3",
+    "0x000bbc5967809f85423cc0d401b1df952bf123b8c0cf2b4cc82006da6dbff3de"
+   ],
+   "name": "Hims & Hers Health",
+   "kind": "stock"
+  },
+  "HPE": {
+   "token": "0x598668b53Bd663304B5a082B63dc5d19551088F9",
+   "regularVault": "0xe3AC2ff5fE761bA02000A0A4B48C3aE9B32F964f",
+   "continuousVault": "0xaF91C85EB0e6bD43ED635868f869A81f4429521c",
+   "feeds": [
+    "0x000b82bf9c5f4d0d12b370ef76c6f5e86cbb7fce35011e3be4a54e175513bb43",
+    "0x000bcd1e00f19e53c353b7e0a9628220012f6ab86a9bcd478638c6d47597af16",
+    "0x000bd0fbeb8145fcd7d2abdde1144ad4c7cb6e9547ecc16941401913ced0a0e9"
+   ],
+   "name": "HP Enterprise",
+   "kind": "stock"
+  },
+  "HWM": {
+   "token": "0x19E91229cCcFFeCb8B91734fEfFeA10Ad17AD0aF",
+   "regularVault": "0x1625B0DA62229f51086f2eF3B265603aE330A6b0",
+   "continuousVault": "0xA500AFB5f6124EF4856F18e32d1A238A0C0E98c2",
+   "feeds": [
+    "0x000b0b06049bfe305ef0f872dfb15d0d41710fb8b14e3b782d26d61fd577a0f4",
+    "0x000b6a2ea7eefbaab202c30be0f944b16851126fffd8975908e7b0b8f38ed324",
+    "0x000bf7ef69b183fafde1046b99539f58152b7f215e4a999ac314bf9320a1f762"
+   ],
+   "name": "Howmet Aerospace",
+   "kind": "stock"
+  },
+  "IBM": {
+   "token": "0xaE4350a6d4730843a0D38D5c4216A3e91BC7b1a3",
+   "regularVault": "0x9049Dc3d1b39c3A91f25bD307AC9cD7186e0b32F",
+   "continuousVault": "0xc5A323bd2c7af881a1A1E347AAFBfB7CC2EE3549",
+   "feeds": [
+    "0x000b2c7adaea734ee0916c68cdff419f9c3ee7eced5e51c39600745df5fb8d2c",
+    "0x000b27872fd3b1b488d16228a2b8058d07ba779af423354795ca6d80195cf9d6",
+    "0x000bb98bc2634d9193bae7c0ea3dd380d41738b4dfbb10473b4e1063aa8d9fbf"
+   ],
+   "name": "IBM",
+   "kind": "stock"
+  },
+  "IBRX": {
+   "token": "0x16fEFE4f8A43EFF34813c3c8da6dB62aA966D7D6",
+   "regularVault": "0xa4Ef64AD3268FA374B24D65F9fB3a1A1b1980AA0",
+   "continuousVault": "0x9865DBB06a9c9F575A4d9531A51301B1f30D7c20",
+   "feeds": [
+    "0x000b7a6272fae4590478c733603e69643021c19c89ebba57028ca72c49d5c2f2",
+    "0x000b53a3114904dbe12c2b1482b638270be319f4e223dc3d93b749a6892897c3",
+    "0x000b1e10d9b0fee723e8d2efa494a7cf87b1f0d5ff355620e2f5aac9f69bead0"
+   ],
+   "name": "ImmunityBio,",
+   "kind": "stock"
+  },
+  "INDA": {
+   "token": "0x8A7CDEa3C9532e9F09D7280f5fAc48013B84A19b",
+   "regularVault": "0x7c626b174872F5bCfe74D9257E88694AAF2c6044",
+   "continuousVault": "0x414433c73D97776e28e94F4c605F6d075Ee9f264",
+   "feeds": [
+    "0x000b9d2ffb5b6c6d8a48a79713388134357cb57d40ce11af348492fa42bf33a2",
+    "0x000bcf13eda9cd26a1f4f06b06f61586ad35dec6d4b6bf306136958b86543fe2",
+    "0x000bcead8a39c1d025156f58c8cd8684d32799e0d5a58b0cc02b1e1048cb9ba0"
+   ],
+   "name": "iShares MSCI India ETF",
+   "kind": "etf"
+  },
+  "INFQ": {
+   "token": "0x3cB60990218c98c5bdC99c27BAa09aBD1e8b3065",
+   "regularVault": "0x0840A3ec740681E59a5a11320cF613D6954e42f7",
+   "continuousVault": "0xF17aCD17768aE2419Be2A6d5C877aFE8BAFbFbDE",
+   "feeds": [
+    "0x000b9075db95ff605ac24f0caf62d96d3fb07043cf623c0b5ef8017a4838be19",
+    "0x000b0cdec8fb6cc44cd9e7bff4edada7307233e177a77080362377faa4d80c67",
+    "0x000b82a986c303dea32ec89927f865695493e263828438bdde14c667fad41414"
+   ],
+   "name": "Infleqtion",
+   "kind": "stock"
+  },
+  "INOD": {
+   "token": "0xd5563A7722D42aD9E7658AD6D451218C40289626",
+   "regularVault": "0x93B88CA9E1f8F3Dd9bB3d59ad5d1bD5332045bd9",
+   "continuousVault": "0x8cAD6c473aD8804C273F7DCa2A2B81e960B9dfe4",
+   "feeds": [
+    "0x000bc8f9464842b9f2fcda72b7f98ed61d29c5598735e4f4236c80ce97ba6ac9",
+    "0x000b5dad9926271512fae2a1cf2476048336152e19a92ffe5bba286234e3bf70",
+    "0x000b0d8301cf364616e2cc3244fdd3cda6a77a86613b41288432d3eb088f0734"
+   ],
+   "name": "Innodata",
+   "kind": "stock"
+  },
+  "INTC": {
+   "token": "0x5878c35A514a7a1181ADEF0dc154aE0E220E0FE5",
+   "regularVault": "0x641e920fFC1C23c8764480EC3A48c98Cca0eeAe1",
+   "continuousVault": "0xaA0769F37D1C56FF531dC8eC9212D3DeF69ea71D",
+   "feeds": [
+    "0x000b6af072826214beaa919c6a5ac94b6469272b9fa5646aca97c7ca91a64675",
+    "0x000bd1b4688bf8c6c31095817ab1676a71b7a7b98fed56f91475cd285b0ecbb4",
+    "0x000b6af64bc594b81bb138356c5c4acbb6bf521bf2d0d04985685f371457b0b5"
+   ],
+   "name": "Intel",
+   "kind": "stock"
+  },
+  "INTU": {
+   "token": "0x8283008C4bAf5DFB8Ce5a10bc7FE8678fdE637fB",
+   "regularVault": "0x122556808ED88010b59bcb15810c699Ac7De9F86",
+   "continuousVault": "0xD59894141D31eDf48e51717847b154Dc2426C28e",
+   "feeds": [
+    "0x000bf9fd7ec1c64ae942282ae49397044faa5fc94e5280703db297a5721b406a",
+    "0x000b83a5d03a5a6d7dbe80e9d283560733716e07c6adfa1a1245e60699c0804c",
+    "0x000bdba098c56e8b32c5ff8a5195e9ee781465775f80be94ed29def2ac29579d"
+   ],
+   "name": "Intuit",
+   "kind": "stock"
+  },
+  "IONQ": {
+   "token": "0x4853F7EbA0BBd2b4bCDacbdb32f4D5a62f968AFd",
+   "regularVault": "0x087986EEb5D016F634A546d041e50D85A4518C75",
+   "continuousVault": "0x5Aa527A2875aDFE66096F9009d86fa88FBaC9a95",
+   "feeds": [
+    "0x000b36f756cb3bdf20571d093d8add18b75bdd6e47f9d1882da9cfe3406918d9",
+    "0x000bac7e80c51692bb717368f513fb49b9eef21521b4325181ffde8eef087892",
+    "0x000b9f4958837ba07f9820be267ab62d0dc9cb2b50a08233d2d8457854822b1c"
+   ],
+   "name": "IonQ",
+   "kind": "stock"
+  },
+  "IREN": {
+   "token": "0x6070eDD1646b037581aD0b0ce3a82139d7C41B73",
+   "regularVault": "0x36037C7eBD7a7018A659636d74D2Acc2653A5273",
+   "continuousVault": "0xd72f7B74865c0D7cC776Ed8beFDb7C0ACf875c02",
+   "feeds": [
+    "0x000be1fcd1e671a9722be3b747875849fb195b7bc7661ed0b8160b17b0066f6a",
+    "0x000b8ba69bc54dbbc03b3abf3f3c434975b840e8fdec91add64361e147f9b929",
+    "0x000b99d7bb8b8ae124110224db4302493303f7aa568d3665db2338dca178a77d"
+   ],
+   "name": "IREN Limited",
+   "kind": "stock"
+  },
+  "JBL": {
+   "token": "0xbB128DcdBa5360EF321eA834F3B4B3Decb130ED1",
+   "regularVault": "0x8893F468B8ee14E5E819A2687089C0BC0B0fBb55",
+   "continuousVault": "0x5db3166dAe1e30D42B08F285Ebd871201cA6Bb79",
+   "feeds": [
+    "0x000b9dd5b5566c9aa6cf4238394cc6dd0d24e1e4ede157fb7bb9f12759134bef",
+    "0x000b28ea4efec24425c052c9c2bdfe4a90656f864e752b8e10bbf64dd14c2432",
+    "0x000b12f0f26513c2c74e6e5eef535c1bc1247b131d55839563007609b6c9470b"
+   ],
+   "name": "Jabil Inc.",
+   "kind": "stock"
+  },
+  "JNJ": {
+   "token": "0xB40443871E8dfe4B848A622BEf63372b106fFD5f",
+   "regularVault": "0x4eaA1fff655d64c51Cd679bA31BB6c6441BAFC94",
+   "continuousVault": "0xda284628Ea4e2e245D62321Fe9733e0c937F07F3",
+   "feeds": [
+    "0x000bb7309c672b8dd48a1b984c2ea7412a1d9dbdc11d8d1d8222dbcb73619583",
+    "0x000b12c5aeb2fbbe286417ad55cf0e4148a510ad3599a0333833db50b1bb27fb",
+    "0x000b7cc1c1adf717862d6556527fe176ea6dca348b7bcdc58d92d63895c1ca4d"
+   ],
+   "name": "Johnson & Johnson",
+   "kind": "stock"
+  },
+  "JOBY": {
+   "token": "0x855C6e3b2D6b835f2eB104878d1Cf98ea6783C97",
+   "regularVault": "0x9eAdB404f1eDebc6f069a035Ec4012955355F7AF",
+   "continuousVault": "0x09Ced1912b008B17dc21228f2e2132743341c956",
+   "feeds": [
+    "0x000bd1c8c271d89543389b8661720cc210acbcfe36abac16a4ef775d9d98db10",
+    "0x000b03b4db4d363513c953f1d82dba78b0a0af68aee407facfc6e06c1ef99cfd",
+    "0x000b5c8569d78c163f11472aabb362ebc93bb44ea6f69ced7b85537bfb31d0e2"
+   ],
+   "name": "Joby Aviation",
+   "kind": "stock"
+  },
+  "KLAC": {
+   "token": "0x91f226A5D5546370297fb56102A0A5684af765e1",
+   "regularVault": "0xe1ce212D83865e75D3f04f547C411cB7D7f77663",
+   "continuousVault": "0xFc34dE02Cef615c25a8136d1c40EbC46031D92eC",
+   "feeds": [
+    "0x000b52433cd6ea678715c22b59e8dfa75ab01b0e1263671048fe65fc2670d6cb",
+    "0x000b3aae2f82a53c300dac902425515928a58559f20d16683b3253b246db8637",
+    "0x000b7a5d5828ef17ae2b5249bc694e2daa412a279b720e4c98bc9a103f96518a"
+   ],
+   "name": "KLA",
+   "kind": "stock"
+  },
+  "KSS": {
+   "token": "0xFf2A00445F269F909C88183ef20B2E4D38201A4B",
+   "regularVault": "0xC8A923986D4E3fd6054Bf6caC00F4978E47f4687",
+   "continuousVault": "0x37Dc8ba4DB95AB71C7b3d358A8a89E3ea75411E4",
+   "feeds": [
+    "0x000bedd22ed1b72ac03db1c2790d79569637591ce6295c42428a490162f92232",
+    "0x000bacfbc09f6b683dab42079422cfd17818e376247afa65c48253978e27d0f3",
+    "0x000bd56edd45d2fd4e9c6d58b6f8b436e37a3fdf454ee5b384d7f16a1afc09cf"
+   ],
+   "name": "Kohls Corporation",
+   "kind": "stock"
+  },
+  "KTOS": {
+   "token": "0xC8Ed92b1BBFEb924711923C17BaFcE5A68b28c64",
+   "regularVault": "0x3EF79fe505FA8781819a00B811f19cAeE0d3374A",
+   "continuousVault": "0x0A383517Ef9696412d2Ca58F9072C2D16a2E53d7",
+   "feeds": [
+    "0x000b18f93c031e166477a14ce74a0f4959d721d9656977738cd247608300d090",
+    "0x000bdc62dbaf593fa4d3fd48727e18a4cb29f5423e9d66eb4546d8aeb0aeb3a1",
+    "0x000b1abced61c0890804b3778725e8335ad7a4bff9fb4a018cd51497a8ce87f3"
+   ],
+   "name": "Kratos Defense & Security Solutions",
+   "kind": "stock"
+  },
+  "LHX": {
+   "token": "0x5Ebd86AF9E3a07237871a018eC6Ef3E169f0e283",
+   "regularVault": "0x675CdE506107166dD74d3Aa2d41094f3a77ddB26",
+   "continuousVault": "0x723F7063d1664A4De1C5d6B987029C2222E59906",
+   "feeds": [
+    "0x000b184468921c4466885c506c79ef06e8f903bcf4612d2364d892ac0bda93d1",
+    "0x000ba9e536e104c4f8960b4bd85bf8b129d947e2fd2918f3bde886c027227d57",
+    "0x000b9a7b4ca9e1ef38b7e2cd0ba2eb1ef163293338e3b5da4a69cb7b3cd5f7e1"
+   ],
+   "name": "L3Harris",
+   "kind": "stock"
+  },
+  "LITE": {
+   "token": "0xB99Eef359Fd6472bF5C1f13b02A785D7FBeAef0E",
+   "regularVault": "0x1C26d2CBe8020fa2EDFdf5BBD84707e7D88c2c05",
+   "continuousVault": "0xE9036ffe19c45b675B3D87eF8F7505065EF7e78d",
+   "feeds": [
+    "0x000b77e1137c75169540f6fcc873a7e36c79042fca4176dcfa43261e78a0e15f",
+    "0x000ba32d0f8521a5a2d8e628ef990c47800fff5bcb6f8cc891068a5a48677d00",
+    "0x000b7ade1c0d53308314b2e06b72f0f5c0cee614e141ebabafe965c6525c7810"
+   ],
+   "name": "Lumentum",
+   "kind": "stock"
+  },
+  "LLY": {
+   "token": "0xC7bDa934E1FBD07b288fFE1302D063Bd548b100D",
+   "regularVault": "0x0721ead7D006F1b7dbA9009ec3b09cD8D0DaF212",
+   "continuousVault": "0xC06eE7cE8dC79c71880f30cA079C49068b0ac173",
+   "feeds": [
+    "0x000bf26ca79979cdf02707c1c1059d01c0ad3ed7fed44e77712b7a902a28b573",
+    "0x000b7d32303a0a317f7112d2e0ababd9f740929a002a2f88daa2c997bfc91635",
+    "0x000b7800026f3f7ed7b4a5d30de28f5845fde1696ab7750b11015b4d459aeef2"
+   ],
+   "name": "Eli Lilly",
+   "kind": "stock"
+  },
+  "LMT": {
+   "token": "0x49600D1724c4fAef278E2F1f9EbEcA00F70DFB60",
+   "regularVault": "0x7C55716b450B2Ef281D893F557eF61Ee001851d9",
+   "continuousVault": "0xE3C2fd3a958D87A64487EC63605117773F7bF3E2",
+   "feeds": [
+    "0x000bca0194cdea5351c42c983fb28d755acf8d62c2c3959c963fa627307a78ab",
+    "0x000b97ba4d5d408b3f8088adb06591115361cda173b43b94cb57836474c1ab6a",
+    "0x000b26f8dccafcafb7ba4ebd90671c31bb0fe6a84ccaa772ff3eb7bf9c3580da"
+   ],
+   "name": "Lockheed",
+   "kind": "stock"
+  },
+  "LRCX": {
+   "token": "0xBf2322D3788B488d9DC03fBDa386ea504a3D4F95",
+   "regularVault": "0x2292e167b7791F21Ed71cD49bf1Aa93e14E7F93C",
+   "continuousVault": "0xd03669803fa97EF422b2A3b976Ae94279aFc78b2",
+   "feeds": [
+    "0x000bc6333a539d41be0bf5a207306f24610b4247bb35a95e19f3db7d62cd69f5",
+    "0x000b30002fbeeb4137e00a3f8dc45c256dda8f7a53b66ab5fa77ddefe249d826",
+    "0x000bcd3d0b7c6243185ee5011d1520f8e79a1b7b82df291a3bb5c7a3fba820ea"
+   ],
+   "name": "Lam Research Corp",
+   "kind": "stock"
+  },
+  "LULU": {
+   "token": "0x34a90F4F8eE24BCA86458353E23B41CE00B086aA",
+   "regularVault": "0x236d397788aa51E56c946EcF987741Cd6810B36e",
+   "continuousVault": "0x0049359a14ED7bFF354f7cF6FC26AB5827fA344d",
+   "feeds": [
+    "0x000bb7097d1d8af679b9a7704db5df800bd49576394c7520f5ea67775f7d54df",
+    "0x000b558d4f065b6ab4776954788818eb55658da12f4673e8b58ccf9458977405",
+    "0x000b9517a4a9cd4ff46e9e5f4e9c10941758fcd55a7b5846a63c325049faf6c0"
+   ],
+   "name": "Lululemon",
+   "kind": "stock"
+  },
+  "LUNR": {
+   "token": "0xCc6Ba87C88342F6b83cBB2AE929db89B215d8fb3",
+   "regularVault": "0x8fCD691b5Ad9eCc35D3B990945B157a8FB4b5C35",
+   "continuousVault": "0xF8aC7d8f8e448a80758797d1090463256Cd81c55",
+   "feeds": [
+    "0x000b0aaf197aa719f46683ec6f3401e0e4e98b8af054a8e4f891b62cce472a7d",
+    "0x000bab0e8f37e31f899706dd0e69800b644b780e02bc50b603c852babca2a248",
+    "0x000b0799bd9587bf97320b1dae1bf3b71ec4892a021d3373ec1cfcffbd88e024"
+   ],
+   "name": "Intuitive Machines",
+   "kind": "stock"
+  },
+  "MDB": {
+   "token": "0x5e049Bd1B1316e9ff0A54F41874A31Fb4A22692f",
+   "regularVault": "0x7411F98A78B079381B81Fafd423fAF18e3D77BF6",
+   "continuousVault": "0x18f82bAdD81309e1F68E08b8C06Ef8e63C52aA6e",
+   "feeds": [
+    "0x000b9198dc96792d7b4a25c7b5e8e71442724e4f8654dc244a7c0dc60aadb9cf",
+    "0x000b53936465d1e3a93cb5b80142344ffde19e25c227b398ac5918994d7c6445",
+    "0x000b0f455a2051ba8089d798ba2b5ee7573e3f01a5f06ea9a196f876bd3887ca"
+   ],
+   "name": "MongoDB",
+   "kind": "stock"
+  },
+  "META": {
+   "token": "0xe3a8c9b60713a8259cAC6d0f7C68b673f456E565",
+   "regularVault": "0xf5DFa208792424c0137B389BefBd857b2574195b",
+   "continuousVault": "0x0703A107Ab8e51CcaE09527dAb8Ee726d67f4c91",
+   "feeds": [
+    "0x000bc63e601958daafb805b1eecc3972a0ad231e8c08c0432961b7b5c3251166",
+    "0x000b2f98113576782a2bb2cecbbfd034d7c949d8457ff81dfa68b6b2927dc2ee",
+    "0x000bd63dc623dc102eeed0fe61ae7a3e13a28961df9a79912147f0234706f7ef"
+   ],
+   "name": "Meta Platforms",
+   "kind": "stock"
+  },
+  "MOD": {
+   "token": "0xA83a14204f20119E04A335d6C7dd8e2771DDa3b5",
+   "regularVault": "0xaeb5f86Ea97df2F0B57D78eD6541dC20088464B2",
+   "continuousVault": "0x74538309209caB294ed15c02f81278F993845ad7",
+   "feeds": [
+    "0x000b9755455201e1be89f8f93ff57dc57e3df28753bea827e51510c00c5e4435",
+    "0x000b4c6519f4e958af549d74d795014587b771ca80d9a0d91aadf71e5c0119d0",
+    "0x000b316a5f0212a431a2e5327b86ceb6e9b5fe8da6afd188a51f1756ca99d90a"
+   ],
+   "name": "Modine",
+   "kind": "stock"
+  },
+  "MPWR": {
+   "token": "0x426a773aA87DAbD97dC2037F23B50151ea24dC2a",
+   "regularVault": "0x80a7f2534Db3f32C00cbAa35aF7A3F8aCbf01A05",
+   "continuousVault": "0xf76fcd2df914b22EbA1020f5775C979D6C692c5a",
+   "feeds": [
+    "0x000bef2139767160313dd1ff888c32afb1c14be1df95e55eb14a1a86f879d82d",
+    "0x000b0ad3f04c6f73b5cbd65a0f56deadf1102274b96a04348274417b087878e9",
+    "0x000b2b24840142e42f9b19d6da847b1abbdcff17f033983aceca803d38cdd940"
+   ],
+   "name": "Monolithic Power Systems",
+   "kind": "stock"
+  },
+  "MRNA": {
+   "token": "0xC5f6D6F1FBf1C540cF723507D0ca1F1B97f03FF5",
+   "regularVault": "0xde55a8Bb82d3C6eEBd2629861090c09B5f27E085",
+   "continuousVault": "0x365a6aa563eeD2f52453E6f00086F903e8d1A451",
+   "feeds": [
+    "0x000b6b3d1d42dcc12f8cba415657d3e12826aaea160fef3a95c5cd40faa92cdb",
+    "0x000b4cce5c4dca415e7384aba381d663a110e912f98f2ef05ffd5f3f18a04520",
+    "0x000b57280fd164184062e12ecf0afc2f35d2f2089209753822a1a92c6e56928b"
+   ],
+   "name": "Moderna",
+   "kind": "stock"
+  },
+  "MRVL": {
+   "token": "0x812f9E767DA41e2f715a8eF6Bca6Ee7843401c50",
+   "regularVault": "0xB27c720EA165762816e7284C7b69ca5D6a96ECcD",
+   "continuousVault": "0x02eDf1390F0768A77f7e5F74512F79330FfB611a",
+   "feeds": [
+    "0x000bda5ebadb03941db820a1bfac8fa4ee3c773e3869a7c6abac01cebb12727e",
+    "0x000b8fc9e63a05dcb4e2199a269ea92b9928f90d812b13770a7ab2e0d4f17d00",
+    "0x000b8b3f98bf1d7c725c27c85d63d0f62c973c11bb9c80bc361310f176dbd602"
+   ],
+   "name": "Marvell Technology",
+   "kind": "stock"
+  },
+  "MSFT": {
+   "token": "0x38d035444832a5AaaFd4d66E79857210eF9fBB49",
+   "regularVault": "0x30Bc0731B61C4fa93da717a9C03Bbf1bDD1df8D2",
+   "continuousVault": "0x251bEE7287e5EAD5eca6A7132a9963D5b4AEaE4D",
+   "feeds": [
+    "0x000bc4bcae3f338a2496aeee763156b999465bda826a3ccc94987d32a98212ab",
+    "0x000b473fc515c571af8f74d78f2db17af4dbfe1e4f7154ec734fa017d9969a9e",
+    "0x000bcff8ee20831a5d4a5be560e193556ce0c7d3ec1d38277c0bb78d84332d6a"
+   ],
+   "name": "Microsoft",
+   "kind": "stock"
+  },
+  "MSTR": {
+   "token": "0xFf39E5e53460812F6D148f4a2015a4B82031B13d",
+   "regularVault": "0xBf327936431595cE0B3A5617bFa000B4cb052263",
+   "continuousVault": "0xdEd05fbDf9E9710C14076C40a2770F93b717F99D",
+   "feeds": [
+    "0x000b60dbfd8be8ac0870eeba3fb32dd1d7cc0ec0df1fe1b90a765ec28eb5bbbe",
+    "0x000b46dbef269790c4c7a796c3dd4161c483005dd89689c1cd74cefb20bd3859",
+    "0x000bb69c5a70ca5e224bdb96b82f58bfae38d8753b5a20978a5643da5ac56496"
+   ],
+   "name": "Strategy Inc.",
+   "kind": "stock"
+  },
+  "MTSI": {
+   "token": "0x46AeB6377301d32Aa129f19FE236eDF60d8dB8A3",
+   "regularVault": "0x174BD998fdF32a47Fb172806f4Af56753FF2a7E6",
+   "continuousVault": "0x3b6D5417B1d5Cbf4b4bc95519882dA2af4f24fdD",
+   "feeds": [
+    "0x000b7028a2ddf050a1923aab238491e26750aa136fc5eb61ada6200d354bcc41",
+    "0x000ba8df7f474b62aa8fd8e1b9db55ff0c6be707dd7a881f3d7d623a7e80dd17",
+    "0x000b74fb9eb5696c323ca4e46210e1a2c5d299c48689b005170744f2d4b5da07"
+   ],
+   "name": "MACOM",
+   "kind": "stock"
+  },
+  "MU": {
+   "token": "0xdC520114720a5155FCE30Ff38C302C71bfD87C8a",
+   "regularVault": "0x5E12047BF93a587Ab42D0b382e1E5F5874f53323",
+   "continuousVault": "0x05549f77AC3FB9D52A9f55ba1674bb3481b131d6",
+   "feeds": [
+    "0x000b60a66c79ae2397160074da767153f2f4bcf02554044df6de00ea03c5c694",
+    "0x000ba4291ff472fee36bdddddd86be013e363b18d5b4aa7b4ef34ac151ac81ff",
+    "0x000befbba98dc8e9f1f35dfc581f0f6f0eefc31b4e3d8f6a4700738a44ea9f84"
+   ],
+   "name": "Micron Technology",
+   "kind": "stock"
+  },
+  "MXL": {
+   "token": "0x818D4c68A86de20C1Ddc6f9D710C8aa80beD255c",
+   "regularVault": "0xC2Dc5d1d76E947a02440e72494540538ac666bEa",
+   "continuousVault": "0xccBE97ae2C2594C03c19E2914785Ca6724063f2C",
+   "feeds": [
+    "0x000b839ad4854bd274d58f292a7749d8a06a69e3cfcd1a1d42f16b619805fbab",
+    "0x000b6098a35b62c24fb12dbf4eda794e98fd0505f042e875345e850d1d25213a",
+    "0x000bbb80af261b5659a3849ce653c48be78a9f7067a54725f9eb1aeb15a1fbff"
+   ],
+   "name": "MaxLinear",
+   "kind": "stock"
+  },
+  "NAVN": {
+   "token": "0x224dB363475151B63f4C8CdD3C8A20A09893644c",
+   "regularVault": "0x0E88e5947D7710bAdE7cc5fBc71e38da7925b271",
+   "continuousVault": "0x2e87Cc694d94E8EB722C4Ec57B0E320b4bb9F1a9",
+   "feeds": [
+    "0x000b25ef538476b9458f44d6d9b4633dd12e7326a1d1e372a33c96c1c3460d58",
+    "0x000b64b4e1ba7768d9adf1044a1aff35a071069fbf73e1a51561573f626b24b6",
+    "0x000ba6eb73179dab5e1ec0359cbf282f6e4054579cdd31af1d372441e6b83a70"
+   ],
+   "name": "Navan",
+   "kind": "stock"
+  },
+  "NBIS": {
+   "token": "0xb26dBE2Be8D7dBe1BE2a9140B3260A6C4B78ec83",
+   "regularVault": "0xd7E9453d462e82DAD8514439773210a32Af60CA5",
+   "continuousVault": "0xe489fB3f849F64949092c5664E9A3E056fdF8053",
+   "feeds": [
+    "0x000b24f03deaccb9526b4e9992b2d8342ae32c22a6d34d72d5f6974d42e66a04",
+    "0x000ba4b37e13113480546d55309aeb65014f9532af7bbd8d02308e8df45dcf9c",
+    "0x000bdcfb0cab4d32a76a6fc83f98a62138402230a947b9a7e2d51bd8c2c37223"
+   ],
+   "name": "Nebius Group",
+   "kind": "stock"
+  },
+  "NET": {
+   "token": "0x490085C997F872e4707FBb871Ad47C552c5dEe5f",
+   "regularVault": "0x964b37469cdD4cD58469058aB4Bbaa548B8885D6",
+   "continuousVault": "0x5d7ef134E68Ec29814be204FA83fc03F4E11EF02",
+   "feeds": [
+    "0x000bb999da005f007333bb46edff7480410781194a66281daff40b3a52966475",
+    "0x000b74e6fc2d2bafd26a4e8bca8c92dbe8040b1943e5763feae0a18a9abc89b5",
+    "0x000b2fe1a0e1b54c940e2bec28a07ba2beacd1d8721cf6e85e4505653a611b26"
+   ],
+   "name": "Cloudflare, Inc. Class A common stock",
+   "kind": "stock"
+  },
+  "NFLX": {
+   "token": "0x4AFA7113e8158a2C7bbddBD671dcAc9bdd1E84F2",
+   "regularVault": "0x7Ca896E77504A566eaE8bdCfF60a07E95cA332A2",
+   "continuousVault": "0x6133836f41770Fb79391f4D8E6Efef28EB53A311",
+   "feeds": [
+    "0x000b9c34226e15cc5b5498d1ae7c5354d115b71e3e9fdf435ef1a87b28b166f2",
+    "0x000bd9544dfab7c619425fa76d5310d96326d39807ffd96a54677b18e5189690",
+    "0x000b1c4081984e4def7384093de9e1bc678e8c7baf9b2d229436354c48444edb"
+   ],
+   "name": "Netflix",
+   "kind": "stock"
+  },
+  "NNE": {
+   "token": "0x1Ad77788FE47757f5009b519785e9eceB3cEeDDc",
+   "regularVault": "0x8453bBF05439dD24E0b0072c173570D7B5F833f4",
+   "continuousVault": "0x1900C128a48FcE743DeA7E033fef78D679609c07",
+   "feeds": [
+    "0x000bfb87316f334cd7653b90b6128e1f6e9b2f492c54aa8bc5ecba8f9dae17c0",
+    "0x000b197ca8e603de94f9c1421e17e0fc48a5dc879deb52f588f9c96e036de074",
+    "0x000b54c06a9b293c8403fcb8b66fbffdbf1c0f6db812e6c0b4bbac3a1a222882"
+   ],
+   "name": "Nano Nuclear Energy",
+   "kind": "stock"
+  },
+  "NOW": {
+   "token": "0x038CDf7885d1548fE8790f34924C44D0AaB650D7",
+   "regularVault": "0x8f11f156fC3796c4978ab3c7A5dc6b3154FCF93d",
+   "continuousVault": "0x378E271A939C4c23297c7bDcb6A9b09Ab7D56d4F",
+   "feeds": [
+    "0x000b60873f2b83b40c0880882bfe5f677ef05f0e486247b8ff77f8ad9c244640",
+    "0x000ba1e7f12a25fba2733354075855f9051f96ed85bc68d99e2249a229df73b9",
+    "0x000bb3645dca580b5e15220047450248433da00e495493d37453f8e6caa780f5"
+   ],
+   "name": "ServiceNow",
+   "kind": "stock"
+  },
+  "NU": {
+   "token": "0x120d700eA1C9acfca9F03DBC8772633Bb7B5E900",
+   "regularVault": "0xd08685ac44ed91d9300851Ddee4e4F96E8a7A92B",
+   "continuousVault": "0x8Fb8768bDc4Fdb1f11D04de9809dFf0979eA2863",
+   "feeds": [
+    "0x000bcfadcbff228a80416433fcbf0eeb3a84e9c8f64fb46bea80f3bb4aba41ba",
+    "0x000bfbc74ec18c504a788b4123c788c75d90f349b2392a5c79cb0a5ee9caa30f",
+    "0x000b9b8dfd4ddc1129a5d7988b820ff0aa44ab58714a81d87cd7f22d8b3ebea5"
+   ],
+   "name": "Nu",
+   "kind": "stock"
+  },
+  "NVDA": {
+   "token": "0x5358C97891fB27C0Cd0c000398D9213B9E1299b0",
+   "regularVault": "0x24c108CB8dB1d3AfF3aE85cc50576719E7B45cCa",
+   "continuousVault": "0xB3Ad7372C00AE79E64124B5bD2664b58AA6a107e",
+   "feeds": [
+    "0x000b6aa036224454037bab103184565f6aa9ea589c3b349f6d8471ee753524b9",
+    "0x000bb043961643d051393c085a4dd0cded6f67b4b71e47e9dcec739b7b3e2145",
+    "0x000b47988e89f3e63e1d679c84b774e6c38bb9929ad9de6e5e56d657a80388a9"
+   ],
+   "name": "NVIDIA",
+   "kind": "stock"
+  },
+  "NVTS": {
+   "token": "0xf9cBb0Bcb2c55Cbaa8a75db8a19b3E32CF49367e",
+   "regularVault": "0xD1f6b19a54E3092924c03158D2Bb6417745C668a",
+   "continuousVault": "0x4FEfdF678119098378df93dA500562f726da1125",
+   "feeds": [
+    "0x000b1c7eb4732d0e4241b74c98f509f55964d19600f7c7635f23cdf8e44e2f79",
+    "0x000b79d7d71b8fdf842b26b011ad7b9d6c1451aaa1998706b2abad392d2b5eed",
+    "0x000b4f2f219f9dc581101db86996bc3a72ed695d9c0398c3e565cb0a52dbc2bb"
+   ],
+   "name": "Navitas Semiconductor",
+   "kind": "stock"
+  },
+  "OKLO": {
+   "token": "0xB4FF7ee21DA91aE7251BcC113e232b0171f2D85f",
+   "regularVault": "0x51E51472F7717df689F1392894AdD7F66507Cd98",
+   "continuousVault": "0xc73297692440Bcd2f13A8300b54B3a5eb22ed8F8",
+   "feeds": [
+    "0x000bd9d2b074b6faece3e95d5c423d465d90310badf81304692e49fde9e5415a",
+    "0x000b7602effc51f05a959443f55dbe5ec527df65306aac9910de398d501a5c3a",
+    "0x000b229dcf28b3578011c32be910fc452956fc5208f7b29b3a3a0988d4a9a302"
+   ],
+   "name": "Oklo",
+   "kind": "stock"
+  },
+  "ON": {
+   "token": "0x70472e9B7abD168A198BCD0202382c9B4003AAf1",
+   "regularVault": "0xf93fBD70D37B8E0C7fE1fE83D7cA62feDDCD7d6c",
+   "continuousVault": "0x018A2018a9B42026D18E73a7B7997722d5801257",
+   "feeds": [
+    "0x000b25f825bd090f148b80cd9559e8ba8e4f860f1118b5de9e5f10f1718fce34",
+    "0x000b375b3a94b974c4accd1a0e58d0fe39ae25e08c98e7f0ffe0f6454d275ac6",
+    "0x000b28edce7c78f1c6c66c127206e039a79396e04c0eb77bdd86500e615307f0"
+   ],
+   "name": "ON Semiconductor",
+   "kind": "stock"
+  },
+  "ONTO": {
+   "token": "0xc9bB7915ef166F63313b171D08F2fC816f0F74eE",
+   "regularVault": "0x2E7FD3C8CB2c61A225A68dcD011EfD66863Ae2F3",
+   "continuousVault": "0x691F056c0c22Bc1BA11D62fA262fC4A39C916c06",
+   "feeds": [
+    "0x000b8e28334fea8326a49dfa4a6e6e6c06db03146adb7b2c342539380f5e450c",
+    "0x000bf6f65710deb130830225f253fe545965061c0e5269d2a9001d73f2f91068",
+    "0x000bda517779e1eb9c9b3a8c5f3582ff214ff97f919bf570dd6a69a4dcfcdd14"
+   ],
+   "name": "Onto Innovation",
+   "kind": "stock"
+  },
+  "ORCL": {
+   "token": "0xBc474F3C7Ef18Db11F31cc916Fc3443ec2402fdD",
+   "regularVault": "0x7979fC58Ea16eBee7CC9d826DBC0f0b3A91B1cF3",
+   "continuousVault": "0x063BCb40634a35BE0cA6CfC06d45967759cc0836",
+   "feeds": [
+    "0x000bc155a482d51136a7b004d971698c6593d3e02002981e6d67d42e8cbb8837",
+    "0x000b82e0b8ead28661ed37a6ab1c3befd5a7f4bef6e05293cd100f569576382c",
+    "0x000be0a29b3b9651736e5b80cac41be569ef9a0614aea7ba527d5c529574a334"
+   ],
+   "name": "Oracle",
+   "kind": "stock"
+  },
+  "OUST": {
+   "token": "0xfeD3904474bE1B5B9F5d047915E59Ab182e4BcE0",
+   "regularVault": "0xd76ae72E5ab7CE157B5231B765D0601359792f21",
+   "continuousVault": "0xDffB5Ec2bacE520bfeABf29e6673760bb4cB6f74",
+   "feeds": [
+    "0x000bd88ead991bf44ffd846388bf20b47b9a41ce9b03dbeec049a7a18a261c45",
+    "0x000b5d12a98212b4005bfba07d3391f5c13371042dbc09832f61862491afac1d",
+    "0x000b32a1aeb7eaa84a2c175e93ca8c62d12a9f1fc08108fb9bee570e90561555"
+   ],
+   "name": "Ouster",
+   "kind": "stock"
+  },
+  "P": {
+   "token": "0x0F0e6418440C7Bb385Ec97ACF172856987547C41",
+   "regularVault": "0x196A1F366DaD328c4cf4Cc26B0a49E84426a6004",
+   "continuousVault": "0x4cE9CF639eE6d23289c136B5a69e77312C04E185",
+   "feeds": [
+    "0x000b9321cc346045336d909df6a5fb061b7f5d7862bc7087a5018d8e89fe806b",
+    "0x000bc8c90b497c43d358531f688442ea4a986f433cfff6a8d07ab38c369b5ecf",
+    "0x000b8da4492a78f7caf4331dd5ef09ceaaad0e4515c0de12b16dcc873916e402"
+   ],
+   "name": "Everpure",
+   "kind": "stock"
+  },
+  "PANW": {
+   "token": "0x9aBA1962b9E9265C0D06AcdfE9FcFc55bD1Ec08E",
+   "regularVault": "0xCF127Ad32fb5fb43Fc939ef517914ddDCC751e63",
+   "continuousVault": "0xD694E09CeA736d3665ad10A9C2758905Fe58115e",
+   "feeds": [
+    "0x000bafc170ac12e37eb00f56a7980db564c7f39111708de4e36d75fcaa71b26a",
+    "0x000b6a43e6c945f9e88f5f81fee95661375c1d77247ed0401559e8d3956281be",
+    "0x000b42ad9d613a5b050b82ad0d0c0825d293fe7b241108ee85a25d25bda196ea"
+   ],
+   "name": "Palo Alto Networks",
+   "kind": "stock"
+  },
+  "PATH": {
+   "token": "0x51b251398eC0D3E0f27956b9147cCe37A26300CA",
+   "regularVault": "0x01C8b4Ec4f82f09e869a847d09CD5A5BC279CFed",
+   "continuousVault": "0x27c786f415d876775C29B2158E66a354e713707c",
+   "feeds": [
+    "0x000b58999d37c5c679ed0973b083f0839c92c7e7e4b05362411082143e515e8d",
+    "0x000b8a2e4f070b715d847778ad6cb27639775717d5657d63b76fbef94982dd7a",
+    "0x000b25e946ace4334b2dce0bbf5d3a561d6de3c8daf7abd05276c577b5e23a4e"
+   ],
+   "name": "UiPath",
+   "kind": "stock"
+  },
+  "PENG": {
+   "token": "0xFdF4A5901f17EB0DcF2CebB299591F23465F24A4",
+   "regularVault": "0x810362F2fB4Dbf297152fBa1152758016fB1Fd09",
+   "continuousVault": "0x1680258A9413DC1030b33c35F2A8aB658EA4451F",
+   "feeds": [
+    "0x000bb47d2c5bf98b81a6ca4e6a3f3ee4e5e5745910344608ecf1bf233cf05535",
+    "0x000ba926ff809bea97a449ffd7ee0a1eb7d0e8482219ace96ceda17ff663443d",
+    "0x000b83174fedf87e95da8e6eb21a92d23504ce2564f50feac4246f4d6f9bc07e"
+   ],
+   "name": "Penguin Solutions",
+   "kind": "stock"
+  },
+  "PFE": {
+   "token": "0x48c5E1430981BF608eb48d50B64d529e108fA396",
+   "regularVault": "0x29faBe70DA7E2c59805328d240f2b792c23Adb00",
+   "continuousVault": "0x6514D096845FEe49c053d3d5cb6e21875b2B9b29",
+   "feeds": [
+    "0x000b882bf28c43b05bb8e721e467bdeb2ffe0fe0abeb0c2da85e9339600100b5",
+    "0x000b6aed69fa2a26bdd306d8dbde6d4917d18067522aadb194046d303d9dfd53",
+    "0x000bd8f03008922db5d8d3b1c45e560465789050b7adb9d88b9c6dd978fc2cf0"
+   ],
+   "name": "Pfizer",
+   "kind": "stock"
+  },
+  "PL": {
+   "token": "0x29D0aEE17017e16d535F978471ea7decF50acC03",
+   "regularVault": "0x65d28711A07825336443a17d6Acdf7211739c99e",
+   "continuousVault": "0xFaaeC93069B8707E7dB0Dbdb88fD47cD2E5818D3",
+   "feeds": [
+    "0x000b9cee8f801be93f79c9e85a26a9c03d04caf6fe45a79ed3e0890e9f7b11ad",
+    "0x000b47f507cf1dd4636d059b83946f2f2a923be016725364a9cd0fa527d2a219",
+    "0x000bf6f872da98453a639e5cd39e74fdc95ace29af88219adb8a3130eb556c07"
+   ],
+   "name": "Planet Labs",
+   "kind": "stock"
+  },
+  "PLTR": {
+   "token": "0xAC2965b7f76D8FeeD738e5426EA1225D15aD3dA5",
+   "regularVault": "0x145b0bc60Fcbba4E25b3A63b7E1fAc44124A0f92",
+   "continuousVault": "0xb64d70dE5C1d118edDe8680B9B7Ec1879B049533",
+   "feeds": [
+    "0x000b0a2a7bd663521a7e191c71c9e120825c0419445ac614fb9dcd3eafeb6298",
+    "0x000b074755a84b1919f59f6130fa7286c2358f16c8f2e5ff4ce9f3d772add438",
+    "0x000b6f2c5fc8dc743481fc713ed92f48a4a3f2faf5d9590b8bce06183f5dcaf8"
+   ],
+   "name": "Palantir Technologies",
+   "kind": "stock"
+  },
+  "POET": {
+   "token": "0x1e6366249050a61ea7aA0f720Bf8967782401264",
+   "regularVault": "0xb7E69513d43E998a493D0AF5bd93763188879C4d",
+   "continuousVault": "0x820aDCfbFF732C33FE728DDF1E24a5B13a6b79c6",
+   "feeds": [
+    "0x000bec1ada92250c352b3ef8be575089a04abc88a940fb8ab23d67276b8961f3",
+    "0x000b1a3fe60c0c63b2967a7e9a6511660dc06e91a3b11ffeae82c58e646513c4",
+    "0x000b58ad03f2cb2d3b1ca98fd79cbaef6a80df1bee4e55f2fd74ddfe219b36aa"
+   ],
+   "name": "POET Technologies",
+   "kind": "stock"
+  },
+  "POWL": {
+   "token": "0x60bbb1Cb9A38316Ba36bFD08f790375962A9242D",
+   "regularVault": "0x97B2C7541f6f2d1Ae2A8ca1CbE64369c102cc3Ae",
+   "continuousVault": "0x66EC6856A7Eec2b87f5291FF7DB41F204A98783F",
+   "feeds": [
+    "0x000bf1ee7ad6ac98d703abf09c6ee3cb0134c2ecf5d1e1b8a75e36f69131bc10",
+    "0x000b1553265ca6fe458ccf04ca2419df9813744d6ce9a4a5860884fb010376b3",
+    "0x000b63056dd5de28f0cc6f391bab0516042763f7855beea21178f05f2b423d70"
+   ],
+   "name": "Powell Industries",
+   "kind": "stock"
+  },
+  "PR": {
+   "token": "0xf7D6Dfa89f4C1562D74ED8252dC2b4cF59Aa9ae9",
+   "regularVault": "0x21772656C943830F66f5B342351Ad3E27e76d459",
+   "continuousVault": "0x08CB739259197DCB08e107CDBb5DdEb378e6aF16",
+   "feeds": [
+    "0x000b3b042e5f04d18091f348e65e08f3081c81abc9dbb9de6a80d04aa0c65b3a",
+    "0x000b3155d87c3a13686364c7a1182ea951f53c070d16d08e313597bb76a4cdf4",
+    "0x000b5c3412facb7a832362eef23dcc620e113c54d2035a05ee62ed6b6d6b78f6"
+   ],
+   "name": "Permian Resources",
+   "kind": "stock"
+  },
+  "PWR": {
+   "token": "0xbDe35677Af8dafe69De42A4c9F01574e2bDb1B9d",
+   "regularVault": "0xED72c62159B206b4F8cb692EC3140132f00c5Fa1",
+   "continuousVault": "0xd3Aa8090B1fac6b7765Cf4F73F03FB9B68B9639f",
+   "feeds": [
+    "0x000b63b028ec6d6f938405c99d7ffaf49e04be60bbc6d7e196f8eaeb6565f969",
+    "0x000b994cb5b1aeed6d214846f6162d2a764223cb61b571c08aaca0d00162d652",
+    "0x000b5bc2df470fb90e9900ad9ceeaeac7b12a2c984c1f95382f02e420bff906d"
+   ],
+   "name": "Quanta",
+   "kind": "stock"
+  },
+  "QBTS": {
+   "token": "0x2763ae03d6C9b718DF02876f20A2A4b83c88eb43",
+   "regularVault": "0x6e612E85aF007b4617eB92B13621322563143241",
+   "continuousVault": "0xd5bb7fef66bd1A821d377bC1f46347166eC6a2AF",
+   "feeds": [
+    "0x000b6b4679c3aeb5d7d60d236bb861465b302baaa4caa58855478fc0f2555b3f",
+    "0x000b97456ab0838a1920c5b101b22eb871b7496a4f15dee89e25a30041e2fe27",
+    "0x000b50bd1405ba5f74799fa3fc5d2a3d38c5c6bb2f66417ff3ee21f59837c2b6"
+   ],
+   "name": "D-Wave Quantum Inc. Common Stock",
+   "kind": "stock"
+  },
+  "QCOM": {
+   "token": "0xfD845F0942DEDC6E8BcF52c21002D24897521193",
+   "regularVault": "0x5E336DeD41787973e8c1D7bEb3C7517C40Ec7030",
+   "continuousVault": "0xe35Ac7956E8bf93EC2083b179a92a64Cc7Da9B53",
+   "feeds": [
+    "0x000b00ac61f3ecdb4d6d771da90cd54451ac0fea3f99cf386079fb6c9afd73dd",
+    "0x000b07ddf8f8ec6e03c32db428f03fedb0faeed240db0555352f72038a370054",
+    "0x000b0d29f27e3ce7efb6f1e58672d99d414493b1ab2dae30da61f059857e363b"
+   ],
+   "name": "Qualcomm",
+   "kind": "stock"
+  },
+  "QQQ": {
+   "token": "0x59B30105d58ffb64Be361B7738f1B5DF15e610e9",
+   "regularVault": "0x986474f867e9B22f41EE072d1D391521bDf6eb98",
+   "continuousVault": "0x068712D16de498800733502AA7Fa1E92F9BDF05E",
+   "feeds": [
+    "0x000bc47f698575ca7c80e92d0a9efe89a476266e000c0e13089ae92bc66c30b7",
+    "0x000b6f141f7b651880dbad23ade440904ce00c31a5ca1c4944b6270e2af47dd7",
+    "0x000b59dc1b9fb4305d750e501974eb6616c39d8c54f485bbb4f3d3ac3ce7dc91"
+   ],
+   "name": "Invesco QQQ",
+   "kind": "etf"
+  },
+  "QUBT": {
+   "token": "0xDB3d90223704D7c54EFA9e9429CB500d796EaC7C",
+   "regularVault": "0x36ecECbC37Ff5a502D70fB5C7df7eE1e319E1856",
+   "continuousVault": "0x585c0fDe04F600Ce5abDE203deC9512d80143638",
+   "feeds": [
+    "0x000b1ef5b390b01b9702a596b02e2c2994bf53d794f41044555d01abf26cf455",
+    "0x000b264ea310f171de0ec3c69b3f769b2bf2e88295ec85f27f2bf05368517dc2",
+    "0x000b989966e41ebb29fbbfedb03681929078e5ace1394d84121aa45101e853e9"
+   ],
+   "name": "Quantum Computing",
+   "kind": "stock"
+  },
+  "RBLX": {
+   "token": "0xA8b4B526Ff192C887D054cf6964508DDf79Fb7c6",
+   "regularVault": "0xe8B6Ed26a08127A04754e928df223Eff98E21256",
+   "continuousVault": "0x245006Fb44815C52021FaA63350c102C7101423C",
+   "feeds": [
+    "0x000b0e4249332b06a05eba5d14aaa248e39c3ca54df2e744a40bf0807e4b050d",
+    "0x000bc2b6ee69dbf7e74c5e0123d39099ec5a54f434fc6866a7dcf9b5addbacbe",
+    "0x000b06862979fb2f8103e93c660c537438f5e1cefbcdbbb30f69cc4489678cbd"
+   ],
+   "name": "Roblox",
+   "kind": "stock"
+  },
+  "RCAT": {
+   "token": "0xf97d4f2Dc460CC4e7281d15b4C7fceC791f4b309",
+   "regularVault": "0x8b3FE6c9f39D277F5503775CC5134579C2a286f3",
+   "continuousVault": "0xAbB7227638976Be383723FFBB10a08A91ce5EcE8",
+   "feeds": [
+    "0x000b1a7ec685eb8c0dfd7f9c3bc2a3cee15885a031a733ebeeeeb62fbf8e0332",
+    "0x000b9c1f0406ec295085321d489dc17e8ac323d8cf27ce3d3281eb8e1b863b8f",
+    "0x000b281dec20d9fc5a80c6571d451013a5d9c9b30d5ebef1d6aaadf27e00ed97"
+   ],
+   "name": "Red Cat",
+   "kind": "stock"
+  },
+  "RDDT": {
+   "token": "0x820aF347e978a4796E444B3B036E3C54F2c12C03",
+   "regularVault": "0x5918010F71bd83d361B061750149eae322bDD31E",
+   "continuousVault": "0x2cC7d582122D86ee00b1Bf0B37e72f5639F49091",
+   "feeds": [
+    "0x000bf992e720950be0c542c3e4de22a4a0d76f4198ec414f30366dc41d9e9d18",
+    "0x000b2bbff6ad137ffa3586ff594995da074dc2d1c3bcb7e1653a2c8e86142e59",
+    "0x000bbf2e2f6e370e3f69fc65a868f0c567c9b0d161218d52cba41ec83eeb066e"
+   ],
+   "name": "Reddit",
+   "kind": "stock"
+  },
+  "RDW": {
+   "token": "0xFd9348a087A4e4dc57a107D5827907db2Ee2Ec76",
+   "regularVault": "0xF5652Df6aD430B862B527E35E3132Cb69889F18d",
+   "continuousVault": "0xf26e6cD1f3B9e884741A488817B0537472aeA31f",
+   "feeds": [
+    "0x000b4d5a5a005860287fff2f9c6023ab818c60a2e0525df7f4ba565b5457c9e3",
+    "0x000b45d7606f17012583020c5420c5f7f2a910372e9ce0db9b343a1531c922fa",
+    "0x000bec44020092194501c434a84558643ca3a8d7c86ecdd35116bee1e662d8d4"
+   ],
+   "name": "Redwire",
+   "kind": "stock"
+  },
+  "RGTI": {
+   "token": "0x1A3a109edF3E1e95523436C6C275B7B4C568364f",
+   "regularVault": "0x299e0E90616C342856B73f2cF6dA88985e7B5291",
+   "continuousVault": "0x429c00F01CdA6D420A4DfD12045e0810e585A820",
+   "feeds": [
+    "0x000b093c70bdf08de377bf8f629ea9bbedce8b290a828bd9b8ef4f1b6c12966c",
+    "0x000b7f548f746da4efbb17c6c428352f0ab163c88ce2fb7857fb72b6efa85e13",
+    "0x000b1af08d15d80ee87f18b807f5dad3658974efb41e999b952df4b36bc8998d"
+   ],
+   "name": "Rigetti Computing",
+   "kind": "stock"
+  },
+  "RIVN": {
+   "token": "0x24d4dA2d59f6019a90B97164fcF3c8dE88c8007D",
+   "regularVault": "0xD10BA3FE5a78f6ECf74D33791FA25a71C65686E9",
+   "continuousVault": "0xF063e58752aaB1D4B6370C646A5a11246D80b4D0",
+   "feeds": [
+    "0x000b86b8b617f5e13e64d59108bc99783b2388783dcdbdbfdd0429468f6776df",
+    "0x000b20fb6997104d0dd3b17e3abcb415bda774b89e084ac8037c8c6f95220cd4",
+    "0x000b8a77b1cb60a769457ed0dd21cf0f03961902cbb0b31b01231d3bbe5ca964"
+   ],
+   "name": "Rivian Automotive",
+   "kind": "stock"
+  },
+  "RKLB": {
+   "token": "0xb6AbA4542FEb31D8DEbF9D5e6F7c318d9D560B8f",
+   "regularVault": "0x5648A1608D468e93DaD51DBF00C41A678635a5d1",
+   "continuousVault": "0xc18abc213349130ab4A8c0DA0B770BC9a60745AD",
+   "feeds": [
+    "0x000bae29d5c2a810de901ee4dd06276141910595b61ace37695fd3f839edc13b",
+    "0x000b86644028ba8535e798a31fae5c789ccc44ace70183038567891ba08447c0",
+    "0x000ba7f569a44b4b73ccdbd93cac1323d1295626d0d3aee0e8edb4219d413543"
+   ],
+   "name": "Rocket Lab Corporation",
+   "kind": "stock"
+  },
+  "RUN": {
+   "token": "0x8C439A3C21d75449De45B9c3bd986d52da3f9a1a",
+   "regularVault": "0xC86Cb930c21459d661BF731b6B104bB3280c56Ee",
+   "continuousVault": "0x1dfEC0372B617DD02038c08f1f7B6fA0c0f5a419",
+   "feeds": [
+    "0x000b945f0c9a024d20b00bc0837dc59093646767a39203699250af52d81db80b",
+    "0x000b899b382b0e58c97a6e345845a8bfb6bf7063098ab5eed1ca0662eb12d759",
+    "0x000b9b1f128469efc63f139218bed803d01da710c43fd158f6e3f3a43f8409bd"
+   ],
+   "name": "Sunrun",
+   "kind": "stock"
+  },
+  "SATS": {
+   "token": "0xafc2E3a91d802246ffc930cDF3047310a1F1Ac47",
+   "regularVault": "0xA0B0aCB881FbC0d9c10303C484dcef51D2E856C7",
+   "continuousVault": "0x708EA9B09BC7D35246706BC881Df808363f4842D",
+   "feeds": [
+    "0x000b3401e521c2789c353fe9c867b6039269ea602d56e72b76ca757e77578f1d",
+    "0x000b4b47b2de59138a00db4c479b9ba02fe154ffe2f38a7549f0d54070490a8f",
+    "0x000b6d3323ec22c701427c99781747632072882ec84df5ca7a3efde6d3c20f66"
+   ],
+   "name": "EchoStar",
+   "kind": "stock"
+  },
+  "SCHD": {
+   "token": "0xAaAFAa9ecA8F76A21C92D703159D0DDF0982bF41",
+   "regularVault": "0xF646de67FaADE76d786A9CCF0a67c8C970f5Fba6",
+   "continuousVault": "0x5d5Ac7Df1288E37f2921eA42664891d48bE07722",
+   "feeds": [
+    "0x000bbc7288b5af3739e1f4a89cb7667094928ad3d6cb392ba45ab3432917c406",
+    "0x000b4a2afc1c42cf92001ffcec4a5f58820815868625cdbc4479cef73ec898c5",
+    "0x000bd91b0d1850590161da63ef849969b59633d7357bb524c37a704fc2169aea"
+   ],
+   "name": "Schwab US Dividend Equity ETF",
+   "kind": "etf"
+  },
+  "SGOV": {
+   "token": "0x7F2Fa62227091e9b424ce7b584cEa98033E83Df9",
+   "regularVault": "0x4F203Ba4809E9Ef8246745ccB867ca5a524E27a3",
+   "continuousVault": "0xef90e2957Feb2D7EfE5ce8C9BA2d274C48dcE816",
+   "feeds": [
+    "0x000b8663419cb6acc23bff59590e5289c292d8ce22a553f3bbf97b43826a6a13",
+    "0x000b876e149bd507d34eabd12c06413e1a12cb6a90ee663be31f6eedf2cfbda0",
+    "0x000b0d96561941ed7a0eb9931e1036dc90ac443a0481245d49d6d9cfd2b9c2fb"
+   ],
+   "name": "iShares 0-3 Month Treasury Bond",
+   "kind": "etf"
+  },
+  "SHOP": {
+   "token": "0x59Ef8B1F370c8fC9263cC8Adc432fD3a1516a1Ba",
+   "regularVault": "0xa8746221D58d717Da3C367DEf4Df2b3274B9e9D3",
+   "continuousVault": "0xF67B2FA1Cf73FcCdE3E7c12c86842282bDe29188",
+   "feeds": [
+    "0x000bb621353040031a55a04a20125624175a1a37e9db6acccbd09b45a55501b4",
+    "0x000b64d5f7ed70fb32f614bb29f2726a50f249de8f02d08731c2b63aa05eeccd",
+    "0x000bcf049cd55dab565903a86188d481b219fb5867bdf665e8c5f1ddf282e704"
+   ],
+   "name": "Shopify",
+   "kind": "stock"
+  },
+  "SHY": {
+   "token": "0x1455154A09488c7567e91CE95FD3Be007cE33D90",
+   "regularVault": "0x219a87A1748295c4909F668b10073b7E3151A6dB",
+   "continuousVault": "0x9694Ea89d3bEf7Ab51F68e6a40f5cbf2E2F9Cd76",
+   "feeds": [
+    "0x000bd162fe05d235fc9ab58aea34c270ae9eae53a33fa209c941ed59f9d267ed",
+    "0x000bc9402b89cf3a392f8fa8a2b82b5a8b861c126f9432345a2705d2cde9c2e6",
+    "0x000b51fc97cdc9f52ce9faa604c8f4822c7a751d3a85f425cefd800c3978d2e6"
+   ],
+   "name": "iShares 1-3 Year Treasury Bond ETF",
+   "kind": "etf"
+  },
+  "SIMO": {
+   "token": "0x514aE39414C1EfF674d0ebd9B41D1f131851FD08",
+   "regularVault": "0x7F196c87C9e8C8637C088f730c1E57Fba81bf6d2",
+   "continuousVault": "0xdE124131d53DA7c7B5Da94e5B98c5665Af5a09C0",
+   "feeds": [
+    "0x000bee5412f4515d1ea22c531d4ea502600eea1fc72435f4c26d5b870ff8785e",
+    "0x000b4613219b25a026f6c280d894e1458240f3664f93608e038c9187c051bded",
+    "0x000ba5f964d8dacf1206ecc27a93584416f72d70ddf44e01e45b00f07e333b06"
+   ],
+   "name": "Silicon Motion",
+   "kind": "stock"
+  },
+  "SKHY": {
+   "token": "0x8ccdD8bc350E56aF81af2c2f8B7010C6286aAED3",
+   "regularVault": "0x6de5eDbDfE03446A2F56608761c55Ef18E5805e7",
+   "continuousVault": "0xfE15AF9E2eb02279007BfA32E6f0097bbCe282f6",
+   "feeds": [
+    "0x000b969a2bbcf78978e0bf0ede4b33502130459a5a5d95fc6775200277d9958b",
+    "0x000b86f9f3dad32aa8be6b1c2214926de7f6636fd9fea9ea397133ea57126602",
+    "0x000bd001264a84eaa6efe46ebc572b96d98e8e9cbbbdf33942ecf11024793c85"
+   ],
+   "name": "SK hynix Inc. American Depositary Shares",
+   "kind": "stock"
+  },
+  "SLS": {
+   "token": "0x9b4DE01fab1F59f3D9743bD7e59f371213500239",
+   "regularVault": "0x70c6A1e8b4a93a2882f4062d5BA3587393BF8791",
+   "continuousVault": "0x08695c92696e0B31E112d0C8d5c3047c7970b599",
+   "feeds": [
+    "0x000b8233f93fba64145a32b2570adda4722a813c79ac4dc6d0f622b29ba24b16",
+    "0x000bf12da34f1a02df636d3384a84422bebfc81981dac5517d738170ea470eeb",
+    "0x000b277e340b97b0c299223325a1d36d24c8d9ce86f651d4fe26a78447c8d064"
+   ],
+   "name": "SELLAS Life Sciences",
+   "kind": "stock"
+  },
+  "SLV": {
+   "token": "0xe156981FF9b7c58ABDe8d7366463543bB76b3fEf",
+   "regularVault": "0xEb89d71e80F8ad592a78e2C00126fB7561845E80",
+   "continuousVault": "0x13E1B16e7516FBd4ce48c28E337c24860db243d2",
+   "feeds": [
+    "0x000b625204399797bba4a800b3c0987302fb86a40bab74e6a225702ba084fe48",
+    "0x000be47a2da8d41693401c4bfb5ec62b48fb9e55a29d6e4d61a320f97eb7083c",
+    "0x000b224df421c8541a4bb41bf8ce5d2f1dc77dfa30e0fa1004bfb90cff61c7b1"
+   ],
+   "name": "iShares Silver Trust",
+   "kind": "etf"
+  },
+  "SMCI": {
+   "token": "0x190B4fF925f0A7296D4A184BA199e84d05dde01A",
+   "regularVault": "0x1A30993359b6bfB5e2fDED7Ea23Ae0B9f4D4B74D",
+   "continuousVault": "0x2c158578A653e1128cCfd1b776f4550ae0cF31fA",
+   "feeds": [
+    "0x000bcb8b42341dabeca2727e472255573ceb630e355a9e174c858860f327e0be",
+    "0x000b01f8be789a2cd1db64b008d20f9626f36f0539af685405a80cb6a0960ccc",
+    "0x000b7e15309f50bca5d3608059553be03bc774b432b7df9580ad42fd0ef6b5c8"
+   ],
+   "name": "Super Micro Computer",
+   "kind": "stock"
+  },
+  "SMH": {
+   "token": "0x730624a9d327c7556506b9006A488EdfA6a569cd",
+   "regularVault": "0xCbAd09b262fC6787CAE74516475c21DbA3514d8D",
+   "continuousVault": "0xe31Ee19bfbE7E6729646DAe55ac3aC08B8F6D7f5",
+   "feeds": [
+    "0x000b6f0071ff1917aaacdd2f856fc9f019f8966b33c8c7d972b9b690952b0a3b",
+    "0x000b646c0f0e22ef43248f9d27b8692540e2d3abd989648cbc5db632cd407b96",
+    "0x000b8f7446695e69d02c924fd1ec8116d117345b036435f514724ff4fa2ea487"
+   ],
+   "name": "VanEck Semiconductor ETF",
+   "kind": "etf"
+  },
+  "SMR": {
+   "token": "0x37B43b6e935678Bf6366e80b10920E610baC852a",
+   "regularVault": "0x92388383933e0dd14e00dF11a96261dA60780084",
+   "continuousVault": "0x0fe9d46714C0273A345Dd4F1085B71c1169CBDc2",
+   "feeds": [
+    "0x000bd316f3f97214a354f84de7be926aa5a335126bb9c7e59f2db7533368d0f9",
+    "0x000bc4f624a066355a4f4a44607688e556561f86519354aa58ed723edbaebd6a",
+    "0x000b76421589179c34f0262b74fb1bc989f01b3a36cdd51703f0584597619a1c"
+   ],
+   "name": "NuScale Power",
+   "kind": "stock"
+  },
+  "SNAP": {
+   "token": "0x5878e34eae59aF15C24BA67813b2a54A395c6022",
+   "regularVault": "0x934C01c9D4983BceE0520d99ED7A6452ABa1f511",
+   "continuousVault": "0xDCAaBcF2c158E90f7B4213ceC5032882d26f597e",
+   "feeds": [
+    "0x000b83911abd912f01c0c3f5fddfbc1faf8e1de2d2f19ff519cdd0e05917beb5",
+    "0x000bdacf0e957fe370c9567c14b868f030fa3e1baaf7d310deec82ad0ea551ce",
+    "0x000b2fd79e3e8abce0c29daa5a87b73a124299cfafbfff5d56b2f29ca72fb324"
+   ],
+   "name": "Snap",
+   "kind": "stock"
+  },
+  "SNDK": {
+   "token": "0xbd7AeCa9Fc28F4f2F54D7F3aA337A0940BE0044a",
+   "regularVault": "0xD18a4A3333534EA43A2271AddCA7676d2246B390",
+   "continuousVault": "0x5e3B4C59557e355A604c0639d60E6159BbC5cb3e",
+   "feeds": [
+    "0x000bf4fdf75ab12d17ef24946d2264afad14c12b0a41fcaf74b4ed8ce3b46602",
+    "0x000b165089ff1bfe1e5df3afd5cc0898aaebee74d6c76b7d242b7452869937d2",
+    "0x000bf189dfb7e33271aefbd47f28b149cbb5d6fdb4d2e2a8f59eaf673ff2a779"
+   ],
+   "name": "Sandisk Corporation",
+   "kind": "stock"
+  },
+  "SNOW": {
+   "token": "0x1EbCBE92D13D86c5D50edB1a9f5Afce3F53384F4",
+   "regularVault": "0x66190D6B22294D5abfecd369f9993DeBF49Beb51",
+   "continuousVault": "0x676E70783e498504452d6B41e4A317E65Fa324E1",
+   "feeds": [
+    "0x000bad7f282ee0c2bfca2e0e85d74d0fa1900ff4174972871cd287df5fe10b7e",
+    "0x000ba256085a3dfab3832e4ececf76d87c9b69ccde14cbd437d8ad0644b7df67",
+    "0x000b5ed938c6f07406f4f6c3282428572a4b12fe53f47e564ec1247af54f2325"
+   ],
+   "name": "Snowflake",
+   "kind": "stock"
+  },
+  "SOFI": {
+   "token": "0x75216C59c32B20cc90FF640e2A2Cb2bb66bF7236",
+   "regularVault": "0x39DbDE2796C7D56444eC70913AC5209e78407911",
+   "continuousVault": "0x1e3c8A3f46999782d1898dDae4e13fc72437677a",
+   "feeds": [
+    "0x000b58425b72c2ea38ae9fb8ac91e4d9c609a67d4fea8d7014c59e3369bb5e96",
+    "0x000b7faed14da4b1cca77f2f60449c334239b0329b8619e79b85a37946bc30ba",
+    "0x000b2a1a2a621969ba4b25a07dcb768059c650df379bd61385f5d4b38f075600"
+   ],
+   "name": "SoFi Technologies",
+   "kind": "stock"
+  },
+  "SOUN": {
+   "token": "0x3425FAD996b2262DFA6Ec90251eF5470Cb241A86",
+   "regularVault": "0x82c3ee38D9c6DD71BFf43f1Cb370a5485F83FC97",
+   "continuousVault": "0xFe622F91e6Ed71ca51304f1319ce55Ac5a616C87",
+   "feeds": [
+    "0x000b0ad93c208925a40f064f8e462fcccecaa08ddd144e2a8ebf52480fb9060a",
+    "0x000b628c4310aa78951d26a836c2db0ae053c859ce96d3357393e6c15745215c",
+    "0x000b69201ef25629730cba46b18883d9a669bd7e3b2c0b93d713fc88577f1959"
+   ],
+   "name": "SoundHound AI",
+   "kind": "stock"
+  },
+  "SOXX": {
+   "token": "0x0b6E5807C66AF1AF1537f8D1aF417C07656407e1",
+   "regularVault": "0xF205d8170038acDF521D5D32aEaF96e67eDd739E",
+   "continuousVault": "0xbaF3E7fE856cB688154F00853cf7Cca8875FAc48",
+   "feeds": [
+    "0x000b976d5bcf009c469f194c7386804e5fe9e4123da5545a76da1d0ffdf5e71a",
+    "0x000b42105d604f049f038795a73858e3505f08eff045ed2dd3c55b9a72513790",
+    "0x000b96287da5d67f57b45c30ef6aecccc1c250277d41b2285f0479f3657fdd06"
+   ],
+   "name": "iShares Semiconductor ETF",
+   "kind": "etf"
+  },
+  "SPCX": {
+   "token": "0x353504bc4494Ee5dF82B6947C1802075078D1469",
+   "regularVault": "0x3Cb79530af7187d8F6F138CDc2f9554da2c93974",
+   "continuousVault": "0x0a1ae1efd22D6939E9882ee921fbDaA8DC20C096",
+   "feeds": [
+    "0x000b9414178427fd7fc3baaa69dce2bc2feb758513156b358203e35c16b8788b",
+    "0x000b8d733469c0b46c81d24c307e32a7b9590add1a781b2a1b66d9ac5873f194",
+    "0x000b708126ce3121350370eb683f976c1947216e1f02168c4a4eadd10f233dc8"
+   ],
+   "name": "Space Exploration Technologies Corp. Class A Common Stock",
+   "kind": "stock"
+  },
+  "SPMO": {
+   "token": "0xE80AeEA766B4f62d1Ec097e87d65dC70Ea79c714",
+   "regularVault": "0xA29A9F7fCe3c0C2f66ACcCCA558f102f73700c36",
+   "continuousVault": "0xca7974d40Ace53af611BE369a10BEFB98163569E",
+   "feeds": [
+    "0x000bb58c34e1a44d55b7e4068edac3957aaff5b6024d8d37dd874f4d0e25526e",
+    "0x000bfd6112a387b9dbf46551a28347fa226287ab69327969d6eb02e6fb4c21bf",
+    "0x000b497df3fd9fd451e19c52a2b4e32ee32d4126be4191618f55b9d7dbe5608b"
+   ],
+   "name": "Invesco S&P 500 Momentum ETF",
+   "kind": "etf"
+  },
+  "SPY": {
+   "token": "0x49Ea80d05C015C0F03e7eEF2A4c2Cf38a9535487",
+   "regularVault": "0x054217d3fe28Cb8D41a88bEC1e098F70FC5B9a9b",
+   "continuousVault": "0xAfB2cD47C6a95E7F7ADc2a251D6725F098DaAf05",
+   "feeds": [
+    "0x000bc7e431fcd497f06b9e1dea869bcda3d05049d0601f3d1e56e64c8cdd05ac",
+    "0x000b1a79f503e9b236bc13b01524d1955b5a4d5ff2e22d5a08404c35d23d7301",
+    "0x000b0580ced23f9ae7fd77f817ad7e6aec23a04314454365cfe93060a9041bd3"
+   ],
+   "name": "SPDR S&P 500 ETF Trust",
+   "kind": "etf"
+  },
+  "TE": {
+   "token": "0x7bA6f49178D7731a8EBaA531aA40F2C176ed50dd",
+   "regularVault": "0x3faFe5c9C74BfeB801e9703419020A61c5f691d1",
+   "continuousVault": "0xdFc557B506298331668e4C500B433204119323d0",
+   "feeds": [
+    "0x000b6b185d6376fed8ea21e521fb0c2fbe6293179bcd814b132d20716b08ea00",
+    "0x000bc74dcfdcb5170dc9108657f0a03c3b275670c61d8ac878e3788f36ab5c5e",
+    "0x000b95a5428850de94c476e4d06f09fcc3a615a2aca41e4893c51193b2a29ff3"
+   ],
+   "name": "T1 Energy",
+   "kind": "stock"
+  },
+  "TEAM": {
+   "token": "0x3561609F573A5eB9Dc21e6Df54B5E44019E30b9E",
+   "regularVault": "0x6d121ff53c5E827796F9958305634421D163B18F",
+   "continuousVault": "0x8f24Bf5159186e97CbC3bE8D7d127f855fCd4f22",
+   "feeds": [
+    "0x000b7daa0ebcccb3bf75c9f12b5e81345aeeddc86c1c3165d7fc606fc40c5af9",
+    "0x000bc51606b30fa06caca63109fc75fb33ce6b5385a01951bc279e7aef865b61",
+    "0x000b86c31c37a6cd9bd0da1a9510aa2ade6e659ff0c90c58c29d16ee5cbdcb27"
+   ],
+   "name": "Atlassian Corporation",
+   "kind": "stock"
+  },
+  "TEM": {
+   "token": "0x7B790093c7493790a3cb92B94F5E6465C74Dd0b3",
+   "regularVault": "0x2F406876D06cE83486b0E06836dc51dB1eCDB4DF",
+   "continuousVault": "0xEF93A0CDd172dE96c5009AdC40a1B183CC0D8380",
+   "feeds": [
+    "0x000bf73c127d669027c05ea64796f37caee5d28787b0fc0cf7c4c481633ced69",
+    "0x000bd6a0ed3c892f7d2ed04f7893111abd18c4a682620634670c5e98feb88ab2",
+    "0x000bec424da7917bcfc4371debfc5f18cf56a808a53c5984c53b36b568214f89"
+   ],
+   "name": "Tempus AI",
+   "kind": "stock"
+  },
+  "TER": {
+   "token": "0xb0d47Ce9EF48Bc9DDb2b020746c36f82Bb8b26Dc",
+   "regularVault": "0xEA6e38fCe276C46398969E8291a11136391a8Aff",
+   "continuousVault": "0xC0f41064aFd40EDb2fFB830f210e47E86Dd7599F",
+   "feeds": [
+    "0x000bebb29a106395d0da7988f571ea08c5408d3ac5392f9560a6353a753afccf",
+    "0x000bc6556e53bff55f6585ba1e6198663a02144292eb56f927198fde00ccab18",
+    "0x000b32fed9dea67f0b03f437a72fc0a0ee3c266b1f029abebaadffbe0c3e216a"
+   ],
+   "name": "Teradyne",
+   "kind": "stock"
+  },
+  "TSEM": {
+   "token": "0x0381e26f6386A6BA6c44bdA557d86577Fb217873",
+   "regularVault": "0x5E4Be2C952Bd54B6845cE5944C86775c76d77dAf",
+   "continuousVault": "0x7C5B4745CbE57E9100d23eE404C035b2Fa00E46c",
+   "feeds": [
+    "0x000bfca3c68aa8bce4af95464262d97aa3b13152c215dd8804a8e0598c8e1759",
+    "0x000b86e3dcd4c96976836df3d4cc3652546ecca11d1a46f5eacc3a22ecad01e4",
+    "0x000bac8e43f4e39a6d5ab7a1eee20268316634b21b87656c1435da84321a36e0"
+   ],
+   "name": "Tower Semiconductor",
+   "kind": "stock"
+  },
+  "TSLA": {
+   "token": "0x761AbC9e6Fd8464337BB6A21D56f83b4Ad66cEBA",
+   "regularVault": "0xBa3455386F1915703522dbFCd94eF192bEb647C8",
+   "continuousVault": "0xdf202D43a43C0A1e508Bb12E35697DF2D75683a3",
+   "feeds": [
+    "0x000b2dbed1640ead18d37338b75e4755630a900649261baf4ed79d9a749be13d",
+    "0x000b9e87f3f1ac8e590e47cce07a3e964d94f2abd5692b2f92f1dbab79874b07",
+    "0x000b67554457bf6c7e70d4d599d9634888fc8d79145c534ddd77ba1dae840107"
+   ],
+   "name": "Tesla",
+   "kind": "stock"
+  },
+  "TSM": {
+   "token": "0xdEE652A9A83426313BF3388A24134603B57c05b2",
+   "regularVault": "0xbFa70667f853c305Fc7d97A1332171364Afff1F7",
+   "continuousVault": "0x5dB0da0423829855AE0d6D9F6229470Ae586155A",
+   "feeds": [
+    "0x000b0344421110afd6cfac1a755cc9e96d8a8f4dc333cc0d371e0881bc5c7cec",
+    "0x000b37f19c1624bd108889e0da2d73323a56cd756c828b8099e96dc8e7dd657c",
+    "0x000be6a006c915cd34fb554cb2d6cc4a93085b063ad4a1da230879eff4b153a0"
+   ],
+   "name": "Taiwan Semiconductor Manufacturing",
+   "kind": "stock"
+  },
+  "TTD": {
+   "token": "0x3762CEfA260B461e118D8582675580bDEae76d80",
+   "regularVault": "0x844556c73887c827631053a9974F9Cb7d9Fdc30D",
+   "continuousVault": "0x3335D236c33211c476c1751a7108BDd74f094E7A",
+   "feeds": [
+    "0x000b3c94fe87450c6fbc4394318155816de90a30c69b40219c9716b4d7ccc289",
+    "0x000b91ec88f98f1834f213cedd015de99e1ea7ff9e2cc9c23c67e4bc362f2edf",
+    "0x000b995c73582009a705b54ff9adb73e5729cd7a8fadbe63aad6186583003e73"
+   ],
+   "name": "Trade Desk",
+   "kind": "stock"
+  },
+  "TTWO": {
+   "token": "0xbfC9829Cc0FEb3A36cB4B8E448cD2CfB91027A14",
+   "regularVault": "0xbDE889c784B925d86B1C483CE6e554861DEb5845",
+   "continuousVault": "0x1Ec416D6ebe519BA841870d086560d2f59713fa0",
+   "feeds": [
+    "0x000b93bd7dacf09cee47a7c9cc65c4ca9a80545abdd399f8532d03c99de7fd16",
+    "0x000be6a30a31443132a8488d3ffb315c28dd23630dfe3212af3ebb1213fd4127",
+    "0x000b9cedce968155eba2186a871057d41386e4da623e14efa428bbc4214cdca9"
+   ],
+   "name": "Take-Two Interactive Software",
+   "kind": "stock"
+  },
+  "UMC": {
+   "token": "0xD7a69bbeE3Fc5075D7A4F21F1A0D2bd4c4F76612",
+   "regularVault": "0x5d7998B1Fe93b6fB9b2D148e38Da5B32e2483f7f",
+   "continuousVault": "0xaEC89Cf79B69e8cBe879a834c2d899c0B31ae6c3",
+   "feeds": [
+    "0x000bff904141032bdc0c44a70381dd7655ed38ae92f95ae1103148831046068f",
+    "0x000bc65ddbf418df57856e5d59bc431b3807dc9f658b5e3f049dec94ec06e56b",
+    "0x000b0c658edc0874a38ad7a81576c372376c3f79f4ea19bb5c1d84967aa079ea"
+   ],
+   "name": "United Microelectronics",
+   "kind": "stock"
+  },
+  "UNH": {
+   "token": "0xdBAD2b49bF9eD3e6665101298c495a58D9c38BCF",
+   "regularVault": "0xC3653d754CE4a9FA80E53597443084B02903146D",
+   "continuousVault": "0x0DD2eeeA29e2311a6E044f251497D3452Cc4143f",
+   "feeds": [
+    "0x000b0b5b8e2e6e3bc7a72e9e8ab3c60102cae351134cd2f28531f0e33c0fd30f",
+    "0x000b7c6532a20a7da048e2836a680d55ce163f7bf9f6cce7e0f4260040270b88",
+    "0x000b5d4ba577db1f8e93db7c3d0884023ac9f0b00e3e1faa15be60d5a9e87aaf"
+   ],
+   "name": "UnitedHealth",
+   "kind": "stock"
+  },
+  "UPS": {
+   "token": "0xf5Cb9C1f31275773Aa1C4b8BA5eb14E05f696321",
+   "regularVault": "0x0101884f2b79d8fbAc7594bdA15Fb2d3edf3EaeB",
+   "continuousVault": "0x930c2be993949338B0a877f4d3F23e4a2A7ba392",
+   "feeds": [
+    "0x000bfe37ab7eac351c57aed3391da880c06681843f831ec43dcd21a312ec63da",
+    "0x000b649382f73b9f58bbe109f6925010a7901592ca33e220eec02f28718129f8",
+    "0x000b7acc93db4e422addf42ad647b7501c12b2b591b9a7cae1aa0841aefe5d69"
+   ],
+   "name": "UPS",
+   "kind": "stock"
+  },
+  "USAR": {
+   "token": "0x6e0dd606c2Fe429Fc60a9D23AbF21a643fB8700f",
+   "regularVault": "0x90F59C5d3367887e2690Fb210a28F6f9979021F3",
+   "continuousVault": "0xCAE412Dc22ec7a3891e0A2baBe0cF09a15fe59D2",
+   "feeds": [
+    "0x000b55eb06dfd31f94ad3be1188a1faa6b98fd9ff027854a940865b2131b15b6",
+    "0x000b4b0eb897c1c240a7c6ddeb641901b3b35b533b50778d10cd0b95e3eb4cd8",
+    "0x000bdf3c5598cf5cca86c5af406b458df1d076becd8472296a7a6a213aa6be7d"
+   ],
+   "name": "USA Rare Earth",
+   "kind": "stock"
+  },
+  "USO": {
+   "token": "0x5275751030329C70Ff4C284C85F1DE33a81AEFB5",
+   "regularVault": "0xb1D3DCa241c1df32E526b2f05C567f9951Ff7559",
+   "continuousVault": "0x106753823E5D097a9B2c78af7DFbd4c53fb16D4c",
+   "feeds": [
+    "0x000ba194b6aa0054123418af61559b8987ea6551fff2ef6f9aa50b74ba6b8761",
+    "0x000ba6ba2b89abf64a3686ae10f42444280500569d3e17521f4755e900a78e0f",
+    "0x000b127dce3a99be6a607f27bcd677935d5c202b1c12a9bc6bdd6f912d2a38c5"
+   ],
+   "name": "United States Oil Fund",
+   "kind": "etf"
+  },
+  "VICR": {
+   "token": "0x24D9B75BE7d0B4E537eE59FC9812E839B756c291",
+   "regularVault": "0x51f77506F7f3e0CcA49C3D444155a72520871012",
+   "continuousVault": "0xE2f172a55EA276A9Fbba29726C69a205c9e97C8A",
+   "feeds": [
+    "0x000b9907016d25b6053a4bff31bbdb8a941edee84f18e9f38d8b8a39c8fac78f",
+    "0x000b6fa505d25d430d206d81c6396e17862d4fd0d0988e2497fe258ad87dc17b",
+    "0x000bd24910b9bb0d8aa28f48fdc6a911cdcf0e8a7da6f1664c48d5c44dd1e120"
+   ],
+   "name": "Vicor",
+   "kind": "stock"
+  },
+  "VRT": {
+   "token": "0xA7919D59451C11d1F43C241402167b828D93398e",
+   "regularVault": "0xf07f8493B48BC08cA8354a0c507377050fF1c80C",
+   "continuousVault": "0xCDF28933053af11DeD0AC511A6E77A5f5fD2b827",
+   "feeds": [
+    "0x000b141cf84c9555b70f8d87b4f2687f21d49373b0d3509c895767b6bcc55884",
+    "0x000bdc7430cc613e113a7a1573c0650e19844dd717ec1fdc4bb7886f0709f3d8",
+    "0x000b7bdc9d9b901044e077ea8e3dd49a654e060be417317fa6b74427cefc5274"
+   ],
+   "name": "Vertiv",
+   "kind": "stock"
+  },
+  "VSAT": {
+   "token": "0x5b20421af3AfBC609cA1190c8E0225a78b42D9B9",
+   "regularVault": "0xD7D7d457DceDBb7EeF4Ea61b8fA836f5699C5931",
+   "continuousVault": "0x21958cEEF52fE568fdBBeF319c8420e965b8c94f",
+   "feeds": [
+    "0x000b10572758c98935bb00882fb111d619df46d65b9bfa7bfd9d3a32622ba95b",
+    "0x000b6104d8d36a6314c4ebd358f6a851aefdff530ddfd9adcd2ecf04525c8c6f",
+    "0x000badded2002ec8fc5997b7366c559e2beb5b83b16d6df92e2a320e3e4b59d0"
+   ],
+   "name": "ViaSat",
+   "kind": "stock"
+  },
+  "VST": {
+   "token": "0x25767840B4FCa0390F5b3D8Ec94368dE3d633479",
+   "regularVault": "0x3B2BbCE486100de48b8C15ad8c4F084B4Aa42700",
+   "continuousVault": "0xF8e36bA0FD7d3410AfBb0DB6E495d63FBd5F9E87",
+   "feeds": [
+    "0x000ba27c9d83868f32f53d6dafdc6eb72124f4e5ac5a8ab9744db991290a527e",
+    "0x000bdec9758ddeef8b0d03b373ae4570bb859a03c0250abbacc0747aaf4e44c5",
+    "0x000b4a8355e7aab48a97b8e22299266455df8d4462b761fb184f96eb0c3833ae"
+   ],
+   "name": "Vistra",
+   "kind": "stock"
+  },
+  "VTI": {
+   "token": "0xc6549FF118247846C876957E9c295873348a5296",
+   "regularVault": "0x668e1659DE8e5AE117eC4d3312C59c9093802a46",
+   "continuousVault": "0x9260714e847633B921d5297919c5D554974F6623",
+   "feeds": [
+    "0x000b3370eeed5401abc54ba98831f10a336a8a0b17ecbf1fc0f79192373741bd",
+    "0x000bfeaa6289338862e6cb4ce3aa46aa281e88dc4ddbd49b29447f7a3f8e0463",
+    "0x000bca6ba6e93a7f5aefa721c313424d8f7acd7649d04132669d6ed18286ba71"
+   ],
+   "name": "Vanguard Morningstar Total Stock Market ETF",
+   "kind": "etf"
+  },
+  "WDAY": {
+   "token": "0xeF899f510FdB31B7D2cbace91ea89fFC89D67408",
+   "regularVault": "0x385D75cD470C3627d6837a1B769bBfcFAE903B77",
+   "continuousVault": "0xf99253e7005E5fCffFB8f5fBA8f411078D15d979",
+   "feeds": [
+    "0x000b6ca7258ff84aec2afa17ab0d35cc0f15c9dc56e8973fead8187cec41c405",
+    "0x000b5c9ea52ac0a765ccfd7b488277398d9e0afe8580a9e245238b030d0d8628",
+    "0x000b74050232f315895bffa1569ce77d74416eced50d6adaafa1d48e992afeff"
+   ],
+   "name": "Workday",
+   "kind": "stock"
+  },
+  "WDC": {
+   "token": "0x73e44CD9620AcC1F9d4627F5d37D6FD5443cb9f2",
+   "regularVault": "0xF32CfD5C013DCcDbcDd284f8c4d4DF6b0a08D0cF",
+   "continuousVault": "0x600C2Ef614eB07935bB41c07793D47f5feaa09C9",
+   "feeds": [
+    "0x000b10ec7842eea7cbaf3c151cee3ac8a64277307df998958a4d4fdedad029a6",
+    "0x000b6c09ea4443a98876dffa2e1779d4ef4788dcb65f4533e594ef20325b501d",
+    "0x000b4c00de686fe649bda758855a427e61d47a539c8061f33a8d7327b9b34992"
+   ],
+   "name": "Western Digital",
+   "kind": "stock"
+  },
+  "WULF": {
+   "token": "0xa29F6b4A6E94F9fa1397FDcB8fF4a2C1486540Ff",
+   "regularVault": "0x0Cf256c4a2d9F909c50CbB8c7748076938E52C9F",
+   "continuousVault": "0x3425959ceD7368e9C07dd8B1DD2E79836C52779D",
+   "feeds": [
+    "0x000b0e25277208bc318ee4fa0773fbba58f334c77c132b2fad0a6691f0a736c0",
+    "0x000b2e19c6dbc03fcb033acc60a0e5e5efe4731a790338018ce716b2a7f7d956",
+    "0x000b5ea660d07264493106afd3d61a3d9fd9052aca4e7db7b200c9b8827752ab"
+   ],
+   "name": "TeraWulf",
+   "kind": "stock"
+  },
+  "WYFI": {
+   "token": "0xFf443B6875387B3e433F7153589Ee9fFc94BF8C9",
+   "regularVault": "0xa4929a30EB81E0089B50250A300AfDd18db43Ffc",
+   "continuousVault": "0x2a9772D234E5F04Bea6A5C5FdB22125BdB7729Dc",
+   "feeds": [
+    "0x000b7e43ccca4bf7e3a2ecd8de0f1353787abd7bc4db56e5141762663c65a0b5",
+    "0x000b34621c400e08b19413a1309adb35d8b7dda48e129d6ff869b7341f3fa95a",
+    "0x000b6bc98802813576da9199c2a3bd55e6c91fa3dcc8b6e2a19c8a867a7e16d8"
+   ],
+   "name": "WhiteFiber, Inc.",
+   "kind": "stock"
+  },
+  "XLK": {
+   "token": "0xc3b3BE2280BF93c7D94F95FF02cad06C3223a3b7",
+   "regularVault": "0xBbE86ac4B0E1f3aa44df9B4c6200b921d3241fC9",
+   "continuousVault": "0x17D6ceC6787CCE3DD48198cE2e265ca042D875A5",
+   "feeds": [
+    "0x000bb885f2920cfa841c7b474b1c4b43cddc78e28ff636888ac4fc9f0cca44fb",
+    "0x000b545550ba3b8709693bca278e7240ebdab14f7b5acc63e395bea2493134c4",
+    "0x000b9a53a8ea3feda40c3d7f842a9d79b62662c40d7ad5eec852459853fd16b0"
+   ],
+   "name": "State Street Technology Select Sector SPDR ETF",
+   "kind": "etf"
+  },
+  "XNDU": {
+   "token": "0xcbC8B2f3570a325fb40f9B78a884C2F209E865d9",
+   "regularVault": "0xE6e2880fD16F9eE279CEBc71005A1B3545A55a2D",
+   "continuousVault": "0x656B1e7C830Ed9b6BA3FF9ebD5Ac4Be7D4668AD8",
+   "feeds": [
+    "0x000ba889d7894e8ebbcd1d110814bf54a130a4c52795478cc980df3c21a8b954",
+    "0x000b526e33d1f0a6ff44d6f9438c4a14c36cff3a59d17bfaadc7fa59464e764a",
+    "0x000b138739f66afdf63647c2534eea25a341beb835479d0a45de813ad11e17ad"
+   ],
+   "name": "Xanadu Quantum",
+   "kind": "stock"
+  },
+  "XOM": {
+   "token": "0xab882dC654B53e7D27F7A3829463E7e3Ef11362C",
+   "regularVault": "0x40DB95F5F013c106EF7e5b2693D1B67d13ea4714",
+   "continuousVault": "0x57199B1228Dd1DACf0B06275f491b90F6812fa47",
+   "feeds": [
+    "0x000b0033d25701479b8db85d3a7addc8696e3d3d25791b0557a7dc80d18aebd1",
+    "0x000b76ab63b05cb7eda8cc256f9bf3a6a6c708e93918803d99f6ae83862ab05c",
+    "0x000b51b8cc112a2ae28fd35d78349ecf86daecd56153d4d8c66a504c65250657"
+   ],
+   "name": "ExxonMobil Holdings Corporation",
+   "kind": "stock"
+  },
+  "ZETA": {
+   "token": "0xEa98DD660d5720694b6a48CBC6964d8f1910F097",
+   "regularVault": "0x9FfE83eD843Ed9BF9a859F5795171aC1CecAACaA",
+   "continuousVault": "0xc6650468962B1cB3ebE872CC5136C0d8ac033835",
+   "feeds": [
+    "0x000b2a58a7c8dbed4a2aacaf5f5c1a04d576bbeea870a7773aeeba5815b84e76",
+    "0x000b5a8d82701f6adc2f8c2dc466bcad00a7aee4f7d2a26821e4a4c8dea975c6",
+    "0x000b2c77ec99e7b27ed54970f97e167d3ceef5237af5f32c82a74282153fef12"
+   ],
+   "name": "Zeta Global",
+   "kind": "stock"
+  },
+  "ZM": {
+   "token": "0x6Fbb32a6A11f8A9184869cCaCF3da3bDe63cBd38",
+   "regularVault": "0x4E7E0679D2Aaf6198859c70aAE01Ac64B37e0954",
+   "continuousVault": "0xa53f291d6Db48E64439936AfA7D3F92a5A6f2d0f",
+   "feeds": [
+    "0x000be785b43ba80f208992ef6721df6abd3c0bbd3eebe0c6387599609f02bf83",
+    "0x000bc380ec32f2f633de56b083dce211c54f286341912417e511addf992ba4ac",
+    "0x000b0be959c051aafbffec0991e79e6cb329509fe755b05bf81b36f8f262a875"
+   ],
+   "name": "Zoom",
+   "kind": "stock"
+  },
+  "ZS": {
+   "token": "0x9980FA460d895295e7DA6A788043f4fE2736aF1d",
+   "regularVault": "0xAe8B438B69e77a23CB5cD59BE92D78467acf5897",
+   "continuousVault": "0x6711f5f9EfE6446A5990853E51C13E175Af377D4",
+   "feeds": [
+    "0x000b25f4ebff72928e36cea831c7bb1a47731fcee39daa5c2ee9beefae9c6a24",
+    "0x000b0d1ced7e0f5250ced7b01b383b9c5e5752745dfebbff87aadae39915b54e",
+    "0x000b77e09b3d27be52cf20b57e5dfbff27d8c0325d1c562805eec546ecbe3ab6"
+   ],
+   "name": "Zscaler",
+   "kind": "stock"
+  }
+ }
+}

@@ -19,6 +19,7 @@ import optimizer
 import shield
 import streak_guard
 import register
+import swap
 from register import ACCOUNTS, log, parse, read_lines
 
 Account.enable_unaudited_hdwallet_features()
@@ -91,6 +92,12 @@ def run(line_no):
             (config.VAULT, "vault", lambda: apps.vault(chain()[0], line_no, acct, config.VAULT_PCT, tx)),
             (config.CREDIT, "credit", lambda: apps.credit(chain()[0], line_no, acct, config.CREDIT_SUPPLY_PCT,
                                                           config.CREDIT_WRAP_PCT, config.CREDIT_BORROW_PCT, tx)),
+            (config.BUILDER, "builder", lambda: apps.builder(chain()[0], line_no, acct)),
+            (config.SWAP, "swap", lambda: swap.run(chain()[0], line_no, acct, {
+                "count": config.SWAP_COUNT, "usdg": config.SWAP_USDG, "sell_chance": config.SWAP_SELL_CHANCE,
+                "sell_pct": config.SWAP_SELL_PCT, "slippage_bps": config.SWAP_SLIPPAGE_BPS,
+                "inventory_pct": config.SWAP_INVENTORY_PCT, "senior_pct": config.SWAP_SENIOR_PCT,
+                "backstop_usdg": config.SWAP_BACKSTOP_USDG}, tx)),
             (config.PROPOSALS, "proposals", lambda: apps.proposals(chain()[0], line_no, acct, config.PROPOSAL_VOTE))):
         if on:
             try:
@@ -120,7 +127,8 @@ def main():
                              ("desk", config.DESK), ("stake", config.STAKE), ("lock", config.LOCK),
                              ("vote", config.VOTE), ("buyback", config.BUYBACK), ("settle", config.SETTLE),
                              ("omnichain", config.OMNICHAIN),
-                             ("vault", config.VAULT), ("credit", config.CREDIT), ("proposals", config.PROPOSALS),
+                             ("vault", config.VAULT), ("credit", config.CREDIT), ("builder", config.BUILDER),
+                             ("swap", config.SWAP), ("proposals", config.PROPOSALS),
                              ("login", config.LOGIN), ("nick", config.NICK)) if on]
     threads = max(1, min(config.THREADS, len(lines)))
     log(f"accounts: {len(lines)}, threads: {threads}, modules: {', '.join(steps) or 'none'}")

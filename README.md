@@ -83,7 +83,7 @@ python main.py 5      # только аккаунт из 5-й строки
 
 Порядок шагов для каждого аккаунта:
 
-**FAUCET → STREAK_GUARD → DEPOSIT → SHIELD → BONDS → DESK → STAKE → LOCK → VOTE → BUYBACK → SETTLE → OMNICHAIN → VAULT → CREDIT → PROPOSALS → LOGIN/NICK**
+**FAUCET → STREAK_GUARD → DEPOSIT → SHIELD → BONDS → DESK → STAKE → LOCK → VOTE → BUYBACK → SETTLE → OMNICHAIN → VAULT → CREDIT → BUILDER → SWAP → PROPOSALS → LOGIN/NICK**
 
 > С 1 октября 2026 бот работает с **финальной тестнет-сборкой** (pre-season): новый NoteCore `0x55eA…`, новые USDG и акции,
 > новый BondDepository. Season 0 закрыт и заморожен, старые контракты очков больше не дают.
@@ -106,8 +106,10 @@ python main.py 5      # только аккаунт из 5-й строки
 | `SETTLE` | рассчитывает позиции в сериях, которые прошли страйк (Live): `NoteCore.settle` выпускает ноги COUPON/SHIELD и возвращает несматченную часть USDG. Без этого `OMNICHAIN` нечего отправлять |
 | `OMNICHAIN` | отправляет `OMNICHAIN_PCT` % одной ноги COUPON (только серии Live) в Arbitrum Sepolia, комиссия LayerZero ~0.0002 ETH. Обратно не возвращает |
 | `VAULT` | кладёт `VAULT_PCT` % USDG в Build-хранилище (ERC-4626) фабрики `0x9bAb…`: первый раз в случайное хранилище с активами, дальше докладывает в то же. Никогда не выводит. Журнал: `vaults_v2.txt` |
-| `CREDIT` | приложение Credit (рынки Morpho `0x44f0…` на ногах COUPON, LLTV 38,5%). Кнопок на сайте пока нет, бот работает с контрактами напрямую. Каждый запуск даёт в долг `CREDIT_SUPPLY_PCT` % USDG в рынок (дальше в тот же). Один раз на кошелёк: оборачивает `CREDIT_WRAP_PCT` % одной ноги COUPON в токен `nCm…` (`LegWrapFactory 0x6E94…`, 1:1), вносит его залогом и занимает `CREDIT_BORROW_PCT` % от допустимого (LTV ~6–13%, ликвидация при 38,5%). Займ не гасит, ничего не выводит. Журнал: `credit_v2.txt` |
-| `PROPOSALS` | голосует по открытым предложениям NoteGovernor и UpgradeGovernor силой veNOTE (её даёт `LOCK`), по каждому один раз; за / против / воздержался по весам `PROPOSAL_VOTE` |
+| `CREDIT` | приложение Credit (рынки Morpho `0x44f0…` на ногах COUPON, LLTV 38,5%). Кнопок на сайте пока нет, бот работает с контрактами напрямую. Каждый запуск даёт в долг `CREDIT_SUPPLY_PCT` % USDG в рынок (дальше в тот же). Один раз на кошелёк: оборачивает `CREDIT_WRAP_PCT` % одной ноги COUPON в токен `nCm…` (`LegWrapFactory 0x6E94…`, 1:1), вносит его залогом и занимает `CREDIT_BORROW_PCT` % от допустимого (LTV ~6–13%, ликвидация при 38,5%). Займ не гасит, ничего не выводит. Поток Credit 7% (supply × дни 0,6 + долг × дни 0,4) + квест. Журнал: `credit_v2.txt` |
+| `BUILDER` | квест Builder (×3): один раз на кошелёк разворачивает своё USDG-хранилище через фабрику `0x9bAb…` (владелец = кошелёк, своё имя и настройки). Байткод берётся из готовой транзакции и сверяется с `vaultCodeHash` фабрики. Журнал: `built_v2.txt` |
+| `SWAP` | приложение Swap (`swap.py`, поток 8% + 7 квестов): 1–3 свапа за запуск (в основном покупки за USDG, первыми идут акции, которыми кошелёк ещё не торговал; продажа акций с крана, а если движку не хватает USDG (`CapitalLimit`) — покупка вместо неё), докладывает часть одной акции в её Regular/Continuous-хранилище, USDG в Senior-хранилище и один раз на кошелёк делает депозит в Backstop (рассчитывается при следующих запусках, когда у всех рынков свежие цены). Ничего не выводит. Цены — подписанные отчёты Chainlink с сервиса сайта (напрямую, в запросе только ID фидов). Рынки: `swap_markets.json` (195 штук, скопированы из кода сайта). Журнал: `swap_v2.txt` |
+| `PROPOSALS` | голосует по открытым предложениям NoteGovernor и UpgradeGovernor силой veNOTE (её даёт `LOCK`), по каждому один раз. Очков не даёт (поток votes — только голоса за гейджи), поэтому выключен |
 | `LOGIN` | входит на note.systems/community через прокси аккаунта и выводит очки, ранг и стрик |
 | `NICK` | ставит ник, если его ещё нет |
 
@@ -118,6 +120,7 @@ python main.py 5      # только аккаунт из 5-й строки
 | `DEPOSIT_COUNT` | сколько новых депозитов за запуск на аккаунт |
 | `DEPOSIT_PCT` | размер одного депозита, % от баланса USDG (случайно в диапазоне) |
 | `BOND_USDG` | сумма покупки облигации в USDG |
+| `SWAP_*` | Swap: число свапов, USDG на покупку, шанс и % продажи, допуск по цене, % акции в хранилище, % USDG в Senior, сумма депозита в Backstop |
 | `CAPTCHA_SERVICE` | сервис капчи (`capsolver`, `2captcha` или `anticaptcha`) для LOGIN/NICK и Boost (см. ниже). Ключ сервиса лежит в `captcha_key.txt` (пример: `captcha_key.example.txt`), в git не попадает |
 | `THREADS` | сколько аккаунтов обрабатывается параллельно |
 | `DELAY_BETWEEN_ACCOUNTS` | пауза после аккаунта, секунды |
@@ -204,6 +207,8 @@ python fund.py 0.02     # своя сумма
 | `legs_v2.txt` | ноги, уже отправленные в Arbitrum Sepolia (каждая один раз) |
 | `vaults_v2.txt` | депозиты в хранилища: какое хранилище выбрал кошелёк |
 | `credit_v2.txt` | Credit: `адрес,серия,действие,сумма,tx` (supply / wrap / collateral / borrow) |
+| `built_v2.txt` | Builder: какое хранилище развернул кошелёк |
+| `swap_v2.txt` | Swap: `адрес,вид,тикер,сумма,детали,tx` (buy / sell / regular / continuous / senior / backstop-request / backstop-settle) |
 | `registered.txt` | аккаунты, которые уже входили на сайт |
 | `Proxy_dead.txt` | прокси, которые бот заменил (после сбоя их можно вернуть в `Proxy.txt`) |
 | `boost_done.txt`, `boost_funded.txt`, `boost_hubs.txt` | прогресс Boost.py |

@@ -17,6 +17,8 @@ from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
 from web3 import Web3
+from web3.exceptions import TransactionNotFound
+from web3.logs import DISCARD
 
 from deposit import CORE, send
 from faucet import TOKENS
@@ -644,3 +646,56 @@ def proposals(w3, line_no, acct, weights):
     if voted:
         log(f"#{line_no} {acct.address}: voted {'; '.join(voted)}")
     return bool(voted)
+
+
+# ---------------------------------------------------------------- Builder quest (deploy a vault through the factory)
+# NoteVaultFactory.create(params, vaultCode) only takes the audited NoteVault bytecode (vaultCodeHash), so the code is
+# copied from a create tx already on chain and checked against the hash before use.
+VAULT_CODE_TX = "0xa2af6c66a8973640b9c198f1a1d7e42c54e4c1417ad67095c2d279b0ab8f4e49"
+BUILT = BASE / "built_v2.txt"  # "address,vault,name,tx": one vault per wallet
+VAULT_WORDS = ["Atlas", "Harbor", "Summit", "Granite", "Beacon", "Meridian", "Cedar", "Northwind", "Keystone", "Orbit",
+               "Lantern", "Willow", "Anchor", "Falcon", "Copper", "Juniper", "Vector", "Horizon", "Quarry", "Tidal"]
+_vault_code = {"code": None}
+
+
+def vault_code(w3):
+    if _vault_code["code"] is None:
+        factory = contract(w3, VAULT_FACTORY, "vaultfactory")
+        code = factory.decode_function_input(w3.eth.get_transaction(VAULT_CODE_TX)["input"])[1]["vaultCode"]
+        if Web3.keccak(code) != factory.functions.vaultCodeHash().call():
+            raise RuntimeError("the factory's vault code changed, update VAULT_CODE_TX")
+        _vault_code["code"] = code
+    return _vault_code["code"]
+
+
+def builder(w3, line_no, acct):
+    """Deploy one USDG vault per wallet (owner, guardian and fee recipient = the wallet), with its own name and
+    settings drawn from the ranges other builders use. No stock bands: the vault holds USDG until its owner adds any."""
+    if any(l.startswith(acct.address + ",") for l in read_lines(BUILT)):
+        return False
+    name = f"{random.choice(VAULT_WORDS)} {random.choice(['Vault', 'Notes', 'Yield', 'Income', 'Fund'])}"
+    symbol = "".join(w[0] for w in name.split()).lower() + random.choice(["", "x", "n", "v"]) + "USDG"
+    params = (name, symbol, acct.address, acct.address, acct.address,
+              (random.choice([0, 50, 100]), random.choice([0, 500, 1000])),  # management, performance fee bps
+              (random.choice([3500, 5000]), 500, random.choice([500, 1000]), 604800,
+               random.choice([10, 50, 100]) * 10**6, random.choice([0, 50_000, 100_000]) * 10**6, 86400),
+              random.choice([86400, 259200]), 0, 0, [], [])
+    fn = contract(w3, VAULT_FACTORY, "vaultfactory").functions.create(params, vault_code(w3))
+    why = simulate(fn, acct)
+    if why:
+        log(f"#{line_no} {acct.address}: builder refused: {why}")
+        return False
+    h = send(w3, acct, fn, w3.eth.get_transaction_count(acct.address, "pending"))
+    vault = "?"
+    for _ in range(6):  # the RPC pool may answer from a node that has not seen the block yet
+        try:
+            rc = w3.eth.get_transaction_receipt(h)
+            created = contract(w3, VAULT_FACTORY, "vaultfactory").events.VaultCreated().process_receipt(rc, errors=DISCARD)
+            vault = created[0].args["vault"] if created else "?"
+            break
+        except TransactionNotFound:
+            time.sleep(3)
+    with FILE_LOCK, BUILT.open("a", encoding="utf-8") as f:
+        f.write(f"{acct.address},{vault},{name},{h}\n")
+    log(f"#{line_no} {acct.address}: deployed vault '{name}' ({symbol}) {vault}")
+    return True
