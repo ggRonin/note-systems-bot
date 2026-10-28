@@ -92,11 +92,20 @@ class Blocked(Exception):
 # FILE_LOCK, so two threads never take the same spare proxy or overwrite each other's edits.
 FILE_LOCK = threading.RLock()
 LOG_LOCK = threading.Lock()
+LOGS = BASE / "logs"  # one file per day, logs/2026-10-28.log; git-ignored (wallet addresses)
 
 
 def log(msg):
+    """Print a line and append it to today's log file (a failing write never stops the bot)."""
     with LOG_LOCK:
-        print(time.strftime("[%H:%M:%S]"), msg, flush=True)
+        stamp = time.strftime("[%H:%M:%S]")
+        print(stamp, msg, flush=True)
+        try:
+            LOGS.mkdir(exist_ok=True)
+            with (LOGS / time.strftime("%Y-%m-%d.log")).open("a", encoding="utf-8") as f:
+                f.write(f"{stamp} {msg}\n")
+        except OSError:
+            pass
 
 
 def read_lines(path):

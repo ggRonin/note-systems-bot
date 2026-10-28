@@ -32,6 +32,11 @@ STALL_MAX_WAIT = 15 * 60
 STALL_POLL = 10
 
 
+def _log(msg):
+    from register import log  # local: keeps rpc.py importable on its own
+    log(msg)
+
+
 class _ChainWatch:
     def __init__(self):
         self.lock = threading.Lock()
@@ -55,13 +60,11 @@ class _ChainWatch:
                     age = 0  # cannot tell: let the send try and its own retries handle it
                 if age <= STALL_AFTER or time.time() - start > STALL_MAX_WAIT:
                     if warned:
-                        print(time.strftime("[%H:%M:%S]"), f"chain is moving again (waited {time.time() - start:.0f}s)",
-                              flush=True)
+                        _log(f"chain is moving again (waited {time.time() - start:.0f}s)")
                     self.checked = time.time()
                     return
                 if not warned:
-                    print(time.strftime("[%H:%M:%S]"), f"chain stalled: last block {age:.0f}s ago, sends wait",
-                          flush=True)
+                    _log(f"chain stalled: last block {age:.0f}s ago, sends wait")
                     warned = True
                 time.sleep(STALL_POLL)
 

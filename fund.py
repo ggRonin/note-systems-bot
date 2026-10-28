@@ -7,7 +7,6 @@ can be re-run safely. RPC is called directly: the proxy provider denies the RPC 
 and a signed transaction does not depend on the IP it is broadcast from.
 """
 import sys
-import time
 from pathlib import Path
 
 from eth_account import Account
@@ -23,7 +22,8 @@ EXPLORER = "https://explorer.testnet.chain.robinhood.com/tx/"
 
 
 def log(msg):
-    print(time.strftime("[%H:%M:%S]"), msg, flush=True)
+    from register import log as write  # the same console + logs/ file as main.py
+    write(msg)
 
 
 def main():
