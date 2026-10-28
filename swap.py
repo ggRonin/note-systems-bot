@@ -112,19 +112,26 @@ def _round_sig(x, digits):
 
 
 # ---------------------------------------------------------------- reports
+_service = {"down_until": 0}
+
+
 def report(session, symbol):
     """The canonical signed report for the market's current session, as the site picks it: the regular stream's
     status says which of regular / extended / overnight is live. Returns (fullReport bytes, expiresAt)."""
     feeds = MARKETS[symbol]["feeds"]
-    for attempt in range(4):  # the report service drops a connection now and then
+    if _service["down_until"] > time.time():
+        raise RuntimeError("report service down")
+    for attempt in range(3):  # the report service drops a connection now and then
         try:
-            r = session.get(CFG["reports"] + "/api/v1/reports/bulk", params={"feedIDs": ",".join(feeds)}, timeout=30)
+            r = session.get(CFG["reports"] + "/api/v1/reports/bulk", params={"feedIDs": ",".join(feeds)}, timeout=20)
             r.raise_for_status()
             break
         except requests.RequestException:
-            if attempt == 3:
+            if attempt == 2:
+                _service["down_until"] = time.time() + 600  # skip it for 10 minutes on every thread
+                log("swap: report service unreachable, trading on the engine's own prints (Discovery) for 10 min")
                 raise
-            time.sleep(3 + 3 * attempt)
+            time.sleep(2 + 2 * attempt)
     parsed = {}
     for rep in r.json()["reports"]:
         raw = bytes.fromhex(rep["fullReport"][2:])
@@ -144,10 +151,13 @@ def report(session, symbol):
 def _swap_once(w3, acct, session, core, lens, symbol, stock_in, amount, slippage_bps):
     """Quote and send one exact-in swap. Returns a log line or raises RuntimeError with the reason."""
     token = Web3.to_checksum_address(MARKETS[symbol]["token"])
-    rep, _ = report(session, symbol)
+    try:
+        reports = [report(session, symbol)[0]]
+    except (RuntimeError, requests.RequestException):
+        reports = []  # report service down (it was for days in October): the engine still trades in Discovery
     params = (token, stock_in, True, amount, 0, acct.address, int(time.time()) + DEADLINE)
-    q = None
-    for data in (rep, b""):  # in Discovery the engine prices from its own last print: the empty report is enough
+    q, why = None, "no quote"
+    for data in reports + [b""]:  # in Discovery the engine prices from its own last print: the empty report is enough
         try:
             q = lens.functions.quoteWithReport(params, data).call({"from": acct.address})
             rep = data

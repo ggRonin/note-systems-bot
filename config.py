@@ -1,10 +1,11 @@
 # ---------------------------------------------------------------- modules (1 = on, 0 = off)
-# Run order per account: FAUCET -> STREAK_GUARD -> DEPOSIT -> SHIELD -> BONDS -> DESK -> STAKE -> LOCK -> VOTE
+# Run order per account: FAUCET -> CLAIM -> STREAK_GUARD -> DEPOSIT -> SHIELD -> BONDS -> DESK -> STAKE -> LOCK -> VOTE
 #   -> BUYBACK -> SETTLE -> OMNICHAIN -> VAULT -> CREDIT -> BUILDER -> SWAP -> PROPOSALS -> LOGIN/NICK
 #   (nick is allowed only after a deposit)
 LOGIN = 1    # sign in on note.systems/community and show points (via the account's proxy)
 NICK = 0     # set a random nick if the account has none (the site allows it only after the first deposit)
 FAUCET = 1   # claim 1,000 USDG + 10 of each stock token (every 24h, direct RPC)
+CLAIM = 1    # right after the faucet: settle struck notes, take the unmatched refunds and the coupons ("Claimable now")
 OPTIMIZER = 1  # optimizer.py decides COUPON / SHIELD, series and sizes for the most points (replaces DEPOSIT + SHIELD)
 DEPOSIT = 0  # (only with OPTIMIZER = 0) plain USDG COUPON into random open series
 SHIELD = 1   # (only with OPTIMIZER = 0) SHIELD into free COUPON demand + COUPON+SHIELD pairs over every stock held

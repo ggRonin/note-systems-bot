@@ -293,6 +293,54 @@ def settle(w3, line_no, acct, tx_delay):
     return bool(done)
 
 
+# ---------------------------------------------------------------- Claim (refunds + coupons)
+def claim(w3, line_no, acct, tx_delay):
+    """Collect what the wallet's notes owe it, like the app's Portfolio "Claimable now":
+    settle struck positions first (settle() fixes the refund but does not pay it), then
+    NoteCore.refund(series) for the unmatched USDG / stock and NoteCore.claim(series) for the coupons.
+    Runs before the optimizer, so the freed USDG goes back into notes on the same run."""
+    from streak_guard import wallet_deposits  # local: streak_guard imports deposit/shield
+
+    settle(w3, line_no, acct, tx_delay)
+    core = w3.eth.contract(address=CORE, abi=[
+        {"type": "function", "name": "getPosition", "stateMutability": "view",
+         "inputs": [{"type": "uint256"}, {"type": "address"}],
+         "outputs": [{"type": "tuple", "components": [{"type": "uint256"}] * 8 + [{"type": "bool"}]}]},
+        {"type": "function", "name": "accruedCoupon", "stateMutability": "view",
+         "inputs": [{"type": "uint256"}, {"type": "address"}], "outputs": [{"type": "uint256"}]},
+        {"type": "function", "name": "refund", "stateMutability": "nonpayable",
+         "inputs": [{"type": "uint256"}], "outputs": [{"type": "uint256"}, {"type": "uint256"}]},
+        {"type": "function", "name": "claim", "stateMutability": "nonpayable",
+         "inputs": [{"type": "uint256"}], "outputs": [{"type": "uint256"}]}])
+    usdg = contract(w3, TOKENS["USDG"], "erc20")
+    before = usdg.functions.balanceOf(acct.address).call()
+    refunded, claimed = [], []
+    for sid in sorted({r["sid"] for r in wallet_deposits(w3, acct.address)}):
+        p = core.functions.getPosition(sid, acct.address).call()  # [3]+[4] USDG to refund, [5] stock to refund
+        steps = []
+        if p[3] + p[4] or p[5]:
+            steps.append((core.functions.refund(sid), refunded))
+        if core.functions.accruedCoupon(sid, acct.address).call():
+            steps.append((core.functions.claim(sid), claimed))
+        for fn, done in steps:
+            why = simulate(fn, acct)
+            if why:
+                log(f"#{line_no} {acct.address}: claim #{sid} {fn.fn_name} refused: {why}")
+                continue
+            try:
+                send(w3, acct, fn, w3.eth.get_transaction_count(acct.address, "pending"))
+                done.append(f"#{sid}")
+            except Exception as e:
+                log(f"#{line_no} {acct.address}: claim #{sid} {fn.fn_name} ERROR {str(e)[:150]}")
+            time.sleep(random.uniform(*tx_delay))
+    if not refunded and not claimed:
+        log(f"#{line_no} {acct.address}: claim skip, nothing owed")
+        return False
+    got = (usdg.functions.balanceOf(acct.address).call() - before) / 1e6
+    log(f"#{line_no} {acct.address}: claimed {got:,.2f} USDG (refunds {len(refunded)}, coupons {len(claimed)} series)")
+    return True
+
+
 # ---------------------------------------------------------------- Omnichain (3%)
 def omnichain(w3, line_no, acct, pct, tx_delay):
     """Move pct % of one COUPON leg to Arbitrum Sepolia (leg units away x days; coupons keep

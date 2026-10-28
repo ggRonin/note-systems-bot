@@ -52,6 +52,11 @@ def run(line_no):
             acted |= faucet.claim_all(*chain(), line_no, acct)
         except Exception as e:
             log(f"#{line_no} {acct.address}: faucet ERROR {e}")
+    if config.CLAIM:  # before the deposits: refunds and coupons go back into notes on the same run
+        try:
+            acted |= apps.claim(chain()[0], line_no, acct, config.DELAY_BETWEEN_TX)
+        except Exception as e:
+            log(f"#{line_no} {acct.address}: claim ERROR {str(e)[:200]}")
     # before DEPOSIT/SHIELD/BONDS: a salvage re-entry gets the USDG first
     if config.STREAK_GUARD:
         try:
@@ -120,7 +125,7 @@ def main():
     if len(sys.argv) > 1:
         lines = [int(sys.argv[1])]
 
-    steps = [n for n, on in (("faucet", config.FAUCET), ("streak guard", config.STREAK_GUARD),
+    steps = [n for n, on in (("faucet", config.FAUCET), ("claim", config.CLAIM), ("streak guard", config.STREAK_GUARD),
                              ("optimizer", config.OPTIMIZER),
                              ("deposit", config.DEPOSIT and not config.OPTIMIZER),
                              ("shield", config.SHIELD and not config.OPTIMIZER), ("bonds", config.BONDS),

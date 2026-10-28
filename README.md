@@ -83,7 +83,7 @@ python main.py 5      # только аккаунт из 5-й строки
 
 Порядок шагов для каждого аккаунта:
 
-**FAUCET → STREAK_GUARD → DEPOSIT → SHIELD → BONDS → DESK → STAKE → LOCK → VOTE → BUYBACK → SETTLE → OMNICHAIN → VAULT → CREDIT → BUILDER → SWAP → PROPOSALS → LOGIN/NICK**
+**FAUCET → CLAIM → STREAK_GUARD → DEPOSIT → SHIELD → BONDS → DESK → STAKE → LOCK → VOTE → BUYBACK → SETTLE → OMNICHAIN → VAULT → CREDIT → BUILDER → SWAP → PROPOSALS → LOGIN/NICK**
 
 > С 1 октября 2026 бот работает с **финальной тестнет-сборкой** (pre-season): новый NoteCore `0x55eA…`, новые USDG и акции,
 > новый BondDepository. Season 0 закрыт и заморожен, старые контракты очков больше не дают.
@@ -94,6 +94,7 @@ python main.py 5      # только аккаунт из 5-й строки
 | Модуль | Что делает |
 |---|---|
 | `FAUCET` | забирает кран: 1 000 USDG + 10 каждой акции (раз в 24 ч) |
+| `CLAIM` | забирает то, что на сайте в Portfolio показано как «Claimable now»: рассчитывает позиции, прошедшие страйк (`settle`), возвращает несматченные USDG и акции (`NoteCore.refund`) и забирает купоны (`NoteCore.claim`). Идёт до оптимизатора, чтобы деньги вернулись в ноты в том же запуске |
 | `STREAK_GUARD` | проверяет здоровье позиций и спасает стрик после пробоя (см. ниже). Нужен только для Season 0 (стрик и Salvage Window из замороженного профиля), по умолчанию выключен |
 | `DEPOSIT` | делает `DEPOSIT_COUNT` депозитов COUPON в случайные открытые серии, каждый на `DEPOSIT_PCT` % баланса USDG |
 | `SHIELD` | ставит все акции в SHIELD, размер подгоняется так, чтобы позиция полностью сматчилась; плюс пары COUPON+SHIELD из своих средств |

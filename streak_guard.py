@@ -59,13 +59,19 @@ _feeds = {}                         # feed -> (at, answer, updatedAt)
 
 
 # ---------------------------------------------------------------- chain reads (shared caches)
+LOG_SPAN = 9_000_000  # the RPC takes at most 10,000,000 blocks per log query
+
+
 def get_logs(w3, topics, start=DEPLOY_BLOCK, end=None):
-    """NoteCore logs; a range over the RPC's 10,000-log limit is split in halves."""
+    """NoteCore logs; a range over the RPC's block span or 10,000-log limit is split in halves."""
     end = w3.eth.block_number if end is None else end
+    if end - start > LOG_SPAN:
+        mid = (start + end) // 2
+        return get_logs(w3, topics, start, mid) + get_logs(w3, topics, mid + 1, end)
     try:
         return w3.eth.get_logs({"address": CORE, "fromBlock": start, "toBlock": end, "topics": topics})
     except Exception as e:
-        if "exceeds limit" not in str(e) or end <= start:
+        if not any(m in str(e) for m in ("exceeds limit", "narrow the block range")) or end <= start:
             raise
     mid = (start + end) // 2
     return get_logs(w3, topics, start, mid) + get_logs(w3, topics, mid + 1, end)
