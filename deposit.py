@@ -86,14 +86,22 @@ def open_series(w3):
                           "prefund_bps": v[5] * (len(v[12]) - 1) + v[8]})
 
         def price(s):
-            # requiredPrefund of one share / prefund rate = the reference price in USDG (1e6) per share
-            s["per_share"] = core.functions.requiredPrefund(s["id"], 10**18).call()
-            s["price"] = s["per_share"] * 10**4 // s["prefund_bps"]
+            # requiredPrefund of one share / prefund rate = the reference price in USDG (1e6) per share.
+            # A stale feed reverts (StalePrice): that series sits out this round instead of failing the whole list.
+            try:
+                s["per_share"] = core.functions.requiredPrefund(s["id"], 10**18).call()
+                s["price"] = s["per_share"] * 10**4 // s["prefund_bps"]
+            except Exception as e:
+                s["skip"] = str(e)[:80]
 
         with ThreadPoolExecutor(max_workers=16) as pool:
             list(pool.map(price, found))
+        skipped = [s for s in found if "skip" in s]
+        found = [s for s in found if "skip" not in s]
         _cache.update(at=time.time(), series=found)
-        log(f"open series: {len(found)} ({', '.join(str(s['id']) for s in found)})")
+        no_price = ", ".join("#%d %s" % (s["id"], s["symbol"]) for s in skipped)
+        log(f"open series: {len(found)} ({', '.join(str(s['id']) for s in found)})"
+            + (f"; no price, skipped: {no_price}" if skipped else ""))
         return found
 
 

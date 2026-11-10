@@ -293,11 +293,16 @@ def settle(w3, line_no, acct, tx_delay):
     return bool(done)
 
 
-# ---------------------------------------------------------------- Claim (refunds + coupons)
+# ---------------------------------------------------------------- Claim (refunds + coupons + ended notes)
+ENDED = (3, 4)  # seriesStatus Autocalled, Matured: the legs are redeemable
+
+
 def claim(w3, line_no, acct, tx_delay):
     """Collect what the wallet's notes owe it, like the app's Portfolio "Claimable now":
     settle struck positions first (settle() fixes the refund but does not pay it), then
-    NoteCore.refund(series) for the unmatched USDG / stock and NoteCore.claim(series) for the coupons.
+    NoteCore.refund(series) for the unmatched USDG / stock, NoteCore.claim(series) for the coupons, and
+    redeem / redeemShield for the legs of notes that ended (Autocalled, Matured) and still sit in the wallet
+    (legs sent to Arbitrum or posted in Credit stay where they are).
     Runs before the optimizer, so the freed USDG goes back into notes on the same run."""
     from streak_guard import wallet_deposits  # local: streak_guard imports deposit/shield
 
@@ -311,10 +316,16 @@ def claim(w3, line_no, acct, tx_delay):
         {"type": "function", "name": "refund", "stateMutability": "nonpayable",
          "inputs": [{"type": "uint256"}], "outputs": [{"type": "uint256"}, {"type": "uint256"}]},
         {"type": "function", "name": "claim", "stateMutability": "nonpayable",
-         "inputs": [{"type": "uint256"}], "outputs": [{"type": "uint256"}]}])
+         "inputs": [{"type": "uint256"}], "outputs": [{"type": "uint256"}]},
+        {"type": "function", "name": "seriesStatus", "stateMutability": "view",
+         "inputs": [{"type": "uint256"}], "outputs": [{"type": "uint8"}]}]
+        + [{"type": "function", "name": n, "stateMutability": "nonpayable",
+            "inputs": [{"type": "uint256"}, {"type": "uint256"}], "outputs": [{"type": "uint256"}, {"type": "uint256"}]}
+           for n in ("redeem", "redeemShield")])
+    legs = contract(w3, NOTE_LEGS, "legs")
     usdg = contract(w3, TOKENS["USDG"], "erc20")
     before = usdg.functions.balanceOf(acct.address).call()
-    refunded, claimed = [], []
+    refunded, claimed, redeemed = [], [], []
     for sid in sorted({r["sid"] for r in wallet_deposits(w3, acct.address)}):
         p = core.functions.getPosition(sid, acct.address).call()  # [3]+[4] USDG to refund, [5] stock to refund
         steps = []
@@ -322,6 +333,11 @@ def claim(w3, line_no, acct, tx_delay):
             steps.append((core.functions.refund(sid), refunded))
         if core.functions.accruedCoupon(sid, acct.address).call():
             steps.append((core.functions.claim(sid), claimed))
+        if core.functions.seriesStatus(sid).call() in ENDED:  # the note is over: redeem the legs still at home
+            for leg, fn_name in ((sid << 1, "redeem"), ((sid << 1) | 1, "redeemShield")):
+                units = legs.functions.balanceOf(acct.address, leg).call()
+                if units:
+                    steps.append((getattr(core.functions, fn_name)(sid, units), redeemed))
         for fn, done in steps:
             why = simulate(fn, acct)
             if why:
@@ -333,11 +349,12 @@ def claim(w3, line_no, acct, tx_delay):
             except Exception as e:
                 log(f"#{line_no} {acct.address}: claim #{sid} {fn.fn_name} ERROR {str(e)[:150]}")
             time.sleep(random.uniform(*tx_delay))
-    if not refunded and not claimed:
+    if not refunded and not claimed and not redeemed:
         log(f"#{line_no} {acct.address}: claim skip, nothing owed")
         return False
     got = (usdg.functions.balanceOf(acct.address).call() - before) / 1e6
-    log(f"#{line_no} {acct.address}: claimed {got:,.2f} USDG (refunds {len(refunded)}, coupons {len(claimed)} series)")
+    log(f"#{line_no} {acct.address}: claimed {got:,.2f} USDG (refunds {len(refunded)}, coupons {len(claimed)}, "
+        f"redeemed {len(redeemed)} legs of ended notes)")
     return True
 
 
