@@ -1,6 +1,6 @@
 # ---------------------------------------------------------------- modules (1 = on, 0 = off)
-# Run order per account: FAUCET -> CLAIM -> STREAK_GUARD -> DEPOSIT -> SHIELD -> BONDS -> DESK -> STAKE -> LOCK -> VOTE
-#   -> BUYBACK -> SETTLE -> OMNICHAIN -> VAULT -> CREDIT -> BUILDER -> SWAP -> PROPOSALS -> LOGIN/NICK
+# Run order per account: FAUCET -> CLAIM -> UNPARK -> STREAK_GUARD -> DEPOSIT -> SHIELD -> BONDS -> DESK -> STAKE -> LOCK
+#   -> VOTE -> BUYBACK -> SETTLE -> OMNICHAIN -> VAULT -> CREDIT -> BUILDER -> SWAP -> PROPOSALS -> PARK -> LOGIN/NICK
 #   (nick is allowed only after a deposit)
 LOGIN = 1    # sign in on note.systems/community and show points (via the account's proxy)
 NICK = 0     # set a random nick if the account has none (the site allows it only after the first deposit)
@@ -24,6 +24,7 @@ VAULT = 1      # deposit part of the USDG into a Build vault (one random vault p
 CREDIT = 1     # Credit (Morpho): lend USDG every run + one small loan against a wrapped COUPON leg (never repays/withdraws)
 BUILDER = 1    # deploy one vault per wallet through the vault factory ("Builder" quest, x3)
 SWAP = 1       # Swap app (swap.py): swaps + stock inventory + Senior USDG + Backstop (swap stream 8% and 7 quests)
+PARK = 1       # no open note series: park idle USDG in Credit supply (still earns points); taken back when series open
 PROPOSALS = 0  # vote on open governance proposals with veNOTE (no stream or quest pays for it: only gauge votes count)
 
 # ---------------------------------------------------------------- deposits
@@ -59,6 +60,7 @@ CREDIT_SUPPLY_PCT = (2, 5)    # % of the USDG balance lent into a Credit market 
 CREDIT_WRAP_PCT = (5, 15)     # % of one COUPON leg wrapped and posted as collateral (once per wallet)
 CREDIT_BORROW_PCT = (15, 35)  # % of the allowed loan borrowed: LTV ~6-13% against the 38.5% liquidation line
 PROPOSAL_VOTE = (75, 10, 15)  # chance weights of for / against / abstain on a proposal
+PARK_KEEP = (200, 400)        # USDG left on the wallet when parking (swaps, bonds, the next run's small deposits)
 
 # ---------------------------------------------------------------- swap (swap.py)
 SWAP_COUNT = (1, 3)          # swaps per run (the first ones go to stocks the wallet has not traded: "Three Stocks")

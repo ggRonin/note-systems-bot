@@ -2,8 +2,8 @@
 
 - All threads share one request budget (RPS requests per second), so parallel work
   cannot trip the public RPC's 429 rate limit.
-- Requests alternate between the official RPC and the dRPC mirror (both allowed by
-  note.systems' own CSP).
+- Requests rotate over URLS (now the official RPC only: the dRPC mirror stopped serving
+  this chain on its free plan).
 - 429 / connection errors / timeouts are retried transparently with backoff, so a
   temporary limit never kills a worker thread. Re-sending the same signed tx is safe
   (same hash).
@@ -18,8 +18,10 @@ import requests
 from web3 import Web3
 from web3.providers.rpc import HTTPProvider
 
-URLS = ["https://rpc.testnet.chain.robinhood.com", "https://robinhood-testnet.drpc.org"]
-RPS = 35          # total requests per second across all threads
+# the dRPC mirror (https://robinhood-testnet.drpc.org) stopped serving this chain on its free plan in
+# November 2026 ("chain is not available on free plan"): every request sent there failed
+URLS = ["https://rpc.testnet.chain.robinhood.com"]
+RPS = 20          # total requests per second across all threads (one endpoint now: stay under its 429 limit)
 RETRIES = 10
 # JSON-RPC errors that mean "the node is busy", not "the request is wrong": retried like a 429
 BUSY = ("context deadline exceeded", "timeout", "timed out", "rate limit", "too many requests", "temporarily unavailable",

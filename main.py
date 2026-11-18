@@ -57,6 +57,11 @@ def run(line_no):
             acted |= apps.claim(chain()[0], line_no, acct, config.DELAY_BETWEEN_TX)
         except Exception as e:
             log(f"#{line_no} {acct.address}: claim ERROR {str(e)[:200]}")
+    if config.PARK:  # series open again: USDG parked in Credit comes back for the optimizer
+        try:
+            acted |= apps.unpark(chain()[0], line_no, acct, config.DELAY_BETWEEN_TX)
+        except Exception as e:
+            log(f"#{line_no} {acct.address}: unpark ERROR {str(e)[:200]}")
     # before DEPOSIT/SHIELD/BONDS: a salvage re-entry gets the USDG first
     if config.STREAK_GUARD:
         try:
@@ -109,6 +114,11 @@ def run(line_no):
                 acted |= step()
             except Exception as e:
                 log(f"#{line_no} {acct.address}: {name} ERROR {str(e)[:200]}")
+    if config.PARK:  # last on-chain step: what the apps above left idle earns Credit points until series open
+        try:
+            acted |= apps.park(chain()[0], line_no, acct, config.PARK_KEEP, config.DELAY_BETWEEN_TX)
+        except Exception as e:
+            log(f"#{line_no} {acct.address}: park ERROR {str(e)[:200]}")
     if (config.LOGIN or config.NICK) and not _no_login.is_set():
         try:
             acted |= register.run_account(line_no, acct, config.NICK)
@@ -133,7 +143,7 @@ def main():
                              ("vote", config.VOTE), ("buyback", config.BUYBACK), ("settle", config.SETTLE),
                              ("omnichain", config.OMNICHAIN),
                              ("vault", config.VAULT), ("credit", config.CREDIT), ("builder", config.BUILDER),
-                             ("swap", config.SWAP), ("proposals", config.PROPOSALS),
+                             ("swap", config.SWAP), ("proposals", config.PROPOSALS), ("park", config.PARK),
                              ("login", config.LOGIN), ("nick", config.NICK)) if on]
     threads = max(1, min(config.THREADS, len(lines)))
     log(f"accounts: {len(lines)}, threads: {threads}, modules: {', '.join(steps) or 'none'}")

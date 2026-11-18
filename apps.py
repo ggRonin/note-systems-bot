@@ -20,7 +20,7 @@ from web3 import Web3
 from web3.exceptions import TransactionNotFound
 from web3.logs import DISCARD
 
-from deposit import CORE, send
+from deposit import CORE, open_series, send
 from faucet import TOKENS
 from register import FILE_LOCK, log, read_lines
 
@@ -501,6 +501,7 @@ MORPHO_ABI = [
     _fn("supply", [_MP, _U, _U, _A, {"type": "bytes"}], [_U, _U]),
     _fn("supplyCollateral", [_MP, _U, _A, {"type": "bytes"}]),
     _fn("borrow", [_MP, _U, _U, _A, _A], [_U, _U]),
+    _fn("withdraw", [_MP, _U, _U, _A, _A], [_U, _U]),
 ]
 WRAP_ABI = [_fn("wrap", [_U, _A], [_U]), _fn("symbol", [], [{"type": "string"}], True),
             _fn("balanceOf", [_A], [_U], True), _fn("allowance", [_A, _A], [_U], True),
@@ -635,6 +636,74 @@ def credit(w3, line_no, acct, supply_pct, wrap_pct, borrow_pct, tx_delay):
         acted |= result.startswith(("borrowed", "collateral"))
     log(f"#{line_no} {acct.address}: credit: {'; '.join(done)}")
     return acted
+
+
+# ---------------------------------------------------------------- Park / unpark (idle USDG -> Credit supply)
+# While no note series takes deposits, idle USDG still earns points as Credit supply (supply x days). Credit lets it out
+# again at any time with no penalty, unlike the Desk (full) or the Swap vaults (notice): when series open, the parked
+# USDG comes back before the optimizer runs. Parked amounts are kept apart from the regular lending in credit_v2.txt.
+def _parked(acct):
+    """{series id: USDG (1e6) parked and not taken back yet}."""
+    out = {}
+    for row in read_lines(CREDIT_LOG):
+        a, sid, action, amount = row.split(",")[:4]
+        if a == acct.address and action in ("park", "unpark"):
+            out[int(sid)] = out.get(int(sid), 0) + (1 if action == "park" else -1) * int(round(float(amount) * 1e6))
+    return {sid: v for sid, v in out.items() if v > 0}
+
+
+def park(w3, line_no, acct, keep, tx_delay):
+    """No open series: put the USDG above `keep` (USDG range) into the wallet's Credit market(s)."""
+    if open_series(w3):
+        log(f"#{line_no} {acct.address}: park skip, note series are open")
+        return False
+    markets = credit_markets(w3)
+    usdg = contract(w3, TOKENS["USDG"], "erc20")
+    amount = (usdg.functions.balanceOf(acct.address).call() - int(random.uniform(*keep) * 10**6)) // 10**6 * 10**6
+    if amount < 10 * 10**6 or not markets:
+        log(f"#{line_no} {acct.address}: park skip, nothing idle")
+        return False
+    morpho = w3.eth.contract(address=MORPHO, abi=MORPHO_ABI)
+    mine = set(_parked(acct)) | {m[0] for m in markets if morpho.functions.position(m[2], acct.address).call()[0]}
+    sid, params, _ = random.choice([m for m in markets if m[0] in mine] or markets)  # the wallet's own market first
+    nonce = approve(w3, acct, usdg, MORPHO, amount, w3.eth.get_transaction_count(acct.address, "pending"), tx_delay)
+    fn = morpho.functions.supply(params, amount, 0, acct.address, b"")
+    why = simulate(fn, acct)
+    if why:
+        log(f"#{line_no} {acct.address}: park #{sid} refused: {why}")
+        return False
+    _credit_log(acct, sid, "park", amount / 1e6, send(w3, acct, fn, nonce))
+    log(f"#{line_no} {acct.address}: parked {amount / 1e6:,.0f} USDG in Credit #{sid} (no open note series)")
+    return True
+
+
+def unpark(w3, line_no, acct, tx_delay):
+    """Series open again: take the parked USDG back out of Credit (as much as each market's free liquidity allows)."""
+    parked = _parked(acct)
+    if not parked or not open_series(w3):
+        return False
+    morpho = w3.eth.contract(address=MORPHO, abi=MORPHO_ABI)
+    got = []
+    for sid, params, mid in credit_markets(w3):
+        if sid not in parked:
+            continue
+        m = morpho.functions.market(mid).call()
+        shares = morpho.functions.position(mid, acct.address).call()[0]
+        supplied = shares * (m[0] + 1) // (m[1] + 10**6)  # Morpho's virtual-share conversion, rounded down
+        amount = min(parked[sid], supplied, m[0] - m[2]) // 10**6 * 10**6
+        if amount < 10**6:
+            continue
+        fn = morpho.functions.withdraw(params, amount, 0, acct.address, acct.address)
+        why = simulate(fn, acct)
+        if why:
+            log(f"#{line_no} {acct.address}: unpark #{sid} refused: {why}")
+            continue
+        _credit_log(acct, sid, "unpark", amount / 1e6, send(w3, acct, fn, w3.eth.get_transaction_count(acct.address, "pending")))
+        got.append(f"{amount / 1e6:,.0f} from #{sid}")
+        time.sleep(random.uniform(*tx_delay))
+    if got:
+        log(f"#{line_no} {acct.address}: unparked {', '.join(got)} USDG for the open note series")
+    return bool(got)
 
 
 # ---------------------------------------------------------------- Governance proposals
